@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Donald - Bootstrap eCommerce Template</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Donald - Bootstrap eCommerce Template">
+    <meta name="author" content="D-THEMES">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/icons/favicon.png">
+
+    <script>
+        WebFontConfig = {
+            google: { families: ['Open+Sans:400,600,700', 'Poppins:400,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+
+    <link rel="stylesheet" type="text/css" href="vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css">
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/owl-carousel/owl.carousel.min.css">
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" type="text/css" href="css/demo5.min.css">
+</head>
+
+<body class="home">
+    <div class="loading-overlay">
+        <div class="bounce-loader">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+            <div class="bounce4"></div>
+        </div>
+    </div>
+    <div class="page-wrapper">
+        <h1 class="d-none">Donald - Responsive eCommerce HTML Template</h1>
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-left">
+                        <p class="welcome-msg">Welcome to Donald store message or remove it!</p>
+                    </div>
+                    <div class="header-right">
+                        <div class="dropdown">
+                            <a href="#currency">USD</a>
+                            <ul class="dropdown-box">
+                                <li><a href="#USD">USD</a></li>
+                                <li><a href="#EUR">EUR</a></li>
+                            </ul>
+                        </div>
+                        <!-- End of DropDown Menu -->
+                        <div class="dropdown">
+                            <a href="#language"><img src="images/flags/en.png" alt="USA Flag"
+                                    class="dropdown-image" />ENG</a>
+                            <ul class="dropdown-box">
+                                <li>
+                                    <a href="#USD">
+                                        <img src="images/flags/en.png" alt="USA Flag" class="dropdown-image" />ENG
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#EUR">
+                                        <img src="images/flags/fr.png" alt="France Flag" class="dropdown-image" />FRH
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- End of DropDown Menu -->
+                        <div class="dropdown dropdown-expanded d-lg-show">
+                            <a href="#dropdown">Links</a>
+                            <ul class="dropdown-box">
+                                <li><a href="about-us.html">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Newsletter</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="wishlist.html">Wishlist</a></li>
+                            </ul>
+                        </div>
+                        <!-- End of DropDownExpanded Menu -->
+                    </div>
+                </div>
+            </div>
+            <!-- End of HeaderTop -->
+            <div class="header-middle sticky-header fix-top sticky-content has-center">
+                <div class="container">
+                    <div class="header-left">
+                        <a href="#" class="mobile-menu-toggle">
+                            <i class="d-icon-bars2"></i>
+                        </a>
+                        <a href="demo5.html" class="logo d-lg-show">
+                            <img src="images/demos/demo5/logo.png" alt="logo" width="163" height="39" />
+                        </a>
+                    </div>
+                    <div class="header-center">
+                        <a href="demo5.html" class="logo d-lg-none">
+                            <img src="images/demos/demo5/logo.png" alt="logo" width="163" height="39" />
+                        </a>
+                        <!-- End of Logo -->
+                        <div class="header-search hs-expanded">
+                            <form action="#" method="get" class="input-wrapper">
+                                <div class="select-box">
+                                    <select id="category" name="category">
+                                        <option value="">All Categories</option>
+                                        <option value="4">Fashion</option>
+                                        <option value="12">- Women</option>
+                                        <option value="13">- Men</option>
+                                        <option value="66">- Jewellery</option>
+                                        <option value="67">- Kids Fashion</option>
+                                        <option value="5">Electronics</option>
+                                        <option value="21">- Smart TVs</option>
+                                        <option value="22">- Cameras</option>
+                                        <option value="63">- Games</option>
+                                        <option value="7">Home &amp; Garden</option>
+                                        <option value="11">Motors</option>
+                                        <option value="31">- Cars and Trucks</option>
+                                        <option value="32">- Motorcycles &amp; Powersports</option>
+                                        <option value="33">- Parts &amp; Accessories</option>
+                                        <option value="34">- Boats</option>
+                                        <option value="57">- Auto Tools &amp; Supplies</option>
+                                    </select>
+                                </div>
+                                <input type="text" class="form-control" name="search" id="search"
+                                    placeholder="Search your keyword..." required="">
+                                <button class="btn btn-sm btn-search" type="submit"><i
+                                        class="d-icon-search"></i></button>
+                            </form>
+                        </div>
+                        <!-- End of Header Search -->
+                    </div>
+                    <div class="header-right">
+                        <a class="login" href="ajax/login.html">
+                            <i class="d-icon-user"></i>
+                            <span>Login</span>
+                        </a>
+                        <!-- End of Login -->
+                        <span class="divider"></span>
+                        <div class="dropdown cart-dropdown">
+                            <a href="#" class="cart-toggle">
+                                <span class="cart-label">
+                                    <span class="cart-name">My Cart</span>
+                                    <span class="cart-price">$42.00</span>
+                                </span>
+                                <i class="minicart-icon">
+                                    <span class="cart-count">2</span>
+                                </i>
+                            </a>
+                            <!-- End of Cart Toggle -->
+                            <div class="dropdown-box">
+                                <div class="product product-cart-header">
+                                    <span class="product-cart-counts">2 items</span>
+                                    <span><a href="cart.html">View cart</a></span>
+                                </div>
+                                <div class="products scrollable">
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="product.html" class="product-name">Solid Pattern In Fashion Summer Dress</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$129.00</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="#">
+                                                <img src="images/cart/product-1.jpg" alt="product" width="90"
+                                                    height="90" />
+                                            </a>
+                                            <button class="btn btn-link btn-close">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </figure>
+                                    </div>
+                                    <!-- End of Cart Product -->
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$98.00</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="#">
+                                                <img src="images/cart/product-2.jpg" alt="product" width="90"
+                                                    height="90" />
+                                            </a>
+                                            <button class="btn btn-link btn-close">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </figure>
+                                    </div>
+                                    <!-- End of Cart Product -->
+                                </div>
+                                <!-- End of Products  -->
+                                <div class="cart-total">
+                                    <label>Subtotal:</label>
+                                    <span class="price">$42.00</span>
+                                </div>
+                                <!-- End of Cart Total -->
+                                <div class="cart-action">
+                                    <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
+                                </div>
+                                <!-- End of Cart Action -->
+                            </div>
+                            <!-- End of Dropdown Box -->
+                        </div>
+
+                        <div class="header-search hs-toggle mobile-search">
+                            <a href="#" class="search-toggle">
+                                <i class="d-icon-search"></i>
+                            </a>
+                            <form action="#" class="input-wrapper">
+                                <input type="text" class="form-control" name="search" autocomplete="off"
+                                    placeholder="Search your keyword..." required />
+                                <button class="btn btn-search" type="submit">
+                                    <i class="d-icon-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!-- End of Header Search -->
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!-- End of Header -->
+        <main class="main">
+            <div class="page-content">
+                <section class="intro-section appear-animate">
+                    <div class="container">
+                        <div class="row grid">
+                            <div class="grid-item col-xl-3 col-lg-4 height-x2 category-list d-lg-block d-none">
+                                <ul class="menu menu-options vertical-menu category-menu appear-animate"
+                                    data-animation-options="{
+                                'name': 'fadeInRightShorter',
+                                'delay': '.2s'
+                            }">
+                                    <li><a href="demo5-shop.html" class="menu-title">Browse Our Categories</a></li>
+                                    <li>
+                                        <a href="demo5-shop.html"><i class="d-icon-camera1"></i>Electronics</a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html"><i class="d-icon-officebag"></i>Backpacks &amp;
+                                            Fashion bags</a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html"><i class="d-icon-gamepad1"></i>Gaming &amp;
+                                            Accessories
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html">
+                                            <i class="d-icon-t-shirt1" style="
+                                            font-size: 20px;
+                                            margin-left: -1px;
+                                            margin-right: .8rem;
+                                        "></i>Travel &amp; Clothing</a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html"><i class="d-icon-desktop"></i>Computer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html"><i class="d-icon-cook"></i>Home &amp; Kitchen</a>
+                                    </li>
+                                    <li><a href="demo5-shop.html" class="menu-title">Today Coupon Deals</a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html">
+                                            <i class="d-icon-card"></i>Backpacks &amp; Fashion bags
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="demo5-shop.html">
+                                            <i class="d-icon-card"></i>Daily Deals
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="grid-item col-xl-6 col-lg-5 col-md-8 height-x2">
+                                <div class="intro-slider owl-carousel owl-theme row owl-dot-inner owl-dot-white owl-full-height animation-slider cols-1 appear-animate"
+                                    data-animation="{
+                                    'name': 'fadeIn',
+                                    'delay': '.2s'
+                                }" data-owl-options="{
+                                    'items': 1,
+                                    'nav': false,
+                                    'dots': true,
+                                    'loop': true,
+                                    'autoplay': true,
+                                    'animateIn': 'fadeInUp',
+                                    'animateOut': 'fadeOutRight'
+                                }">
+                                    <div class="intro-slide1 banner banner-fixed">
+                                        <figure>
+                                            <img src="images/demos/demo5/slides/1.jpg" width="580" height="502"
+                                                alt="banner" />
+                                        </figure>
+                                        <div class="banner-content y-50">
+                                            <h4 class="banner-subtitle text-uppercase mb-2 font-weight-bold text-primary slide-animate"
+                                                data-animation-options="{'name': 'fadeInLeftShorter', 'duration': '1s'}">
+                                                Best Selling</h4>
+                                            <h3 class="banner-title font-weight-bold text-secondary ls-m mb-5 slide-animate"
+                                                data-animation-options="{'name': 'blurIn', 'delay': '.4s', 'duration': '1s'}">
+                                                New In <br />Stuff Goods</h3>
+                                            <a href="#" class="btn btn-solid btn-primary slide-animate"
+                                                data-animation-options="{'name': 'fadeInUpShorter', 'delay': '.7s', 'duration': '1s'}">Shop
+                                                now</a>
+                                        </div>
+                                    </div>
+                                    <div class="intro-slide2 banner banner-fixed">
+                                        <figure>
+                                            <img src="images/demos/demo5/slides/2.jpg" width="580" height="502"
+                                                alt="banner" />
+                                        </figure>
+                                        <div class="banner-content y-50">
+                                            <div class="slide-animate" data-animation-options="{
+                                                'name': 'fadeInLeftShorter',
+                                                'delay': '.2s'
+                                            }">
+                                                <h4
+                                                    class="banner-subtitle text-uppercase font-weight-bold text-primary mb-1">
+                                                    Up to 50% off</h4>
+                                                <h3 class="banner-title text-dark ls-m mb-6 slide-animate"
+                                                    data-animation-options="{
+                                                    'name': 'fadeInLeftShorter',
+                                                    'delay': '.2s'
+                                                }">New Fashion <br />In Store</h3>
+                                                <a class="btn btn-solid btn-primary" href="#">Shop now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-3 col-md-4 col-xs-6 height-x1">
+                                <div class="intro-banner intro-banner1 banner banner-fixed left-banner overlay-dark appear-animate"
+                                    data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <figure>
+                                            <img src="images/demos/demo5/banners/1.jpg" width="280" height="241"
+                                                alt="banner" />
+                                        </figure>
+                                    </a>
+                                    <div class="banner-content y-50">
+                                        <h4
+                                            class="banner-subtitle mb-1 text-uppercase font-weight-bold ls-s text-secondary">
+                                            Summer soon</h4>
+                                        <h3 class="banner-title mb-0 ls-m text-white">Swim &amp; Beachwear
+                                            <br />Collection 2020</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-3 col-md-4 col-xs-6 height-x1">
+                                <div class="intro-banner intro-banner2 banner banner-fixed left-banner overlay-light appear-animate"
+                                    data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <figure>
+                                            <img src="images/demos/demo5/banners/2.jpg" width="280" height="241"
+                                                alt="banner" />
+                                        </figure>
+                                    </a>
+                                    <div class="banner-content y-50">
+                                        <h3 class="banner-title ls-m text-secondary">New Latest Bag <br />Collection
+                                        </h3>
+                                        <a href="#" class="btn btn-link btn-underline btn-sm mb-1">Shop Now<i
+                                                class="d-icon-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-6 col-md-4 height-x1">
+                                <div class="intro-banner intro-banner3 banner banner-fixed right-banner overlay-dark appear-animate"
+                                    data-animation-options="{
+                                    'name': 'fadeInUpShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <figure>
+                                            <img src="images/demos/demo5/banners/3.jpg" width="580" height="241"
+                                                alt="banner" />
+                                        </figure>
+                                    </a>
+                                    <div class="banner-content y-50 text-right">
+                                        <h4 class="banner-subtitle text-uppercase font-weight-bold ls-m text-primary">Up
+                                            to 20% off</h4>
+                                        <h3 class="banner-title ls-m text-secondary">For Kids Trending<br />Collection
+                                        </h3>
+                                        <a href="#" class="btn btn-link btn-underline btn-sm">Shop Now<i
+                                                class="d-icon-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-3 col-md-4 col-xs-6 height-x1">
+                                <div class="intro-banner intro-banner4 banner banner-fixed h-100 left-banner overlay-light appear-animate"
+                                    data-animation-options="{
+                                    'name': 'fadeInUpShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <figure style="background-color: #feecd4"></figure>
+                                    <div class="banner-content w-100 x-50 y-50 text-center pl-2 pr-2">
+                                        <h3 class="banner-title ls-m text-secondary text-uppercase">Our Brands</h3>
+                                        <p class="mb-0 text-uppercase ls-m">
+                                            <a href="#">New York</a> - <a href="#">Paris</a> - <a
+                                                href="#">Barcelona</a><br />
+                                            <a href="#">Milan</a> - <a href="#">Rome</a> - <a href="#">London</a> - <a
+                                                href="#">Dubai</a><br />
+                                            <a href="#">Moscow</a> - <a href="#">Tokyo</a> - <a
+                                                href="#">Shanghai</a><br />
+                                            <a href="#">Mumbai</a> - <a href="#">Melbourne</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-3 col-md-4 col-xs-6 height-x1">
+                                <div class="intro-banner intro-banner5 banner banner-fixed right-banner overlay-dark appear-animate"
+                                    data-animation-options="{
+                                    'name': 'fadeInUpShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <figure>
+                                            <img src="images/demos/demo5/banners/4.jpg" width="280" height="241"
+                                                alt="banner" />
+                                        </figure>
+                                    </a>
+                                    <div class="banner-content y-50 text-right">
+                                        <h4 class="banner-subtitle text-uppercase font-weight-bold ls-s text-primary">
+                                            Only $15</h4>
+                                        <h3 class="banner-title ls-m text-secondary">On Sale <br />This Week’s</h3>
+                                        <a href="#" class="btn btn-link btn-underline btn-sm">Shop Now<i
+                                                class="d-icon-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-space col-1"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-10 pt-3 mb-8">
+                    <div class="container">
+                        <h2 class="title title-simple title-center appear-animate">Popular Categories</h2>
+                        <div class="owl-carousel owl-theme row owl-nav-full cols-lg-4 cols-md-3 cols-sm-2 cols-1"
+                            data-owl-options="{
+                            'nav': false,
+                            'dots': true,
+                            'items': 4,
+                            'loop': false,
+                            'margin':  20,
+                            'responsive': {
+                                '0': {
+                                    'items': 1
+                                },
+                                '480': {
+                                    'items': 2
+                                },
+                                '768': {
+                                    'items': 3
+                                },
+                                '992': {
+                                    'items': 4,
+                                    'dots': true
+                                }
+                            }
+                        }">
+                            <div class="category category-absolute category-light overlay-dark overlay-zoom appear-animate"
+                                data-animation-options="{
+                                'name': 'fadeInRightShorter',
+                                'delay': '.2s'
+                            }">
+                                <a href="#">
+                                    <figure class="category-media">
+                                        <img src="images/demos/demo5/categories/1.jpg" alt="category" width="280"
+                                            height="245" />
+                                    </figure>
+                                </a>
+                                <div class="category-content">
+                                    <h4 class="category-name">Accessories &amp; Jewellery</h4>
+                                    <span class="category-count">
+                                        <span>47</span> Products
+                                    </span>
+                                    <a href="#" class="btn btn-underline btn-link btn-white">Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="category category-absolute category-light overlay-dark overlay-zoom appear-animate"
+                                data-animation-options="{
+                                'name': 'fadeInRightShorter',
+                                'delay': '.3s'
+                            }">
+                                <a href="#">
+                                    <figure class="category-media">
+                                        <img src="images/demos/demo5/categories/2.jpg" alt="category" width="280"
+                                            height="245" />
+                                    </figure>
+                                </a>
+                                <div class="category-content">
+                                    <h4 class="category-name">Computer &amp; Electronics</h4>
+                                    <span class="category-count">
+                                        <span>42</span> Products
+                                    </span>
+                                    <a href="#" class="btn btn-underline btn-link btn-white">Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="category category-absolute category-light overlay-dark overlay-zoom appear-animate"
+                                data-animation-options="{
+                                'name': 'fadeInRightShorter',
+                                'delay': '.4s'
+                            }">
+                                <a href="#">
+                                    <figure class="category-media">
+                                        <img src="images/demos/demo5/categories/3.jpg" alt="category" width="280"
+                                            height="245" />
+                                    </figure>
+                                </a>
+                                <div class="category-content">
+                                    <h4 class="category-name">Swim &amp; Beachwear</h4>
+                                    <span class="category-count">
+                                        <span>6</span> Products
+                                    </span>
+                                    <a href="#" class="btn btn-underline btn-link btn-white">Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="category category-absolute category-light overlay-dark overlay-zoom appear-animate"
+                                data-animation-options="{
+                                'name': 'fadeInRightShorter',
+                                'delay': '.5s'
+                            }">
+                                <a href="#">
+                                    <figure class="category-media">
+                                        <img src="images/demos/demo5/categories/4.jpg" alt="category" width="280"
+                                            height="245" />
+                                    </figure>
+                                </a>
+                                <div class="category-content">
+                                    <h4 class="category-name">Jeans &amp; Shoes</h4>
+                                    <span class="category-count">
+                                        <span>11</span> Products
+                                    </span>
+                                    <a href="#" class="btn btn-underline btn-link btn-white">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="new-arrivals mt-10 pt-3 mb-8 appear-animate" data-animation-options="{
+                    'name': 'fadeIn',
+                    'delay': '.2s'
+                }">
+                    <div class="container">
+                        <h2 class="title title-simple title-center">New Arrivals</h2>
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/1.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Women's Fashion Comfort</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$199.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/2.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                        <div class="product-label-group">
+                                            <label class="product-label label-new">New</label>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Water Cooler Reservoir</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$35.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:80%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/3.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Men's Fashion Hood</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$19.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/4.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                        <div class="product-label-group">
+                                            <label class="product-label label-sale">27% off</label>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Kid's Fashion Shoes</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$98.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:40%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/5.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Men's Fashion Hood</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$199.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/6.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                        <div class="product-label-group">
+                                            <label class="product-label label-new">New</label>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Flash Disk USB 3.0</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$35.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/7.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Women's Fashion Handbag</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$19.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:70%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/8.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Blue Tea Cup</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$98.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/9.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Fashion Hiking Hat</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$199.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:90%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/10.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                        <div class="product-label-group">
+                                            <label class="product-label label-new">New</label>
+                                        </div>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Cavin Fashion Suede Handbag</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$35.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:100%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/11.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Men's Fashion Suede Belt</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <span class="price">$19.00</span>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:60%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-4">
+                                <div class="product product-classic shadow-media">
+                                    <figure class="product-media">
+                                        <a href="demo5-product.html">
+                                            <img src="images/demos/demo5/products/12.jpg" alt="product" width="180"
+                                                height="201">
+                                        </a>
+                                    </figure>
+                                    <div class="product-details">
+                                        <div class="product-cat">
+                                            <a href="shop-grid-3col.html">categories</a>
+                                        </div>
+                                        <h3 class="product-name">
+                                            <a href="demo5-product.html">Black Comfortable Sandals</a>
+                                        </h3>
+                                        <div class="product-price">
+                                            <ins class="new-price">$98.00</ins><del class="old-price">$210.00</del>
+                                        </div>
+                                        <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width:60%"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                        </div>
+                                        <div class="product-action">
+                                            <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                                data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                            <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                    class="d-icon-heart"></i></a>
+                                            <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                    class="d-icon-search"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="banner banner-cta parallax" data-option="{'offset': -75}"
+                    data-image-src="images/demos/demo5/cta.jpg">
+                    <div class="container text-center">
+                        <div class="banner-content appear-animate" data-animation-options="{
+                            'name': 'fadeInUpShorter',
+                            'delay': '.2s',
+                            'duration': '.75s'
+                        }">
+                            <h3 class="banner-title mb-2 text-uppercase ls-m">Our Newsletter</h3>
+                            <p class="ls-s mb-3">It only takes a second to find out about our latest <br />news and
+                                promotions...</p>
+                            <form action="#" class="input-wrapper input-wrapper-inline mb-5">
+                                <input type="email" class="form-control text-grey bg-white" name="email" id="email"
+                                    placeholder="Email address here..." required />
+                                <button class="btn btn-sm btn-primary btn-icon-right" type="submit">subscribe<i
+                                        class="d-icon-arrow-right"></i></button>
+                            </form>
+                            <div class="social-links">
+                                <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+                                <a href="#" class="social-link social-twitter fab fa-twitter"></a>
+                                <a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
+                                <a href="#" class="social-link social-google fab fa-google"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-10 pt-3 mb-8 appear-animate" data-animation-options="{
+                    'name': 'fadeIn',
+                    'delay': '.2s'
+                }">
+                    <div class="container">
+                        <h2 class="title title-simple title-center">Best Selling</h2>
+                        <div class="owl-carousel owl-theme row owl-nav-full cols-lg-4 cols-md-3 cols-2"
+                            data-owl-options="{
+                            'items': 4,
+                            'dots': true,
+                            'nav': false,
+                            'loop': false,
+                            'margin': 20,
+                            'responsive': {
+                                '0': {
+                                    'items': 2
+                                },
+                                '768': {
+                                    'items': 3
+                                },
+                                '992': {
+                                    'items': 4,
+                                    'nav': true,
+                                    'dots': false
+                                }
+                            }
+                        }">
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/13.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">Water Cooler Reservoir</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <ins class="new-price">$199.00</ins><del class="old-price">$210.00</del>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/14.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                    <div class="product-label-group">
+                                        <label class="product-label label-new">New</label>
+                                    </div>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">Yellow Overnight Bag</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <span class="price">$35.00</span>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/15.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">Blue Teacup</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <span class="price">$19.00</span>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/16.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                    <div class="product-label-group">
+                                        <label class="product-label label-new">New</label>
+                                    </div>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">Brown Leather Sandals</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <ins class="new-price">$98.00</ins><del class="old-price">$210.00</del>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/17.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">Blue Jeans Shoes</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <ins class="new-price">$199.00</ins><del class="old-price">$210.00</del>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product product-classic">
+                                <figure class="product-media">
+                                    <a href="demo5-product.html">
+                                        <img src="images/demos/demo5/products/18.jpg" alt="product" width="180"
+                                            height="201">
+                                    </a>
+                                </figure>
+                                <div class="product-details">
+                                    <div class="product-cat">
+                                        <a href="shop-grid-3col.html">categories</a>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <a href="demo5-product.html">White Leather Shoes</a>
+                                    </h3>
+                                    <div class="product-price">
+                                        <span class="price">$35.00</span>
+                                    </div>
+                                    <div class="ratings-container">
+                                        <div class="ratings-full">
+                                            <span class="ratings" style="width:100%"></span>
+                                            <span class="tooltiptext tooltip-top"></span>
+                                        </div>
+                                        <a href="product.html" class="rating-reviews">( 6 reviews )</a>
+                                    </div>
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart" data-toggle="modal"
+                                            data-target="#addCartModal" title="Add to cart">add to cart</a>
+                                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"><i
+                                                class="d-icon-heart"></i></a>
+                                        <a href="#" class="btn-product-icon btn-quickview" title="Quick View"><i
+                                                class="d-icon-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="instagram-section mt-9 pb-2 mb-10 appear-animate">
+                    <div class="container">
+                        <h2 class="title title-simple title-center mb-5">Follow us on instagram</h2>
+                        <div class="row grid">
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.3s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/1.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/2.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/3.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'delay': '.3s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/4.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-4 col-sm-8 height-x2">
+                                <div class="testimonial-wrapper">
+                                    <h3 class="title title-simple font-secondary text-normal ls-normal mb-5">What they
+                                        say about us</h3>
+                                    <div class="owl-carousel owl-theme row cols-1 appear-animate"
+                                        data-animation-options="{
+                                        'delay': '.2s'
+                                    }" data-owl-options="{
+                                        'items': 1,
+                                        'nav': false,
+                                        'dots': true,
+                                        'loop': false
+                                    }">
+                                        <div class="testimonial testimonial-centered">
+                                            <div class="testimonial-info">
+                                                <figure class="testimonial-author-thumbnail">
+                                                    <img src="images/agents/4.jpg" alt="user" width="40" height="40" />
+                                                </figure>
+                                                <blockquote class="comment">“ Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec
+                                                    urna. In nisi neque ”</blockquote>
+                                                <cite>
+                                                    Jenson Gregory
+                                                    <span>Customer</span>
+                                                </cite>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial testimonial-centered">
+                                            <div class="testimonial-info">
+                                                <figure class="testimonial-author-thumbnail">
+                                                    <img src="images/agents/4.jpg" alt="user" width="40" height="40" />
+                                                </figure>
+                                                <blockquote class="comment">“ Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec
+                                                    urna. In nisi neque ”</blockquote>
+                                                <cite>
+                                                    Mary Adams
+                                                    <span>Customer</span>
+                                                </cite>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial testimonial-centered">
+                                            <div class="testimonial-info">
+                                                <figure class="testimonial-author-thumbnail">
+                                                    <img src="images/agents/5.jpg" alt="user" width="40" height="40" />
+                                                </figure>
+                                                <blockquote class="comment">“ Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec
+                                                    urna. In nisi neque ”</blockquote>
+                                                <cite>
+                                                    Owen Hunt
+                                                    <span>Customer</span>
+                                                </cite>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.3s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/5.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInLeftShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/6.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'delay': '.2s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/7.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-item col-lg-2 col-sm-4 col-6 height-x1">
+                                <figure class="instagram appear-animate" data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'delay': '.3s'
+                                }">
+                                    <a href="#">
+                                        <img src="images/demos/demo5/instagrams/8.jpg" alt="Instagram" width="180"
+                                            height="180" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="grid-space col-1"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <!-- End of Main -->
+        <footer class="footer appear-animate">
+            <div class="container">
+                <div class="footer-middle">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget widget-about">
+                                <a href="demo5.html" class="logo-footer">
+                                    <img src="images/logo-footer.png" alt="logo-footer" width="163" height="39" />
+                                </a>
+                                <div class="widget-body">
+                                    <p class="ls-s">Praesent dapibus, neque id cursus ucibus, <br />tortor neque egestas
+                                        augue, <br />eu vulputate magna eros eu erat.</p>
+                                    <a href="#">Donald@example.com</a>
+                                </div>
+                            </div>
+                            <!-- End of Widget -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget ml-lg-4">
+                                <h4 class="widget-title">About Us</h4>
+                                <ul class="widget-body">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Order History</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Custom Service</a></li>
+                                    <li><a href="#">Terms &amp; Condition</a></li>
+                                </ul>
+                            </div>
+                            <!-- End of Widget -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget ml-lg-4">
+                                <h4 class="widget-title">Customer Service</h4>
+                                <ul class="widget-body">
+                                    <li><a href="#">Payment Methods</a></li>
+                                    <li><a href="#">Money-back Guarantee!</a></li>
+                                    <li><a href="#">Returns</a></li>
+                                    <li><a href="#">Shipping</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                </ul>
+                            </div>
+                            <!-- End of Widget -->
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="widget ml-lg-4">
+                                <h4 class="widget-title">My Account</h4>
+                                <ul class="widget-body">
+                                    <li><a href="#">Sign in</a></li>
+                                    <li><a href="#">View Cart</a></li>
+                                    <li><a href="#">My Wishlist</a></li>
+                                    <li><a href="#">Track My Order</a></li>
+                                    <li><a href="#">Help</a></li>
+                                </ul>
+                            </div>
+                            <!-- End of Widget -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End of FooterMiddle -->
+                <div class="footer-bottom">
+                    <div class="footer-left">
+                        <figure class="payment">
+                            <img src="images/payment.png" alt="payment" width="159" height="29" />
+                        </figure>
+                    </div>
+                    <div class="footer-center">
+                        <p class="copyright">Donald eCommerce &copy; 2020. All Rights Reserved</p>
+                    </div>
+                    <div class="footer-right">
+                        <div class="social-links">
+                            <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+                            <a href="#" class="social-link social-twitter fab fa-twitter"></a>
+                            <a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of FooterBottom -->
+            </div>
+        </footer>
+        <!-- End of Footer -->
+    </div>
+
+    <!-- Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="demo5.html" class="sticky-link active">
+            <i class="d-icon-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="demo5-shop.html" class="sticky-link">
+            <i class="d-icon-volume"></i>
+            <span>Categories</span>
+        </a>
+        <a href="wishlist.html" class="sticky-link">
+            <i class="d-icon-heart"></i>
+            <span>Wishlist</span>
+        </a>
+        <a href="account.html" class="sticky-link">
+            <i class="d-icon-user"></i>
+            <span>Account</span>
+        </a>
+        <div class="dropdown cart-dropdown dir-up">
+            <a href="cart.html" class="sticky-link cart-toggle">
+                <i class="d-icon-bag"></i>
+                <span>Cart</span>
+            </a>
+            <!-- End of Cart Toggle -->
+            <div class="dropdown-box">
+                <div class="product product-cart-header">
+                    <span class="product-cart-counts">2 items</span>
+                    <span><a href="cart.html">View cart</a></span>
+                </div>
+                <div class="products scrollable">
+                    <div class="product product-cart">
+                        <div class="product-detail">
+                            <a href="product.html" class="product-name">Solid Pattern In Fashion Summer Dress</a>
+                            <div class="price-box">
+                                <span class="product-quantity">1</span>
+                                <span class="product-price">$129.00</span>
+                            </div>
+                        </div>
+                        <figure class="product-media">
+                            <a href="#">
+                                <img src="images/cart/product-1.jpg" alt="product" width="90"
+                                    height="90" />
+                            </a>
+                            <button class="btn btn-link btn-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </figure>
+                    </div>
+                    <!-- End of Cart Product -->
+                    <div class="product product-cart">
+                        <div class="product-detail">
+                            <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
+                            <div class="price-box">
+                                <span class="product-quantity">1</span>
+                                <span class="product-price">$98.00</span>
+                            </div>
+                        </div>
+                        <figure class="product-media">
+                            <a href="#">
+                                <img src="images/cart/product-2.jpg" alt="product" width="90"
+                                    height="90" />
+                            </a>
+                            <button class="btn btn-link btn-close">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </figure>
+                    </div>
+                    <!-- End of Cart Product -->
+                </div>
+                <!-- End of Products  -->
+                <div class="cart-total">
+                    <label>Subtotal:</label>
+                    <span class="price">$42.00</span>
+                </div>
+                <!-- End of Cart Total -->
+                <div class="cart-action">
+                    <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
+                </div>
+                <!-- End of Cart Action -->
+            </div>
+            <!-- End of Dropdown Box -->
+        </div>
+    </div>
+
+    <!-- Scroll Top -->
+    <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-angle-up"></i></a>
+
+    <!-- MobileMenu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay">
+        </div>
+        <!-- End of Overlay -->
+        <a class="mobile-menu-close" href="#"><i class="d-icon-times"></i></a>
+        <!-- End of CloseButton -->
+        <div class="mobile-menu-container scrollable">
+            <form action="#" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off"
+                    placeholder="Search your keyword..." required />
+                <button class="btn btn-search" type="submit">
+                    <i class="d-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+
+            <ul class="mobile-menu mmenu-anim">
+                <li><a href="demo5-shop.html" class="menu-title">Browse Our Categories</a></li>
+                <li>
+                    <a href="demo5-shop.html"><i class="d-icon-camera1"></i>Electronics</a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html"><i class="d-icon-officebag"></i>Backpacks &amp;
+                        Fashion bags</a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html"><i class="d-icon-gamepad1"></i>Gaming &amp;
+                        Accessories
+                    </a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html">
+                        <i class="d-icon-t-shirt1"></i>Travel &amp; Clothing</a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html"><i class="d-icon-desktop"></i>Computer
+                    </a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html"><i class="d-icon-cook"></i>Home &amp; Kitchen</a>
+                </li>
+                <li><a href="demo5-shop.html" class="menu-title">Today Coupon Deals</a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html">
+                        <i class="d-icon-card"></i>Backpacks &amp; Fashion bags
+                    </a>
+                </li>
+                <li>
+                    <a href="demo5-shop.html">
+                        <i class="d-icon-card"></i>Daily Deals
+                    </a>
+                </li>
+            </ul>
+            <!-- End of MobileMenu -->
+        </div>
+    </div>
+    <!-- Plugins JS File -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/parallax/parallax.min.js"></script>
+    <script src="vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+    <script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <!-- Main JS File -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

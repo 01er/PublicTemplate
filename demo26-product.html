@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+	<title>Donald - Bootstrap eCommerce Template</title>
+
+	<meta name="keywords" content="HTML5 Template" />
+	<meta name="description" content="Donald - Bootstrap eCommerce Template">
+	<meta name="author" content="D-THEMES">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png">
+
+	<script>
+		WebFontConfig = {
+			google: { families: ['Open+Sans:300,400,600,700', 'Poppins:400,500,600,700'] }
+		};
+		(function (d) {
+			var wf = d.createElement('script'), s = d.scripts[0];
+			wf.src = 'js/webfont.js';
+			wf.async = true;
+			s.parentNode.insertBefore(wf, s);
+		})(document);
+	</script>
+
+
+	<link rel="stylesheet" type="text/css" href="vendor/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.min.css">
+
+	<!-- Plugins CSS File -->
+	<link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/photoswipe/photoswipe.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/photoswipe/default-skin/default-skin.min.css">
+
+	<!-- Main CSS File -->
+	<link rel="stylesheet" type="text/css" href="css/demo26.min.css">
+</head>
+
+<body class="with-flex-container">
+	<div class="loading-overlay">
+		<div class="bounce-loader">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+			<div class="bounce4"></div>
+		</div>
+	</div>
+	<div class="page-wrapper">
+		<header class="header header-border">
+			<div class="header-top has-center">
+				<div class="container">
+					<div class="header-left appear-animate"
+						data-animation-options="{'name': 'fadeInRightShorter', 'delay': '.3s'}">
+						<div class="banner1 banner d-flex align-items-center">
+							<figure>
+								<img src="images/demos/demo26/money.png" alt="money" width="58" height="72" />
+							</figure>
+							<div class="banner-content text-normal">
+								<h3 class="banner-title ls-m text-white font-weight-bold">Donald birthday</h3>
+								<h4 class="banner-subtitle text-white font-weight-normal mb-0">Big Savings</h4>
+							</div>
+						</div>
+					</div>
+					<div class="header-center appear-animate">
+						<figure>
+							<img class="d-block" src="images/demos/demo26/header.png" alt="image" width="235"
+								height="85" />
+						</figure>
+					</div>
+					<div class="header-right appear-animate"
+						data-animation-options="{'name': 'fadeInLeftShorter', 'delay': '.3s'}">
+						<div class="banner2 banner">
+							<div class="banner-content d-flex align-items-center">
+								<h3
+									class="banner-title ls-m text-white font-weight-bold mb-0 text-normal font-weight-normal mr-5">
+									Instant discount on<span class="d-block  text-right">Get our Featured
+										Products</span></h3>
+								<a href="#" class="btn btn-ellipse btn-dark btn-sm">Shop now<i
+										class="d-icon-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End HeaderTop -->
+			<div class="header-middle sticky-header fix-top sticky-content">
+				<div class="container">
+					<div class="header-left">
+						<a href="#" class="left-sidebar-toggle">
+							<i class="menu-icon text-primary"></i>
+						</a>
+						<a class="call">
+							<i class="d-icon-phone"></i>
+							<span class="font-weight-semi-bold">+123 456 789</span>
+						</a>
+						<!-- End Call -->
+						<span class="divider"></span>
+						<!-- End Divider -->
+						<div class="currency-dropdown dropdown mr-4">
+							<a href="#currency">USD</a>
+							<ul class="dropdown-box">
+								<li><a href="#USD">USD</a></li>
+								<li><a href="#EUR">EUR</a></li>
+							</ul>
+						</div>
+						<!-- End DropDown Menu -->
+						<div class="language-dropdown dropdown">
+							<a href="#language"><img src="images/flags/en.png" alt="USA Flag"
+									class="dropdown-image" />ENG</a>
+							<ul class="dropdown-box">
+								<li>
+									<a href="#USD">
+										<img src="images/flags/en.png" alt="USA Flag" class="dropdown-image" />ENG
+									</a>
+								</li>
+								<li>
+									<a href="#EUR">
+										<img src="images/flags/fr.png" alt="France Flag" class="dropdown-image" />FRH
+									</a>
+								</li>
+							</ul>
+						</div>
+						<!-- End DropDown Menu -->
+					</div>
+					<div class="header-center">
+						<a href="demo26.html" class="logo d-lg-none d-block">
+							<img src="images/demos/demo26/logo.png" alt="logo" width="152" height="55" />
+						</a>
+						<!-- End Logo -->
+						<div class="header-search hs-simple">
+							<form action="#" method="get" class="input-wrapper">
+								<input type="text" class="form-control" name="search" id="search"
+									placeholder="Search your keyword..." required="">
+								<button class="btn btn-sm btn-search" type="submit"><i
+										class="d-icon-search"></i></button>
+							</form>
+						</div>
+						<!-- End Header Search -->
+					</div>
+					<div class="header-right">
+						<a class="login" href="ajax/login.html">
+							<i class="d-icon-user"></i>
+							<span>Login</span>
+						</a>
+						<!-- End Login -->
+						<span class="divider"></span>
+						<!-- End Divider -->
+						<div class="dropdown cart-dropdown">
+							<a href="#" class="cart-toggle">
+								<span class="cart-label">
+									<span class="cart-name">My Cart</span>
+									<span class="cart-price">$42.00</span>
+								</span>
+								<i class="minicart-icon">
+									<span class="cart-count">2</span>
+								</i>
+							</a>
+							<!-- End Cart Toggle -->
+							<div class="dropdown-box">
+                                <div class="product product-cart-header">
+                                    <span class="product-cart-counts">2 items</span>
+                                    <span><a href="cart.html">View cart</a></span>
+                                </div>
+                                <div class="products scrollable">
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="product.html" class="product-name">Solid Pattern In Fashion Summer Dress</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$129.00</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="#">
+                                                <img src="images/cart/product-1.jpg" alt="product" width="90"
+                                                    height="90" />
+                                            </a>
+                                            <button class="btn btn-link btn-close">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </figure>
+                                    </div>
+                                    <!-- End of Cart Product -->
+                                    <div class="product product-cart">
+                                        <div class="product-detail">
+                                            <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
+                                            <div class="price-box">
+                                                <span class="product-quantity">1</span>
+                                                <span class="product-price">$98.00</span>
+                                            </div>
+                                        </div>
+                                        <figure class="product-media">
+                                            <a href="#">
+                                                <img src="images/cart/product-2.jpg" alt="product" width="90"
+                                                    height="90" />
+                                            </a>
+                                            <button class="btn btn-link btn-close">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </figure>
+                                    </div>
+                                    <!-- End of Cart Product -->
+                                </div>
+                                <!-- End of Products  -->
+                                <div class="cart-total">
+                                    <label>Subtotal:</label>
+                                    <span class="price">$42.00</span>
+                                </div>
+                                <!-- End of Cart Total -->
+                                <div class="cart-action">
+                                    <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
+                                </div>
+                                <!-- End of Cart Action -->
+                            </div>
+							<!-- End Dropdown Box -->
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</header>
+		<!-- End Header -->
+		<main class="main mt-4">
+			<div class="page-content mb-10">
+				<div class="container">
+					<div class="product product-single row mb-4">
+						<div class="col-md-6">
+							<div class="product-gallery">
+								<div class="product-single-carousel owl-carousel owl-theme owl-nav-inner row cols-1">
+									<figure class="product-image">
+										<img src="images/demos/demo26/product/product-1-580x580.jpg"
+											data-zoom-image="images/demos/demo26/product/product-1-800x800.jpg"
+											alt="Blue Pinafore Denim Dress" width="800" height="900">
+									</figure>
+									<figure class="product-image">
+										<img src="images/demos/demo26/product/product-2-580x580.jpg"
+											data-zoom-image="images/demos/demo26/product/product-2-800x800.jpg"
+											alt="Blue Pinafore Denim Dress" width="800" height="900">
+									</figure>
+									<figure class="product-image">
+										<img src="images/demos/demo26/product/product-3-580x580.jpg"
+											data-zoom-image="images/demos/demo26/product/product-3-800x800.jpg"
+											alt="Blue Pinafore Denim Dress" width="800" height="900">
+									</figure>
+									<figure class="product-image">
+										<img src="images/demos/demo26/product/product-4-580x580.jpg"
+											data-zoom-image="images/demos/demo26/product/product-4-800x800.jpg"
+											alt="Blue Pinafore Denim Dress" width="800" height="900">
+									</figure>
+									<figure class="product-image">
+										<img src="images/demos/demo26/product/product-5-580x580.jpg"
+											data-zoom-image="images/demos/demo26/product/product-5-800x800.jpg"
+											alt="Blue Pinafore Denim Dress" width="800" height="900">
+									</figure>
+								</div>
+								<div class="product-thumbs-wrap">
+									<div class="product-thumbs">
+										<div class="product-thumb active">
+											<img src="images/demos/demo26/product/product-1-109x109.jpg"
+												alt="product thumbnail" width="109" height="109">
+										</div>
+										<div class="product-thumb">
+											<img src="images/demos/demo26/product/product-2-109x109.jpg"
+												alt="product thumbnail" width="109" height="109">
+										</div>
+										<div class="product-thumb">
+											<img src="images/demos/demo26/product/product-3-109x109.jpg"
+												alt="product thumbnail" width="109" height="109">
+										</div>
+										<div class="product-thumb">
+											<img src="images/demos/demo26/product/product-4-109x109.jpg"
+												alt="product thumbnail" width="109" height="109">
+										</div>
+										<div class="product-thumb">
+											<img src="images/demos/demo26/product/product-5-109x109.jpg"
+												alt="product thumbnail" width="109" height="109">
+										</div>
+									</div>
+									<button class="thumb-up disabled"><i class="fas fa-chevron-left"></i></button>
+									<button class="thumb-down disabled"><i class="fas fa-chevron-right"></i></button>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="product-details">
+								<div class="product-navigation">
+									<ul class="breadcrumb breadcrumb-lg">
+										<li><a href="demo26.html"><i class="d-icon-home"></i></a></li>
+										<li><a href="#" class="active">Products</a></li>
+										<li>Detail</li>
+									</ul>
+
+									<ul class="product-nav">
+										<li class="product-nav-prev">
+											<a href="#">
+												<i class="d-icon-arrow-left"></i> Prev
+												<span class="product-nav-popup">
+													<img src="images/product/product-thumb-prev.jpg"
+														alt="product thumbnail" width="110" height="123">
+													<span class="product-name">Sed egtas Dnte Comfort</span>
+												</span>
+											</a>
+										</li>
+										<li class="product-nav-next">
+											<a href="#">
+												Next <i class="d-icon-arrow-right"></i>
+												<span class="product-nav-popup">
+													<img src="images/product/product-thumb-next.jpg"
+														alt="product thumbnail" width="110" height="123">
+													<span class="product-name">Sed egtas Dnte Comfort</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+
+								<h1 class="product-name">Fashionable Women's Original Trucker</h1>
+								<div class="product-meta">
+									SKU: <span class="product-sku">12345670</span>
+									BRAND: <span class="product-brand">The Northland</span>
+								</div>
+								<div class="product-price">$139.00</div>
+								<div class="ratings-container">
+									<div class="ratings-full">
+										<span class="ratings" style="width:80%"></span>
+										<span class="tooltiptext tooltip-top"></span>
+									</div>
+									<a href="#product-tab-reviews" class="link-to-tab rating-reviews">( 6 reviews )</a>
+								</div>
+								<p class="product-short-desc">Sed egestas, ante et vulputate volutpat, eros pede semper
+									est, vitae luctus metus libero eu augue. Morbi purus liberpuro ate vol faucibus
+									adipiscing. Sed lectus te et vulputate aucibus adipiscing. Sed lectus. us
+									adipiscing. Sed lectus.</p>
+								<div class="product-form product-color">
+									<label>Color:</label>
+									<div class="product-variations">
+										<a class="color" data-src="images/demos/demo7/products/big1.jpg" href="#"
+											style="background-color: #d99e76"></a>
+										<a class="color" data-src="images/demos/demo7/products/2.jpg" href="#"
+											style="background-color: #267497"></a>
+										<a class="color" data-src="images/demos/demo7/products/3.jpg" href="#"
+											style="background-color: #9a999d"></a>
+										<a class="color" data-src="images/demos/demo7/products/4.jpg" href="#"
+											style="background-color: #2b2b2b"></a>
+									</div>
+								</div>
+								<div class="product-form product-size">
+									<label>Size:</label>
+									<div class="product-form-group">
+										<div class="product-variations">
+											<a class="size" href="#">S</a>
+											<a class="size" href="#">M</a>
+											<a class="size" href="#">L</a>
+											<a class="size" href="#">XL</a>
+											<a class="size" href="#">2XL</a>
+										</div>
+										<a href="#" class="size-guide"><i class="d-icon-ruler"></i>Size
+											Guide</a>
+										<a href="#" class="product-variation-clean">Clean All</a>
+									</div>
+								</div>
+								<div class="product-variation-price">
+									<span>$239.00</span>
+								</div>
+
+								<hr class="product-divider">
+
+								<div class="product-form product-qty">
+									<label>QTY:</label>
+									<div class="product-form-group">
+										<div class="input-group">
+											<button class="quantity-minus d-icon-minus"></button>
+											<input class="quantity form-control" type="number" min="1" max="1000000">
+											<button class="quantity-plus d-icon-plus"></button>
+										</div>
+										<button class="btn-product btn-cart"><i class="d-icon-bag"></i>Add To
+											Cart</button>
+									</div>
+								</div>
+
+								<hr class="product-divider mb-3">
+
+								<div class="product-footer">
+									<div class="social-links">
+										<a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+										<a href="#" class="social-link social-twitter fab fa-twitter"></a>
+										<a href="#" class="social-link social-vimeo fab fa-vimeo-v"></a>
+									</div>
+									<div class="product-action">
+										<a href="#" class="btn-product btn-wishlist"><i class="d-icon-heart"></i>Add To
+											Wishlist</a>
+										<span class="divider"></span>
+										<a href="#" class="btn-product btn-compare"><i class="d-icon-random"></i>Add To
+											Compare</a>
+									</div>
+								</div>
+
+								<ul class="product-status mt-4 list-style-none list-type-check pl-0">
+									<li>Order your pair before 00:00 and receive it between tomorrow - 26th September.
+									</li>
+									<li>Free worldwide shipping</li>
+									<li>Free replenishment service: laces &amp; insoles</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab tab-nav-simple product-tabs mb-4">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" href="#product-tab-description">Description</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#product-tab-additional">Additional</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#product-tab-shipping-returns">Shipping &amp; Returns</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#product-tab-reviews">Reviews (8)</a>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active in" id="product-tab-description">
+								<p>Donec tellus massa, tristique sit amet condim vel, facilisis quis sapien. Praesent id
+									engmin rae sitf amet odio vulputate eleifend in in tortor. Sellus massa, tristique
+									it amet cond coim vel, faci lisis rae Facilisis quis sapien. Praesent id enim sit
+									amet odio vulputatefi.</p>
+								<ul class="list-type-check ml-2 font-secondary">
+									<li>Praesent id enim sit amet.</li>
+									<li>Tdio vulputate eleifend in in tortor. ellus massa.Dristique sitiismonec.</li>
+									<li>Massa ristique sit amet condim vel, facilisis quimequistiqutiqu amet condim.
+									</li>
+									<li>Dilisis Facilisis quis sapien. Praesent id enim sit amet</li>
+								</ul>
+								<p>Praesent id enim sit amet odio vulputate eleifend in in tortor. Sellus massa,
+									tristique sitiismonec tellus massa, tristique sit amet condim vel, facilisis
+									quimequistiqutiqu amet condim vel, facilisis Facilisis quis sapien. Praesent id enim
+									sit amet odio vulputate odio vulputate eleifend in in tortor. Sellus massa,
+									tristique sitiismonec tellus massa, tristique sit ametcdimel,facilisis
+									quimequistiqutiqu amet condim vel, facilisis Facilisis quis sapien. Praesent id enim
+									sit amet odio vulputate</p>
+							</div>
+							<div class="tab-pane" id="product-tab-additional">
+								<ul class="list-none">
+									<li><label>Color:</label>
+										<p>Black, Brown, Coffee</p>
+									</li>
+									<li><label>Style:</label>
+										<p>Vintage</p>
+									</li>
+									<li><label>Material:</label>
+										<p>PU, Faux Leather</p>
+									</li>
+									<li><label>Closure Type:</label>
+										<p>Hasp</p>
+									</li>
+									<li><label>Bags Structure:</label>
+										<p>Cell phone Pocket, Zipper Pouch</p>
+									</li>
+									<li><label>Size:</label>
+										<p>L</p>
+									</li>
+									<li><label>Capacity:</label>
+										<p>15.6 Inch Laptop</p>
+									</li>
+								</ul>
+							</div>
+							<div class="tab-pane " id="product-tab-shipping-returns">
+								<h6 class="mb-2">Free Shipping</h6>
+								<p class="mb-0">We deliver to over 100 countries around the world. For full details of
+									the delivery options we offer, please view our <a href="#"
+										class="text-primary">Delivery
+										information</a><br />We hope you’ll love every
+									purchase, but if you ever need to return an item you can do so within a month of
+									receipt. For full details of how to make a return, please view our <br /><a href="#"
+										class="text-primary">Returns information</a></p>
+							</div>
+							<div class="tab-pane " id="product-tab-reviews">
+								<div class="d-flex align-items-center mb-5">
+									<h4 class="mb-0 mr-2">Average Rating:</h4>
+									<div class="ratings-container average-rating mb-0">
+										<div class="ratings-full">
+											<span class="ratings" style="width:80%"></span>
+											<span class="tooltiptext tooltip-top">4.00</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="comments mb-6">
+									<ul>
+										<li>
+											<div class="comment">
+												<figure class="comment-media">
+													<a href="#">
+														<img src="images/blog/comments/1.jpg" alt="avatar">
+													</a>
+												</figure>
+												<div class="comment-body">
+													<div class="comment-rating ratings-container mb-0">
+														<div class="ratings-full">
+															<span class="ratings" style="width:80%"></span>
+															<span class="tooltiptext tooltip-top">4.00</span>
+														</div>
+													</div>
+													<div class="comment-user">
+														<h4><a href="#">Jimmy Pearson</a></h4>
+														<span class="comment-date">November 9, 2018 at 2:19 pm</span>
+													</div>
+
+													<div class="comment-content">
+														<p>Sed pretium, ligula sollicitudin laoreet viverra, tortor
+															libero sodales leo, eget blandit nunc tortor eu nibh. Nullam
+															mollis. Ut justo. Suspendisse potenti.
+															Sed egestas, ante et vulputate volutpat, eros pede semper
+															est, vitae luctus metus libero eu augue. Morbi purus libero,
+															faucibus adipiscing, commodo quis, avida id, est. Sed
+															lectus. Praesent elementum hendrerit tortor. Sed semper
+															lorem at felis. Vestibulum volutpat.</p>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="comment">
+												<figure class="comment-media">
+													<a href="#">
+														<img src="images/blog/comments/3.jpg" alt="avatar">
+													</a>
+												</figure>
+
+												<div class="comment-body">
+													<div class="comment-rating ratings-container mb-0">
+														<div class="ratings-full">
+															<span class="ratings" style="width:80%"></span>
+															<span class="tooltiptext tooltip-top">4.00</span>
+														</div>
+													</div>
+													<div class="comment-user">
+														<h4><a href="#">Johnathan Castillo</a></h4>
+														<span class="comment-date">November 9, 2018 at 2:19 pm</span>
+													</div>
+
+													<div class="comment-content">
+														<p>Vestibulum volutpat, lacus a ultrices sagittis, mi neque
+															euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus
+															pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<!-- End Comments -->
+								<div class="reply">
+									<div class="title-wrapper text-left">
+										<h3 class="title title-simple text-left text-normal">Add a Review</h3>
+										<p>Your email address will not be published. Required fields are marked *</p>
+									</div>
+									<div class="rating-form">
+										<label for="rating">Your rating: </label>
+										<span class="rating-stars selected">
+											<a class="star-1" href="#">1</a>
+											<a class="star-2" href="#">2</a>
+											<a class="star-3" href="#">3</a>
+											<a class="star-4 active" href="#">4</a>
+											<a class="star-5" href="#">5</a>
+										</span>
+
+										<select name="rating" id="rating" required="" style="display: none;">
+											<option value="">Rate…</option>
+											<option value="5">Perfect</option>
+											<option value="4">Good</option>
+											<option value="3">Average</option>
+											<option value="2">Not that bad</option>
+											<option value="1">Very poor</option>
+										</select>
+									</div>
+									<form action="#">
+										<textarea id="reply-message" cols="30" rows="4" class="form-control mb-4"
+											placeholder="Comment *" required></textarea>
+										<div class="row">
+											<div class="col-md-6 mb-5">
+												<input type="text" class="form-control" id="reply-name"
+													name="reply-name" placeholder="Name *" required />
+											</div>
+											<div class="col-md-6 mb-5">
+												<input type="email" class="form-control" id="reply-email"
+													name="reply-email" placeholder="Email *" required />
+											</div>
+										</div>
+										<button type="submit" class="btn btn-primary btn-md">Submit<i
+												class="d-icon-arrow-right"></i></button>
+									</form>
+								</div>
+								<!-- End Reply -->
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</main>
+		<!-- End Main -->
+		<footer class="footer">
+			<div class="container">
+				<div class="footer-middle">
+					<div class="row">
+						<div class="col-lg-9 col-xl-5col4">
+							<div class="widget widget-newsletter">
+								<div class="newsletter-info mx-auto mr-lg-2">
+									<h4 class="widget-title">Get special offers and savings</h4>
+									<p>Get all the latest information on Events, Sales and Offers.</p>
+								</div>
+								<form action="#" class="input-wrapper input-wrapper-inline input-wrapper-round">
+									<input type="email" class="form-control" name="email" id="email"
+										placeholder="Enter Your E-mail Address..." required />
+									<button class="btn btn-primary" type="submit">Sign up</button>
+								</form>
+							</div>
+							<!-- End Newsletter -->
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="widget">
+										<h4 class="widget-title">Custome Service</h4>
+										<ul class="widget-body">
+											<li>
+												<a href="#">About us</a>
+											</li>
+											<li>
+												<a href="contact-us.html">Contact Us</a>
+											</li>
+											<li>
+												<a href="#">My Account</a>
+											</li>
+											<li>
+												<a href="#">Order history</a>
+											</li>
+											<li>
+												<a href="#">Advanced search</a>
+											</li>
+											<li>
+												<a href="account.html">Login</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="widget">
+										<h4 class="widget-title">About Us</h4>
+										<ul class="widget-body">
+											<li>
+												<a href="#">About Us</a>
+											</li>
+											<li>
+												<a href="#">Order History</a>
+											</li>
+											<li>
+												<a href="#">Returns</a>
+											</li>
+											<li>
+												<a href="#">Custom Service</a>
+											</li>
+											<li>
+												<a href="#">Terms &amp; Condition</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-xl-5col order-lg-first">
+							<div class="widget widget-contact">
+								<h4 class="widget-title">Contact Info</h4>
+								<ul class="widget-body">
+									<li>
+										<label>Address:</label>
+										<a href="#">123 Street Name, City, England</a>
+									</li>
+									<li>
+										<label>Phone:</label>
+										<a href="#">Toll Free (123) 456-7890</a>
+									</li>
+									<li>
+										<label>Email:</label>
+										<a href="#">mail@donald.com</a>
+									</li>
+									<li>
+										<label>WORKING DAYS/HOURS:</label>
+										<a href="#">Mon - Sun / 9:00 AM - 8:00 PM</a>
+									</li>
+								</ul>
+							</div>
+							<!-- End Widget -->
+						</div>
+					</div>
+				</div>
+				<!-- End FooterMiddle -->
+				<div class="footer-bottom d-block text-center">
+					<p class="copyright">Donald eCommerce &copy; 2020. All Rights Reserved</p>
+				</div>
+				<!-- End FooterBottom -->
+			</div>
+		</footer>
+		<!-- End Footer -->
+	</div>
+
+
+	<aside class="sidebar category-sidebar ">
+		<div class="sidebar-overlay">
+			<a class="sidebar-close" href="#"><i class="d-icon-times"></i></a>
+		</div>
+		<div class="sidebar-content d-flex flex-column">
+			<a href="demo26.html" class="logo"><img src="images/demos/demo26/logo.png" alt="logo" width="152"
+					height="55" /></a>
+			<ul class="menu toggle-menu category-menu">
+				<li class="active">
+					<a href="demo26-shop.html">
+						<i class="d-icon-t-shirt1" style="margin: 0 1.2rem 0 -0.3rem; font-size: 3.2rem;"></i>
+						Fashion
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-camera1"></i>
+						Electronics
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-desktop"></i>
+						Computer &amp; Laptops
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-gamepad1"></i>
+						Gaming &amp; Accessories
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-cook"></i>
+						Home &amp; kitchen
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-babycare"></i>
+						Toys &amp; Babycare
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-basketball1"></i>
+						Sports
+					</a>
+				</li>
+				<li>
+					<a href="demo26-shop.html">
+						<i class="d-icon-officebag"></i>
+						Backpack &amp; Bags
+					</a>
+				</li>
+			</ul>
+			<div class="call d-block text-center">
+				<label class="text-uppercase text-body d-block">Call us now</label>
+				<a href="#" class="text-dark font-weight-bold">+123 456 7890</a>
+			</div>
+			<div class="social-links no-border">
+				<a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+				<a href="#" class="social-link social-twitter fab fa-twitter"></a>
+				<a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
+			</div>
+		</div>
+	</aside>
+	<!-- End Category Sidebar -->
+
+	<!-- Sticky Footer -->
+	<div class="sticky-footer sticky-content fix-bottom">
+		<a href="demo26.html" class="sticky-link active">
+			<i class="d-icon-home"></i>
+			<span>Home</span>
+		</a>
+		<a href="demo26-shop.html" class="sticky-link">
+			<i class="d-icon-volume"></i>
+			<span>Categories</span>
+		</a>
+		<a href="wishlist.html" class="sticky-link">
+			<i class="d-icon-heart"></i>
+
+			<span>Wishlist</span>
+		</a>
+		<div class="header-search hs-toggle dir-up">
+			<a href="#" class="search-toggle sticky-link">
+				<i class="d-icon-search"></i>
+				<span>Search</span>
+			</a>
+			<form action="#" class="input-wrapper">
+				<input type="text" class="form-control" name="search" autocomplete="off"
+					placeholder="Search your keyword..." required />
+				<button class="btn btn-search" type="submit">
+					<i class="d-icon-search"></i>
+				</button>
+			</form>
+		</div>
+		<a href="account.html" class="sticky-link">
+			<i class="d-icon-user"></i>
+			<span>Account</span>
+		</a>
+	</div>
+	<!-- Scroll Top -->
+	<a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-angle-up"></i></a>
+
+	<!-- Root element of PhotoSwipe. Must have class pswp. -->
+	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+		<!-- Background of PhotoSwipe. It's a separate element as animating opacity is faster than rgba(). -->
+		<div class="pswp__bg"></div>
+
+		<!-- Slides wrapper with overflow:hidden. -->
+		<div class="pswp__scroll-wrap">
+
+			<!-- Container that holds slides.
+			PhotoSwipe keeps only 3 of them in the DOM to save memory.
+			Don't modify these 3 pswp__item elements, data is added later on. -->
+			<div class="pswp__container">
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+				<div class="pswp__item"></div>
+			</div>
+
+			<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+			<div class="pswp__ui pswp__ui--hidden">
+
+				<div class="pswp__top-bar">
+
+					<!--  Controls are self-explanatory. Order can be changed. -->
+
+					<div class="pswp__counter"></div>
+
+					<button class="pswp__button pswp__button--close" aria-label="Close (Esc)"></button>
+					<button class="pswp__button pswp__button--zoom" aria-label="Zoom in/out"></button>
+
+					<div class="pswp__preloader">
+						<div class="loading-spin"></div>
+					</div>
+				</div>
+
+				<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+					<div class="pswp__share-tooltip"></div>
+				</div>
+
+				<button class="pswp__button--arrow--left" aria-label="Previous (arrow left)"></button>
+				<button class="pswp__button--arrow--right" aria-label="Next (arrow right)"></button>
+
+				<div class="pswp__caption">
+					<div class="pswp__caption__center"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Plugins JS File -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/sticky/sticky.min.js"></script>
+	<script src="vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="vendor/owl-carousel/owl.carousel.min.js"></script>
+	<script src="vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
+	<script src="vendor/photoswipe/photoswipe.min.js"></script>
+	<script src="vendor/photoswipe/photoswipe-ui-default.min.js"></script>
+	<!-- Main JS File -->
+	<script src="js/main.js"></script>
+</body>
+
+</html>
