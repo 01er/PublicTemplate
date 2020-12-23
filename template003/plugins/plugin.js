@@ -8,7 +8,8 @@ import PayPal from 'vue-paypal-checkout'
 import VueLazyLoad from 'vue-lazyload'
 import ProductZoomer from 'vue-product-zoomer'
 import VueScrollTo from 'vue-scrollto'
-
+import Toasted from 'vue-toasted';
+Vue.use(Toasted)
 Vue.use(VueAwesomeSwiper)
 Vue.use(Vue2Filters)
 Vue.use(VueMasonryPlugin)

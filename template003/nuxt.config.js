@@ -56,6 +56,16 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    prefix: '/api/',
+    proxy: true
+  },
+  proxy: {
+    '/api/': {
+      target: 'https://open.airclick.com/',
+      pathRewrite: {
+        '^/api/': ''
+      }
+    }
   },
   generate: {
     fallback: true

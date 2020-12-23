@@ -14,16 +14,16 @@
                   <div class="col-md-6">
                     <label for="First name">First Name</label>
                     <ValidationProvider rules="required" v-slot="{ errors }" name="First name">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="First name"
-                      v-model="fname"
-                      placeholder="First Name"
-                      name="First name"
-                    />
-                        <span class="validate-error">{{ errors[0] }}</span>
-                      </ValidationProvider>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="First name"
+                        v-model="fname"
+                        placeholder="First Name"
+                        name="First name"
+                      />
+                      <span class="validate-error">{{ errors[0] }}</span>
+                    </ValidationProvider>
                   </div>
                   <div class="col-md-6">
                     <label for="lname">Last Name</label>
@@ -104,12 +104,32 @@ export default {
       fname: null,
       lname: null,
       email: null,
-      password: null
+      password: null,
+      adminId: null,
+      code: null,
+      email: null,
+      nickname: null,
+      pwd: null,
     }
   },
   methods: {
     onSubmit() {
-      console.log('Form has been submitted!')
+      const userInfo = {
+        adminId : this.adminId,
+        code: this.code,
+        email: this.email,
+        nickname: this.nickname,
+        pwd: this.pwd,
+      }
+      this.$store.dispatch('user/registerByEmail',userInfo).then(({ data }) => {
+        this.$toasted.show(data.msg, {
+          theme: 'bubble',
+          position: 'top-center',
+          type: 'error',
+          duration: 4000
+        })
+      }).finally(() => {
+      });
     }
   }
 }
