@@ -11,6 +11,10 @@
     --theme-gradient1: #01effc;
     --theme-gradient2: #485ff2;
   }
+  .toasted.toasted-primary{
+    background-color: #26a69a!important;
+    border-radius: 30px!important;
+  }
 @import 'theme/style';
 @import 'theme/theme-dark';
 @import 'theme/menu';

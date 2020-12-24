@@ -32,10 +32,12 @@ const actions = {
   registerByEmail: (context, userInfo) => {
     const { adminId, code, email, nickname, pwd } = userInfo;
     return new Promise((resolve, reject) => {
-      axios.post(`${userApi.RegisterByEmail}?adminId=${adminId}&code=${code}&code=${code}&email=${email}&nickname=${nickname}&pwd=${pwd}`).then((res) => {
+      axios.post(`${userApi.RegisterByEmail}?adminId=${adminId}&code=${code}&email=${email}&nickname=${nickname}&pwd=${pwd}`).then((res) => {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -47,6 +49,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -58,6 +62,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -65,9 +71,9 @@ const actions = {
   sendEmailCode: (context, email) => {
     return new Promise((resolve, reject) => {
       axios.post(`${userApi.sendEmailCode}?email=${email}`).then((res) => {
-        console.log(res)
-        // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -78,6 +84,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -89,6 +97,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -100,6 +110,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -110,6 +122,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },
@@ -120,6 +134,8 @@ const actions = {
         console.log(res)
         // context.commit('setUserInfo', res)
         resolve(res);
+      }, (error) => {
+        reject(error)
       })
     });
   },

@@ -16,14 +16,13 @@
                       </div>
                       <div class="welcome-msg">
                         <p>Hello, MARK JECNO !</p>
-                        <p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>
                       </div>
                       <div class="box-account box-info">
-                        <div class="box-head">
+                        <!-- <div class="box-head">
                           <h2>Account Information</h2>
-                        </div>
+                        </div> -->
                         <div class="row">
-                          <div class="col-sm-6">
+                          <div class="col-sm-12">
                             <div class="box">
                               <div class="box-title">
                                 <h3>Contact Information</h3>
@@ -38,41 +37,38 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-sm-6">
-                            <div class="box">
-                              <div class="box-title">
-                                <h3>Newsletters</h3>
-                                <a href="#">Edit</a>
-                              </div>
-                              <div class="box-content">
-                                <p>You are currently not subscribed to any newsletter.</p>
-                              </div>
-                            </div>
-                          </div>
                         </div>
                         <div>
                           <div class="box">
-                            <div class="box-title">
+                            <div class="box-title" style="margin-bottom:0">
                               <h3>Address Book</h3>
-                              <a href="#">Manage Addresses</a>
+                              <a href="#">New Address</a>
                             </div>
                             <div class="row">
                               <div class="col-sm-6">
-                                <h6>Default Billing Address</h6>
-                                <address>
-                                  You have not set a default billing address.
-                                  <br />
-                                  <a href="#">Edit Address</a>
-                                </address>
+                                <div class="theme-card">
+                                  <h6>Anna</h6>
+                                  <h6>西华街129号，华盛顿，纽约，010000，US</h6>
+                                  <h6>+001 13846889758</h6>
+                                  <div class="row">
+                                    <div class="col"><h6><a href="#">Edit Address</a></h6></div>
+                                    <div class="col text-right"><b-radio name="some-radios" value="B"><h6>Set Default</h6></b-radio></div>
+                                  </div>
+                                </div>
                               </div>
                               <div class="col-sm-6">
-                                <h6>Default Shipping Address</h6>
-                                <address>
-                                  You have not set a default shipping address.
-                                  <br />
-                                  <a href="#">Edit Address</a>
-                                </address>
+                                <div class="theme-card">
+                                  <h6>Anna</h6>
+                                  <h6>西华街129号，华盛顿，纽约，010000，US</h6>
+                                  <h6>+001 13846889758</h6>
+                                  <div class="row">
+                                    <div class="col"><h6><a href="#">Edit Address</a></h6></div>
+                                    <div class="col text-right"><b-radio name="some-radios" value="B"><h6>Set Default</h6></b-radio></div>
+                                  </div>
+                                </div>
                               </div>
+                              
+
                             </div>
                           </div>
                         </div>

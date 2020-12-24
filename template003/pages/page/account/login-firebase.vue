@@ -42,8 +42,8 @@
                   <button
                     type="submit"
                     class="btn btn-solid mt-2"
-                    :disabled="invalid"
-                  >Login</button>
+                    :disabled="invalid || disabledFlag"
+                  >{{LoginText}}</button>
                   <!-- <a class="btn-solid btn" href="javascript:void(0)" @click="signUp"> Login </a> -->
 
                   <!-- Social Media -->
@@ -111,26 +111,42 @@ export default {
   data() {
     return {
       logintitle: 'Login',
+      LoginText: 'Login',
       registertitle: 'New Customer',
       errors: [],
       email: '',
-      password: ''
+      password: '',
+      disabledFlag: false
     }
   },
   methods: {
     signUp: function () {
+      this.disabledFlag = true
+      this.LoginText = 'LOGIN...'
       const userInfo = {
         email: this.email,
         pwd: this.password,
       }
       this.$store.dispatch('user/login',userInfo).then(({ data }) => {
-        this.$toasted.show(data.msg, {
-          theme: 'bubble',
-          position: 'top-center',
-          type: 'error',
-          duration: 4000
-        })
+        if(data.status === 200) {
+          this.$toasted.show(data.msg, {
+            theme: 'bubble',
+            position: 'top-center',
+            type: 'error',
+            duration: 3000
+          })
+          this.$router.push('/')
+        } else {
+          this.$toasted.show(data.msg, {
+            theme: 'bubble',
+            position: 'top-center',
+            type: 'error',
+            duration: 3000
+          })
+        }
       }).finally(() => {
+        this.LoginText = 'LOGIN'
+        this.disabledFlag = false
       });
     },
     socialLogin() {
