@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <b-card no-body v-bind:class="'dashboardtab'">
-            <b-tabs pills card vertical>
+            <b-tabs pills card vertical class="waitabs">
               <b-tab title="Account Info" active>
                 <b-card-text>
                   <div class="dashboard-right">
@@ -86,35 +86,39 @@
                       </div>
                       <div class="welcome-msg">
                         <p>Hello, MARK JECNO !</p>
-                        <p>From your Address book you have the ability to change or edit your shipping and billing address.</p>
                       </div>
                       <div class="box-account box-info">
-                        <div class="box-head">
-                          <h2>Address Information</h2>
-                        </div>
                         <div>
                           <div class="box">
-                            <div class="box-title">
-                              <h3>Address Book</h3>
-                              <a href="#">Manage Addresses</a>
+                            <div class="box-title" style="margin-bottom:0">
+                              <h3>Shipping Address</h3>
+                              <a href="#">New Address</a>
                             </div>
                             <div class="row">
                               <div class="col-sm-6">
-                                <h6>Default Billing Address</h6>
-                                <address>
-                                  You have not set a default billing address.
-                                  <br />
-                                  <a href="#">Edit Address</a>
-                                </address>
+                                <div class="theme-card">
+                                  <h6>Anna</h6>
+                                  <h6>西华街129号，华盛顿，纽约，010000，US</h6>
+                                  <h6>+001 13846889758</h6>
+                                  <div class="row">
+                                    <div class="col"><h6><a href="#">Edit Address</a></h6></div>
+                                    <div class="col text-right"><b-radio name="some-radios" value="B"><h6>Set Default</h6></b-radio></div>
+                                  </div>
+                                </div>
                               </div>
                               <div class="col-sm-6">
-                                <h6>Default Shipping Address</h6>
-                                <address>
-                                  You have not set a default shipping address.
-                                  <br />
-                                  <a href="#">Edit Address</a>
-                                </address>
+                                <div class="theme-card">
+                                  <h6>Anna</h6>
+                                  <h6>西华街129号，华盛顿，纽约，010000，US</h6>
+                                  <h6>+001 13846889758</h6>
+                                  <div class="row">
+                                    <div class="col"><h6><a href="#">Edit Address</a></h6></div>
+                                    <div class="col text-right"><b-radio name="some-radios" value="B"><h6>Set Default</h6></b-radio></div>
+                                  </div>
+                                </div>
                               </div>
+                              
+
                             </div>
                           </div>
                         </div>
@@ -132,44 +136,30 @@
                       </div>
                       <div class="welcome-msg">
                         <p>Hello, MARK JECNO !</p>
-                        <p>From your Orders you have the ability to view your all orders and status of order.</p>
                       </div>
-                      <div class="box-account box-info">
-                        <div class="box-head">
-                          <h2>Order Information</h2>
-                        </div>
-                        <div>
-                          <div class="box">
-                            <div class="box-title mb-3">
-                              <h3>orders list</h3>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                            </div>
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <h4>Order no: 2105</h4>
-                                <h6>Slim Fit Cotton Shirt</h6>
+                      <div class="box-account box-info myOrders">
+                        <b-card no-body>
+                          <b-tabs align="left" content-class="mt-3">
+                            <b-tab title="All Orders" active>
+                              <div class="order-list">
+                                <div class="row">
+                                  <div class="col-sm-4 color99">Order：74305170475549570</div>
+                                  <div class="col-sm-4 color99">Amount：14</div>
+                                  <div class="col-sm-4 ">Total：$2,888.00</div>
+                                </div>
                               </div>
-                              <div class="col-sm-6">
-                                <h4>Order no: 1032</h4>
-                                <h6>Slim Fit Cotton Shirt</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div class="box mt-2">
-                            <div class="row">
-                              <div class="col-sm-6">
-                                <h4>Order no: 2105</h4>
-                                <h6>Slim Fit Cotton Shirt</h6>
-                              </div>
-                              <div class="col-sm-6">
-                                <h4>Order no: 1032</h4>
-                                <h6>Slim Fit Cotton Shirt</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                            </b-tab>
+                            <b-tab title="Wait Shipments">
+                              <b-card-text>Tab contents 2</b-card-text>
+                            </b-tab>
+                            <b-tab title="Has Shipments">
+                              <b-card-text>Tab contents 3</b-card-text>
+                            </b-tab>
+                            <b-tab title="Has Arrive">
+                              <b-card-text>Tab contents 4</b-card-text>
+                            </b-tab>
+                          </b-tabs>
+                        </b-card>
                       </div>
                     </div>
                   </div>
