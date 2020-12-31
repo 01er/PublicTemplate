@@ -143,9 +143,67 @@
                             <b-tab title="All Orders" active>
                               <div class="order-list">
                                 <div class="row">
-                                  <div class="col-sm-4 color99">Order：74305170475549570</div>
-                                  <div class="col-sm-4 color99">Amount：14</div>
-                                  <div class="col-sm-4 ">Total：$2,888.00</div>
+                                  <div class="col-sm-6 color99">Order：74305170475549570</div>
+                                  <div class="col-sm-4 color99 text-right">Amount：14</div>
+                                  <div class="col-sm-2 text-right">Total：$2,888.00</div>
+                                </div>
+                                <div class="row" style="border-bottom:1px solid #EDEDED">
+                                  <div class="col-sm-4">
+                                    <div class="media">
+                                      <img :src='"@/assets/images/2.jpg"'  class="img-fluid" alt />
+                                      <div class="media-body align-self-center">
+                                        <h6>蓝色Utility Pinafore牛仔连衣裙</h6>
+                                        <p>颜色：白色 ；尺码：36</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-2 number text-center">x1</div>
+                                  <div class="col-sm-2 money text-center">$1,888.00</div>
+                                  <div class="col-sm-2 blacktext text-center">已发货</div>
+                                  <div class="col-sm-2 redtext text-right">
+                                     <span>物流跟踪</span>  <span>查看详情</span>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-4">
+                                    <div class="media">
+                                      <img :src='"@/assets/images/2.jpg"'  class="img-fluid" alt />
+                                      <div class="media-body align-self-center">
+                                        <h6>蓝色Utility Pinafore牛仔连衣裙</h6>
+                                        <p>颜色：白色 ；尺码：36</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-2 number text-center">x1</div>
+                                  <div class="col-sm-2 money text-center">$1,888.00</div>
+                                  <div class="col-sm-2 blacktext text-center">已发货</div>
+                                  <div class="col-sm-2 redtext text-right">
+                                    <span>物流跟踪</span>  <span>查看详情</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="order-list">
+                                <div class="row">
+                                  <div class="col-sm-6 color99">Order：74305170475549570</div>
+                                  <div class="col-sm-4 color99 text-right">Amount：14</div>
+                                  <div class="col-sm-2 text-right">Total：$2,888.00</div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-sm-4">
+                                    <div class="media">
+                                      <img :src='"@/assets/images/2.jpg"'  class="img-fluid" alt />
+                                      <div class="media-body align-self-center">
+                                        <h6>蓝色Utility Pinafore牛仔连衣裙</h6>
+                                        <p>颜色：白色 ；尺码：36</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-2 number text-center">x1</div>
+                                  <div class="col-sm-2 money text-center">$1,888.00</div>
+                                  <div class="col-sm-2 blacktext text-center">已发货</div>
+                                  <div class="col-sm-2 redtext text-right">
+                                    <span>物流跟踪</span>  <span>查看详情</span>
+                                  </div>
                                 </div>
                               </div>
                             </b-tab>
@@ -312,17 +370,20 @@
       </div>
     </section>
     <Footer />
+    <deliveryDetails />
   </div>
 </template>
 <script>
 import Header from '../../../components/header/header1'
 import Footer from '../../../components/footer/footer1'
 import Breadcrumbs from '../../../components/widgets/breadcrumbs'
+import deliveryDetails from '../../../components/widgets/delivery-details'
 export default {
   components: {
     Header,
     Footer,
-    Breadcrumbs
+    Breadcrumbs,
+    deliveryDetails,
   }
 }
 </script>

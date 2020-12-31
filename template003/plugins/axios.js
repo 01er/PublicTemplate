@@ -1,24 +1,3 @@
-// import Vue from 'vue';
-// export default function ({ $axios, redirect }) {
-//     $axios.onRequest(config => {
-//       console.log('Making request to ' + config.url)
-//     })
-  
-//     $axios.onError(error => {
-//       console.log(11111)
-//       console.log(error)
-//       const code = parseInt(error.response && error.response.status)
-//       if (code === 400) {
-//         redirect('/400')
-//         Vue.toasted.show('444444', {
-//             theme: 'toasted-primary',
-//             position: 'top-center',
-//             type: 'error',
-//             duration: 3000
-//         })
-//       }
-//     })
-//   }
 import axios from 'axios'
 import Vue from 'vue'
 const pending = {}

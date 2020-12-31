@@ -9,6 +9,7 @@ import VueLazyLoad from 'vue-lazyload'
 import ProductZoomer from 'vue-product-zoomer'
 import VueScrollTo from 'vue-scrollto'
 import Toasted from 'vue-toasted';
+import { BootstrapVueIcons } from 'bootstrap-vue';
 Vue.use(Toasted)
 Vue.use(VueAwesomeSwiper)
 Vue.use(Vue2Filters)
@@ -18,6 +19,7 @@ Vue.component('paypal-checkout', PayPal)
 Vue.use(VueLazyLoad)
 Vue.use(ProductZoomer)
 Vue.use(VueScrollTo)
+Vue.use(BootstrapVueIcons)
 
 const config = {
   apiKey: 'YOUR_API_KEY',

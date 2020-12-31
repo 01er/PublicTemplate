@@ -53,6 +53,7 @@ Author URI: https://themeforest.net/user/pixelstrap
 /* 27. Menu CSS */
 /* 28. Dark CSS */
 /* 29. Responsive CSS */
+/* 30. delivery-details CSS */
 
 
 
@@ -10273,13 +10274,42 @@ ul li {
     height:auto;
     border: 1px solid #DDDDDD;
     margin-bottom: 20px;
-    .row{
+    h6{
+      font-weight:bold;
+      color:#333333;
+      line-height:15px!important;
+    }
+    p{
+      line-height:15px!important;
+    }
+    img{
+      margin-right:20px;
+      width:60px;
+      height:60px;
+    }
+    .number{
+      line-height: 60px;
+    }
+    .redtext{
+      line-height: 60px;
+      color:var(--theme-deafult);
+      cursor: pointer;
+      span:nth-of-type(2){
+        margin-left: 10px;
+      }
+    }
+    .money, .blacktext{
+      color:#333333;
+      font-weight:500;
+      line-height: 60px;
+    }
+    .row:nth-of-type(1){
       line-height: 40px;
       background: #EBEBEB;
       margin-left:0!important;
       margin-right:0!important;
-      padding:0 15px;
       box-sizing: border-box;
+      padding:0 15px;
       div{
         padding-right:0!important;
         padding-left:0!important;
@@ -10287,6 +10317,12 @@ ul li {
       .color99{
         color: #999999;
       }
+    }
+    .row + .row{
+      padding: 15px 15px;
+      box-sizing: border-box;
+      margin-left: 0!important;
+      margin-right: 0!important;
     }
   }
   .nav-tabs .nav-item{
@@ -13884,4 +13920,83 @@ left: unset;
 .nuxt-progress {
   color: var(--theme-deafult);
   background-color: var(--theme-deafult);
+}
+
+/*=====================
+30. delivery-details CSS start
+==========================*/
+@media (max-width: 350px) {
+  .delivery-box {
+    width: 280px;
+    right: -280px;
+  }
+}
+@media (max-width: 600px) {
+  .delivery-box {
+    width: 350px;
+    right: -350px;
+  }
+}
+@media (min-width: 600px) {
+  .delivery-box {
+    width: 600px;
+    right: -600px;
+  }
+}
+.delivery-box {
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: white;
+  top:0;
+  z-index: 999;
+  box-shadow: 0 15px 5px 0 rgba(77,77,77,0.28);
+  transition: all 0.5s ease;
+  .row:nth-of-type(1){
+    border-bottom:1px solid #EDEDED;
+    padding-bottom: 5px;
+    margin-top:10px;
+  }
+  .top-title{
+    font-size: 16px;
+    color:#333333;
+    font-weight: 500;
+  }
+  i{
+    cursor: pointer;
+  }
+  .close{
+    width: 30px;
+    height: 30px;
+    margin-left:5px;
+  }
+  .row{
+    margin-left: 15px!important;
+    margin-right: 15px!important;
+    div{
+      padding-left:0!important;
+      padding-right:0!important;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $round-border;
+  }
+  ::-webkit-scrollbar-thumb {
+    background:$grey5;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: $grey2;
+  }
+  &.opensetting {
+    right: 0;
+    transition: all 0.5s ease;
+    .overlay {
+      visibility: visible;
+      transition: all 0.5s ease;
+    }
+  }
 }
