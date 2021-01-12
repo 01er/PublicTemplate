@@ -8,13 +8,13 @@ var $ = jQuery.noConflict();
 /* jQuery easing */
 $.extend($.easing, {
     def: 'easeOutQuad',
-    swing: function (x, t, b, c, d) {
+    swing: function(x, t, b, c, d) {
         return $.easing[$.easing.def](x, t, b, c, d);
     },
-    easeOutQuad: function (x, t, b, c, d) {
+    easeOutQuad: function(x, t, b, c, d) {
         return -c * (t /= d) * (t - 2) + b;
     },
-    easeOutQuint: function (x, t, b, c, d) {
+    easeOutQuint: function(x, t, b, c, d) {
         return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
     }
 });
@@ -24,15 +24,15 @@ $.extend($.easing, {
  */
 window.Donald = {};
 
-(function () {
+(function() {
     // Donald Properties
     Donald.$window = $(window);
     Donald.$body = $(document.body);
-    Donald.status = '';                                         // Donald Status
-    Donald.minDesktopWidth = 992;                               // Detect desktop screen
-    Donald.isIE = navigator.userAgent.indexOf("Trident") >= 0;  // Detect Internet Explorer
-    Donald.isEdge = navigator.userAgent.indexOf("Edge") >= 0;   // Detect Edge
-    Donald.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);   // Detect Mobile
+    Donald.status = ''; // Donald Status
+    Donald.minDesktopWidth = 992; // Detect desktop screen
+    Donald.isIE = navigator.userAgent.indexOf("Trident") >= 0; // Detect Internet Explorer
+    Donald.isEdge = navigator.userAgent.indexOf("Edge") >= 0; // Detect Edge
+    Donald.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // Detect Mobile
     Donald.defaults = {
         animation: {
             name: 'fadeIn',
@@ -80,13 +80,13 @@ window.Donald = {};
         popup: {
             removalDelay: 350,
             callbacks: {
-                open: function () {
+                open: function() {
                     $('html').css('overflow-y', 'hidden');
                     $('body').css('overflow-x', 'visible');
                     $('.mfp-wrap').css('overflow', 'hidden auto');
                     $('.sticky-header.fixed').css('padding-right', window.innerWidth - document.body.clientWidth);
                 },
-                close: function () {
+                close: function() {
                     $('html').css('overflow-y', '');
                     $('body').css('overflow-x', 'hidden');
                     $('.mfp-wrap').css('overflow', '');
@@ -203,70 +203,70 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * Get jQuery object
-	 * @param {string|jQuery} selector
-	 */
-    Donald.$ = function (selector) {
+    /**
+     * Get jQuery object
+     * @param {string|jQuery} selector
+     */
+    Donald.$ = function(selector) {
         return selector instanceof jQuery ? selector : $(selector);
     }
 
-	/**
-	 * Make a macro task
-	 * @param {function} fn
-	 * @param {number} delay
-	 */
-    Donald.call = function (fn, delay) {
+    /**
+     * Make a macro task
+     * @param {function} fn
+     * @param {number} delay
+     */
+    Donald.call = function(fn, delay) {
         setTimeout(fn, delay);
     }
 
-	/**
-	 * Get dom element by id
-	 * @param {string} id
-	 */
-    Donald.byId = function (id) {
+    /**
+     * Get dom element by id
+     * @param {string} id
+     */
+    Donald.byId = function(id) {
         return document.getElementById(id);
     }
 
-	/**
-	 * Get dom elements by tagName
-	 * @param {string} tagName
-	 * @param {HTMLElement} element this can be omitted.
-	 */
-    Donald.byTag = function (tagName, element) {
+    /**
+     * Get dom elements by tagName
+     * @param {string} tagName
+     * @param {HTMLElement} element this can be omitted.
+     */
+    Donald.byTag = function(tagName, element) {
         return element ?
             element.getElementsByTagName(tagName) :
             document.getElementsByTagName(tagName);
     }
 
-	/**
-	 * Get dom elements by className
-	 * @param {string} className
-	 * @param {HTMLElement} element this can be omitted.
-	 */
-    Donald.byClass = function (className, element) {
+    /**
+     * Get dom elements by className
+     * @param {string} className
+     * @param {HTMLElement} element this can be omitted.
+     */
+    Donald.byClass = function(className, element) {
         return element ?
             element.getElementsByClassName(className) :
             document.getElementsByClassName(className);
     }
 
-	/**
-	 * Set cookie
-	 * @param {string} name Cookie name
-	 * @param {string} value Cookie value
-	 * @param {number} exdays Expire period
-	 */
-    Donald.setCookie = function (name, value, exdays) {
+    /**
+     * Set cookie
+     * @param {string} name Cookie name
+     * @param {string} value Cookie value
+     * @param {number} exdays Expire period
+     */
+    Donald.setCookie = function(name, value, exdays) {
         var date = new Date();
         date.setTime(date.getTime() + (exdays * 24 * 60 * 60 * 1000));
         document.cookie = name + "=" + value + ";expires=" + date.toUTCString() + ";path=/";
     }
 
-	/**
-	 * Get cookie
-	 * @param {string} name Cookie name
-	 */
-    Donald.getCookie = function (name) {
+    /**
+     * Get cookie
+     * @param {string} name Cookie name
+     */
+    Donald.getCookie = function(name) {
         var n = name + "=";
         var ca = document.cookie.split(';');
         for (var i = 0; i < ca.length; ++i) {
@@ -281,34 +281,33 @@ window.Donald = {};
         return "";
     }
 
-	/**
-	 * Parse options string to object
-	 * @param {string} options
-	 */
-    Donald.parseOptions = function (options) {
+    /**
+     * Parse options string to object
+     * @param {string} options
+     */
+    Donald.parseOptions = function(options) {
         return 'string' == typeof options ?
-            JSON.parse(options.replace(/'/g, '"').replace(';', '')) :
-            {};
+            JSON.parse(options.replace(/'/g, '"').replace(';', '')) : {};
     }
 
-	/**
-	 * Parse html template with variables.
-	 * @param {string} template
-	 * @param {object} vars
-	 */
-    Donald.parseTemplate = function (template, vars) {
-        return template.replace(/\{\{(\w+)\}\}/g, function () {
+    /**
+     * Parse html template with variables.
+     * @param {string} template
+     * @param {object} vars
+     */
+    Donald.parseTemplate = function(template, vars) {
+        return template.replace(/\{\{(\w+)\}\}/g, function() {
             return vars[arguments[1]];
         });
     }
 
-	/**
-	 * @function isOnScreen
-	 * @param {HTMLElement} el
-	 * @param {number} dx
-	 * @param {number} dy
-	 */
-    Donald.isOnScreen = function (el, dx, dy) {
+    /**
+     * @function isOnScreen
+     * @param {HTMLElement} el
+     * @param {number} dx
+     * @param {number} dy
+     */
+    Donald.isOnScreen = function(el, dx, dy) {
         var a = window.pageXOffset,
             b = window.pageYOffset,
             o = el.getBoundingClientRect(),
@@ -323,19 +322,19 @@ window.Donald = {};
             x <= a + window.innerWidth + ax;
     }
 
-	/**
-	 * @function appear
+    /**
+     * @function appear
      * 
-	 * @param {HTMLElement} el
-	 * @param {function} fn
-	 * @param {object} options
-	 */
-    Donald.appear = (function () {
+     * @param {HTMLElement} el
+     * @param {function} fn
+     * @param {object} options
+     */
+    Donald.appear = (function() {
         var checks = [],
             timerId = false,
             one;
 
-        var checkAll = function () {
+        var checkAll = function() {
             for (var i = checks.length; i--;) {
                 one = checks[i];
 
@@ -351,7 +350,7 @@ window.Donald = {};
         window.addEventListener('resize', checkAll, { passive: true });
         $(window).on('appear.check', checkAll);
 
-        return function (el, fn, options) {
+        return function(el, fn, options) {
             var settings = {
                 data: undefined,
                 accX: 0,
@@ -372,15 +371,15 @@ window.Donald = {};
     })();
 
     Donald.zoomImageObjects = [];
-	/**
-	 * @function zoomImage
-	 *
-	 * @requires elevateZoom
-	 * @param {string|jQuery} selector
-	 */
-    Donald.zoomImage = function (selector) {
+    /**
+     * @function zoomImage
+     *
+     * @requires elevateZoom
+     * @param {string|jQuery} selector
+     */
+    Donald.zoomImage = function(selector) {
         if ($.fn.elevateZoom && selector) {
-            Donald.$(selector).find('img').each(function () {
+            Donald.$(selector).find('img').each(function() {
                 var $this = $(this);
                 Donald.defaults.zoomImage.zoomContainer = $this.parent();
                 $this.elevateZoom(Donald.defaults.zoomImage);
@@ -389,13 +388,13 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function initZoom
-	 */
-    Donald.initZoom = function () {
-        window.addEventListener('resize', function () {
-            Donald.zoomImageObjects.forEach(function ($img) {
-                $img.each(function () {
+    /**
+     * @function initZoom
+     */
+    Donald.initZoom = function() {
+        window.addEventListener('resize', function() {
+            Donald.zoomImageObjects.forEach(function($img) {
+                $img.each(function() {
                     var elevateZoom = $(this).data('elevateZoom');
                     elevateZoom && elevateZoom.refresh();
                 })
@@ -403,20 +402,20 @@ window.Donald = {};
         }, { passive: true });
     }
 
-	/**
-	 * @function countTo
-	 *
-	 * @requires jQuery.countTo
-	 * @param {string} selector
-	 */
-    Donald.countTo = function (selector) {
+    /**
+     * @function countTo
+     *
+     * @requires jQuery.countTo
+     * @param {string} selector
+     */
+    Donald.countTo = function(selector) {
         if ($.fn.countTo) {
-            Donald.$(selector).each(function () {
-                Donald.appear(this, function () {
+            Donald.$(selector).each(function() {
+                Donald.appear(this, function() {
                     var $this = $(this);
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $this.countTo({
-                            onComplete: function () {
+                            onComplete: function() {
                                 $this.addClass('complete');
                             }
                         });
@@ -426,25 +425,21 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function countdown
-	 *
-	 * @requires jquery-countdown
-	 * @param {string} selector
-	 */
-    Donald.countdown = function (selector) {
+    /**
+     * @function countdown
+     *
+     * @requires jquery-countdown
+     * @param {string} selector
+     */
+    Donald.countdown = function(selector) {
         if ($.fn.countdown) {
-            Donald.$(selector).each(function () {
+            Donald.$(selector).each(function() {
                 var $this = $(this),
                     untilDate = $this.data('until'),
                     compact = $this.data('compact'),
                     dateFormat = (!$this.data('format')) ? 'DHMS' : $this.data('format'),
-                    newLabels = (!$this.data('labels-short')) ?
-                        ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Minutes', 'Seconds'] :
-                        ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'],
-                    newLabels1 = (!$this.data('labels-short')) ?
-                        ['Year', 'Month', 'Week', 'Day', 'Hour', 'Minute', 'Second'] :
-                        ['Year', 'Month', 'Week', 'Day', 'Hour', 'Min', 'Sec'];
+                    newLabels = (!$this.data('labels-short')) ? ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Minutes', 'Seconds'] : ['Years', 'Months', 'Weeks', 'Days', 'Hours', 'Mins', 'Secs'],
+                    newLabels1 = (!$this.data('labels-short')) ? ['Year', 'Month', 'Week', 'Day', 'Hour', 'Minute', 'Second'] : ['Year', 'Month', 'Week', 'Day', 'Hour', 'Min', 'Sec'];
 
                 var newDate;
 
@@ -471,16 +466,16 @@ window.Donald = {};
     }
 
 
-	/**
-	 * @function priceSlider
-	 *
-	 * @requires noUiSlider
-	 * @param {string} selector
-	 * @param {object} option
-	 */
-    Donald.priceSlider = function (selector, option) {
+    /**
+     * @function priceSlider
+     *
+     * @requires noUiSlider
+     * @param {string} selector
+     * @param {object} option
+     */
+    Donald.priceSlider = function(selector, option) {
         if (typeof noUiSlider === 'object') {
-            Donald.$(selector).each(function () {
+            Donald.$(selector).each(function() {
                 var self = this;
 
                 noUiSlider.create(self, $.extend(true, {
@@ -494,8 +489,8 @@ window.Donald = {};
                 }, option));
 
                 // Update Price Range
-                self.noUiSlider.on('update', function (values, handle) {
-                    var values = values.map(function (value) {
+                self.noUiSlider.on('update', function(values, handle) {
+                    var values = values.map(function(value) {
                         return '$' + parseInt(value);
                     })
                     $(self).parent().find('.filter-price-range').text(values.join(' - '));
@@ -504,17 +499,17 @@ window.Donald = {};
         }
     }
 
-    Donald.lazyload = function (selector, force) {
+    Donald.lazyload = function(selector, force) {
         function load() {
             this.setAttribute('src', this.getAttribute('data-src'));
-            this.addEventListener('load', function () {
+            this.addEventListener('load', function() {
                 this.style['padding-top'] = '';
                 this.classList.remove('lazy-img');
             });
         }
 
         // Lazyload images
-        Donald.$(selector).find('.lazy-img').each(function () {
+        Donald.$(selector).find('.lazy-img').each(function() {
             if ('undefined' != typeof force && force) {
                 load.call(this);
             } else {
@@ -523,18 +518,18 @@ window.Donald = {};
         })
     }
 
-	/**
-	 * @function isotopes
-	 *
-	 * @requires isotope,imagesLoaded
-	 * @param {string} selector
-	 * @param {object} options
-	 */
-    Donald.isotopes = function (selector, options) {
+    /**
+     * @function isotopes
+     *
+     * @requires isotope,imagesLoaded
+     * @param {string} selector
+     * @param {object} options
+     */
+    Donald.isotopes = function(selector, options) {
         if (typeof imagesLoaded === 'function' && $.fn.isotope) {
             var self = this;
 
-            Donald.$(selector).each(function () {
+            Donald.$(selector).each(function() {
                 var $this = $(this),
                     settings = $.extend(true, {},
                         Donald.defaults.isotope,
@@ -543,9 +538,9 @@ window.Donald = {};
                     );
 
                 Donald.lazyload($this);
-                $this.imagesLoaded(function () {
+                $this.imagesLoaded(function() {
                     settings.customInitHeight && $this.height($this.height());
-                    settings.customDelay && Donald.call(function () {
+                    settings.customDelay && Donald.call(function() {
                         $this.isotope(settings);
                     }, parseInt(settings.customDelay));
 
@@ -555,21 +550,21 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function initNavFilter
-	 *
-	 * @requires isotope
-	 * @param {string} selector
-	 */
-    Donald.initNavFilter = function (selector) {
+    /**
+     * @function initNavFilter
+     *
+     * @requires isotope
+     * @param {string} selector
+     */
+    Donald.initNavFilter = function(selector) {
         if ($.fn.isotope) {
-            Donald.$(selector).on('click', function (e) {
+            Donald.$(selector).on('click', function(e) {
                 var $this = $(this),
                     filterValue = $this.attr('data-filter'),
                     filterTarget = $this.parent().parent().attr('data-target');
                 (filterTarget ? $(filterTarget) : $('.grid'))
-                    .isotope({ filter: filterValue })
-                    .isotope('on', 'arrangeComplete', function () {
+                .isotope({ filter: filterValue })
+                    .isotope('on', 'arrangeComplete', function() {
 
 
                         Donald.$window.trigger('appear.check');
@@ -581,15 +576,15 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function parallax
-	 * Initialize Parallax Background
-	 * @requires themePluginParallax
-	 * @param {string} selector
-	 */
-    Donald.parallax = function (selector, options) {
+    /**
+     * @function parallax
+     * Initialize Parallax Background
+     * @requires themePluginParallax
+     * @param {string} selector
+     */
+    Donald.parallax = function(selector, options) {
         if ($.fn.themePluginParallax) {
-            Donald.$(selector).each(function () {
+            Donald.$(selector).each(function() {
                 var $this = $(this);
                 $this.themePluginParallax(
                     $.extend(true, Donald.parseOptions($this.attr('data-parallax-options')), options)
@@ -598,36 +593,36 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function headerToggleSearch
-	 * Init header toggle search.
-	 * @param {string} selector
-	 */
+    /**
+     * @function headerToggleSearch
+     * Init header toggle search.
+     * @param {string} selector
+     */
 
-    Donald.headerToggleSearch = function (selector) {
+    Donald.headerToggleSearch = function(selector) {
         var $search = Donald.$(selector);
         $search.find('.form-control')
-            .on('focusin', function (e) {
+            .on('focusin', function(e) {
                 $search.addClass('show');
             })
-            .on('focusout', function (e) {
+            .on('focusout', function(e) {
                 $search.removeClass('show');
             });
     }
 
-	/**
-	 * @function stickyHeader
-	 * Init sticky header
-	 * @param {string} selector
-	 */
-    Donald.stickyHeader = function (selector) {
+    /**
+     * @function stickyHeader
+     * Init sticky header
+     * @param {string} selector
+     */
+    Donald.stickyHeader = function(selector) {
         var $stickyHeader = Donald.$(selector);
         if ($stickyHeader.length == 0) return;
 
         var height, top, isWrapped = false;
 
         // define wrap function
-        var stickyHeaderWrap = function () {
+        var stickyHeaderWrap = function() {
             height = $stickyHeader[0].offsetHeight;
             top = $stickyHeader.offset().top + height;
 
@@ -650,7 +645,7 @@ window.Donald = {};
         };
 
         // define refresh function
-        var stickyHeaderRefresh = function () {
+        var stickyHeaderRefresh = function() {
             var isFixed = window.innerWidth >= Donald.defaults.stickyHeader.activeScreenWidth && window.pageYOffset >= top;
 
             // fix or unfix
@@ -673,23 +668,23 @@ window.Donald = {};
         Donald.call(stickyHeaderRefresh, 500);
     }
 
-	/**
-	 * @function stickyContent
-	 * Init Sticky Content
-	 * @param {string, Object} selector
-	 * @param {Object} settings
-	 */
-    Donald.stickyContent = function (selector, settings) {
+    /**
+     * @function stickyContent
+     * Init Sticky Content
+     * @param {string, Object} selector
+     * @param {Object} settings
+     */
+    Donald.stickyContent = function(selector, settings) {
         var $stickyContents = Donald.$(selector),
             options = $.extend({}, Donald.defaults.stickyContent, settings),
             scrollPos = window.pageYOffset;
 
         if (0 == $stickyContents.length) return;
 
-        var setTopOffset = function ($item) {
+        var setTopOffset = function($item) {
             var offset = 0,
                 index = 0;
-            $('.sticky-content.fixed.fix-top').each(function () {
+            $('.sticky-content.fixed.fix-top').each(function() {
                 offset += $(this)[0].offsetHeight;
                 index++;
             });
@@ -697,10 +692,10 @@ window.Donald = {};
             $item.data('z-index', options.max_index - index);
         }
 
-        var setBottomOffset = function ($item) {
+        var setBottomOffset = function($item) {
             var offset = 0,
                 index = 0;
-            $('.sticky-content.fixed.fix-bottom').each(function () {
+            $('.sticky-content.fixed.fix-bottom').each(function() {
                 offset += $(this)[0].offsetHeight;
                 index++;
             });
@@ -708,7 +703,7 @@ window.Donald = {};
             $item.data('z-index', options.max_index - index);
         }
 
-        var wrapStickyContent = function ($item, height) {
+        var wrapStickyContent = function($item, height) {
             if (window.innerWidth >= options.minWidth && window.innerWidth <= options.maxWidth) {
                 $item.wrap('<div class="sticky-content-wrapper"></div>');
                 $item.parent().css('height', height + 'px');
@@ -716,11 +711,12 @@ window.Donald = {};
             }
         }
 
-        var initStickyContent = function () {
-            $stickyContents.each(function (index) {
+        var initStickyContent = function() {
+            $stickyContents.each(function(index) {
                 var $item = $(this);
                 if (!$item.data('is-wrap')) {
-                    var height = $item.removeClass('fixed').outerHeight(true), top;
+                    var height = $item.removeClass('fixed').outerHeight(true),
+                        top;
                     top = $item.offset().top + height;
 
                     // if sticky header has category dropdown, increase top
@@ -743,9 +739,9 @@ window.Donald = {};
             });
         }
 
-        var refreshStickyContent = function (e) {
+        var refreshStickyContent = function(e) {
             if (e && !e.isTrusted) return;
-            $stickyContents.each(function (index) {
+            $stickyContents.each(function(index) {
                 var $item = $(this),
                     showContent = true;
                 if (options.scrollMode) {
@@ -785,14 +781,14 @@ window.Donald = {};
             });
         }
 
-        var resizeStickyContent = function (e) {
+        var resizeStickyContent = function(e) {
             $stickyContents.removeData('offset-top')
                 .removeData('offset-bottom')
                 .removeClass('fixed')
                 .css('margin', '')
                 .css('z-index', '');
 
-            Donald.call(function () {
+            Donald.call(function() {
                 initStickyContent();
                 refreshStickyContent();
             });
@@ -801,33 +797,33 @@ window.Donald = {};
         setTimeout(initStickyContent, 550);
         setTimeout(refreshStickyContent, 600);
 
-        Donald.call(function () {
+        Donald.call(function() {
             window.addEventListener('scroll', refreshStickyContent, { passive: true });
             Donald.$window.on('resize', resizeStickyContent);
         }, 700);
     }
 
-	/**
-	 * @function alert
-	 * Register events for alert
-	 * @param {string} selector
-	 */
-    Donald.initAlert = function (selector) {
-        Donald.$body.on('click', selector + ' .btn-close', function (e) {
-            $(this).closest(selector).fadeOut(function () {
+    /**
+     * @function alert
+     * Register events for alert
+     * @param {string} selector
+     */
+    Donald.initAlert = function(selector) {
+        Donald.$body.on('click', selector + ' .btn-close', function(e) {
+            $(this).closest(selector).fadeOut(function() {
                 $(this).remove();
             });
         });
     }
 
 
-	/**
-	 * @function accordion
-	 * Register events for accordion
-	 * @param {string} selector
-	 */
-    Donald.initAccordion = function (selector) {
-        Donald.$body.on('click', selector, function (e) {
+    /**
+     * @function accordion
+     * Register events for accordion
+     * @param {string} selector
+     */
+    Donald.initAccordion = function(selector) {
+        Donald.$body.on('click', selector, function(e) {
             var $this = $(this),
                 $header = $this,
                 $body = $this.closest('.card').find($this.attr('href')),
@@ -846,7 +842,7 @@ window.Donald = {};
 
                     if ($parent.find('.expanded').length > 0) {
                         if (Donald.isIE) {
-                            slideToggle($parent.find('.expanded'), function () {
+                            slideToggle($parent.find('.expanded'), function() {
                                 slideToggle($body);
                             });
 
@@ -862,7 +858,7 @@ window.Donald = {};
         });
 
         // define slideToggle method
-        var slideToggle = function ($wrap, callback) {
+        var slideToggle = function($wrap, callback) {
             var $header = $wrap.closest('.card').find(selector);
 
             if ($wrap.hasClass("expanded")) {
@@ -871,7 +867,7 @@ window.Donald = {};
                     .addClass("expand");
                 $wrap
                     .addClass("collapsing")
-                    .slideUp(300, function () {
+                    .slideUp(300, function() {
                         $wrap.removeClass("expanded collapsing").addClass("collapsed");
                         callback && callback();
                     })
@@ -882,7 +878,7 @@ window.Donald = {};
                     .addClass("collapse");
                 $wrap
                     .addClass("expanding")
-                    .slideDown(300, function () {
+                    .slideDown(300, function() {
                         $wrap.removeClass("collapsed expanding").addClass("expanded");
                         callback && callback();
                     })
@@ -891,16 +887,16 @@ window.Donald = {};
     }
 
 
-	/**
-	 * @function tab
-	 * Register events for tab
-	 * @param {string} selector
-	 */
-    Donald.initTab = function (selector) {
+    /**
+     * @function tab
+     * Register events for tab
+     * @param {string} selector
+     */
+    Donald.initTab = function(selector) {
 
         Donald.$body
             // tab nav link
-            .on('click', '.tab .nav-link', function (e) {
+            .on('click', '.tab .nav-link', function(e) {
                 var $this = $(this);
                 e.preventDefault();
 
@@ -914,31 +910,31 @@ window.Donald = {};
                 }
             })
 
-            // link to tab
-            .on('click', '.link-to-tab', function (e) {
-                var selector = $(e.currentTarget).attr('href'),
-                    $tab = $(selector),
-                    $nav = $tab.parent().siblings('.nav');
-                e.preventDefault();
+        // link to tab
+        .on('click', '.link-to-tab', function(e) {
+            var selector = $(e.currentTarget).attr('href'),
+                $tab = $(selector),
+                $nav = $tab.parent().siblings('.nav');
+            e.preventDefault();
 
-                $tab.siblings().removeClass('active in');
-                $tab.addClass('active in');
-                $nav.find('.nav-link').removeClass('active');
-                $nav.find('[href="' + selector + '"]').addClass('active');
+            $tab.siblings().removeClass('active in');
+            $tab.addClass('active in');
+            $nav.find('.nav-link').removeClass('active');
+            $nav.find('[href="' + selector + '"]').addClass('active');
 
-                $('html').animate({
-                    scrollTop: $tab.offset().top - 150
-                });
+            $('html').animate({
+                scrollTop: $tab.offset().top - 150
             });
+        });
     }
 
-	/**
-	 * @function playableVideo
-	 *
-	 * @param {string} selector
-	 */
-    Donald.playableVideo = function (selector) {
-        $(selector + ' .video-play').on('click', function (e) {
+    /**
+     * @function playableVideo
+     *
+     * @param {string} selector
+     */
+    Donald.playableVideo = function(selector) {
+        $(selector + ' .video-play').on('click', function(e) {
             var $video = $(this).closest(selector);
             if ($video.hasClass('playing')) {
                 $video.removeClass('playing')
@@ -951,26 +947,26 @@ window.Donald = {};
             }
             e.preventDefault();
         });
-        $(selector + ' video').on('ended', function () {
+        $(selector + ' video').on('ended', function() {
             $(this).closest(selector).removeClass('playing');
         });
     }
 
-	/**
-	 * @function appearAnimate
-	 *
-	 * @param {string} selector
-	 */
-    Donald.appearAnimate = function (selector) {
-        Donald.$(selector).each(function () {
+    /**
+     * @function appearAnimate
+     *
+     * @param {string} selector
+     */
+    Donald.appearAnimate = function(selector) {
+        Donald.$(selector).each(function() {
             var el = this;
-            Donald.appear(el, function () {
+            Donald.appear(el, function() {
                 if (el.classList.contains('appear-animate')) {
                     var settings = $.extend({}, Donald.defaults.animation, Donald.parseOptions(el.getAttribute('data-animation-options')));
 
-                    Donald.call(function () {
+                    Donald.call(function() {
                         setTimeout(
-                            function () {
+                            function() {
                                 el.style['animation-duration'] = settings.duration;
                                 el.classList.add(settings.name);
                                 el.classList.add('appear-animation-visible');
@@ -983,45 +979,45 @@ window.Donald = {};
         });
     }
 
-	/**
-	 * @function stickySidebar
-	 *
-	 * @requires themeSticky
-	 * @param {string} selector
-	 */
-    Donald.stickySidebar = function (selector) {
-        if ($.fn.themeSticky) {
-            Donald.$(selector).each(function () {
-                var $this = $(this);
-                $this.themeSticky($.extend(Donald.defaults.stickySidebar, Donald.parseOptions($this.attr('data-sticky-options'))));
-                $this.trigger('recalc.pin');
-            });
+    /**
+     * @function stickySidebar
+     *
+     * @requires themeSticky
+     * @param {string} selector
+     */
+    Donald.stickySidebar = function(selector) {
+            if ($.fn.themeSticky) {
+                Donald.$(selector).each(function() {
+                    var $this = $(this);
+                    $this.themeSticky($.extend(Donald.defaults.stickySidebar, Donald.parseOptions($this.attr('data-sticky-options'))));
+                    $this.trigger('recalc.pin');
+                });
+            }
         }
-    }
-	/**
-	 * @function refreshSidebar
-	 *
-	 * @param {string} selector
-	 */
-    Donald.refreshSidebar = function (selector) {
+        /**
+         * @function refreshSidebar
+         *
+         * @param {string} selector
+         */
+    Donald.refreshSidebar = function(selector) {
         if ($.fn.themeSticky) {
-            Donald.$(selector).each(function () {
+            Donald.$(selector).each(function() {
                 $(this).trigger('recalc.pin');
             });
         }
     }
 
-	/**
-	 * @function ratingTooltip
-	 * Find all .ratings-full from root, and initialize tooltip.
-	 *
-	 * @param {HTMLElement} root
-	 */
-    Donald.ratingTooltip = function (root) {
+    /**
+     * @function ratingTooltip
+     * Find all .ratings-full from root, and initialize tooltip.
+     *
+     * @param {HTMLElement} root
+     */
+    Donald.ratingTooltip = function(root) {
         var els = Donald.byClass('ratings-full', root ? root : document.body),
             len = els.length;
 
-        var ratingHandler = function () {
+        var ratingHandler = function() {
             var res = this.firstElementChild.clientWidth / this.clientWidth * 5;
             this.lastElementChild.innerText = res ? res.toFixed(2) : res;
         }
@@ -1031,13 +1027,13 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function popup
-	 * @requires magnificPopup
-	 * @params {object} options
-	 * @params {string|undefined} preset
-	 */
-    Donald.popup = function (options, preset) {
+    /**
+     * @function popup
+     * @requires magnificPopup
+     * @params {object} options
+     * @params {string|undefined} preset
+     */
+    Donald.popup = function(options, preset) {
         var mpInstance = $.magnificPopup.instance,
             opt = $.extend(true, {},
                 Donald.defaults.popup,
@@ -1048,7 +1044,7 @@ window.Donald = {};
         // if something is already opened ( except login popup )
         if (mpInstance.isOpen && mpInstance.content && !mpInstance.content.hasClass('login-popup')) {
             mpInstance.close(); // close current
-            setTimeout(function () { // and open new after a moment
+            setTimeout(function() { // and open new after a moment
                 $.magnificPopup.open(opt);
             }, 500);
         } else {
@@ -1056,14 +1052,14 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function initPopups
-	 */
-    Donald.initPopups = function () {
+    /**
+     * @function initPopups
+     */
+    Donald.initPopups = function() {
 
         Donald.$body
             // Register Login Popup
-            .on('click', 'a.login, .login-link', function (e) {
+            .on('click', 'a.login, .login-link', function(e) {
                 e.preventDefault();
                 Donald.popup({
                     items: {
@@ -1072,58 +1068,59 @@ window.Donald = {};
                 }, 'login');
             })
 
-            // Register "Register" Popup
-            .on('click', '.register-link', function (e) {
-                e.preventDefault();
-                Donald.popup({
-                    items: {
-                        src: $(e.currentTarget).attr('href')
-                    },
-                    callbacks: {
-                        ajaxContentAdded: function () {
-                            this.wrap.find('[href="#register"]').click();
-                        }
+        // Register "Register" Popup
+        .on('click', '.register-link', function(e) {
+            e.preventDefault();
+            Donald.popup({
+                items: {
+                    src: $(e.currentTarget).attr('href')
+                },
+                callbacks: {
+                    ajaxContentAdded: function() {
+                        this.wrap.find('[href="#register"]').click();
                     }
-                }, 'login');
-            })
+                }
+            }, 'login');
+        })
 
-            // Register "Play Video" Popup
-            .on('click', '.btn-iframe', function (e) {
-                e.preventDefault();
-                Donald.popup({
-                    items: {
-                        src: $(e.currentTarget).attr('href')
-                    }
-                }, 'video');
-            });
+        // Register "Play Video" Popup
+        .on('click', '.btn-iframe', function(e) {
+            e.preventDefault();
+            Donald.popup({
+                items: {
+                    src: $(e.currentTarget).attr('href')
+                }
+            }, 'video');
+        });
 
         // Open newsletter Popup after 7.5s in home pages
         if (Donald.$body.hasClass('home') && Donald.getCookie('hideNewsletterPopup') !== 'true') {
-            setTimeout(function () {
-                Donald.popup({
-                    items: {
-                        src: 'ajax/newsletter.html'
-                    },
-                    type: 'ajax',
-                    tLoading: '',
-                    mainClass: 'mfp-newsletter mfp-flip-popup',
-                    callbacks: {
-                        beforeClose: function () {
-                            // if "do not show" is checked
-                            $('#hide-newsletter-popup')[0].checked && Donald.setCookie('hideNewsletterPopup', true, 7);
-                        }
-                    },
-                });
-            }, 7500);
+            // 暂时注释了
+            // setTimeout(function () {
+            //     Donald.popup({
+            //         items: {
+            //             src: 'ajax/newsletter.html'
+            //         },
+            //         type: 'ajax',
+            //         tLoading: '',
+            //         mainClass: 'mfp-newsletter mfp-flip-popup',
+            //         callbacks: {
+            //             beforeClose: function () {
+            //                 // if "do not show" is checked
+            //                 $('#hide-newsletter-popup')[0].checked && Donald.setCookie('hideNewsletterPopup', true, 7);
+            //             }
+            //         },
+            //     });
+            // }, 7500);
         }
     }
 
-	/**
-	 * @function initPurchasedMinipopup
-	 */
-    Donald.initPurchasedMinipopup = function () {
+    /**
+     * @function initPurchasedMinipopup
+     */
+    Donald.initPurchasedMinipopup = function() {
         if (Donald.byClass('product-single').length || Donald.byClass('main-content').length) {
-            setInterval(function () {
+            setInterval(function() {
                 Donald.Minipopup.open({
                     message: 'Someone just purchased below.',
                     productClass: ' product-list-sm',
@@ -1132,28 +1129,28 @@ window.Donald = {};
                     imageSrc: 'images/cart/product-1.jpg',
                     price: '$199',
                     rating: 5
-                }, function ($box) {
+                }, function($box) {
                     Donald.ratingTooltip($box[0]);
                 });
             }, 60000);
         }
     }
 
-	/**
-	 * @function initScrollTopButton
-	 */
-    Donald.initScrollTopButton = function () {
+    /**
+     * @function initScrollTopButton
+     */
+    Donald.initScrollTopButton = function() {
         // register scroll top button
 
         var domScrollTop = Donald.byId('scroll-top');
 
         if (domScrollTop) {
-            domScrollTop.addEventListener('click', function (e) {
+            domScrollTop.addEventListener('click', function(e) {
                 $('html, body').animate({ scrollTop: 0 }, 600);
                 e.preventDefault();
             });
 
-            var refreshScrollTop = function () {
+            var refreshScrollTop = function() {
                 if (window.pageYOffset > 400) {
                     domScrollTop.classList.add('show');
                 } else {
@@ -1166,12 +1163,12 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function requestTimeout
-	 * @param {function} fn
-	 * @param {number} delay
-	 */
-    Donald.requestTimeout = function (fn, delay) {
+    /**
+     * @function requestTimeout
+     * @param {function} fn
+     * @param {number} delay
+     */
+    Donald.requestTimeout = function(fn, delay) {
         var handler = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
         if (!handler) {
             return setTimeout(fn, delay);
@@ -1190,13 +1187,13 @@ window.Donald = {};
         return rt;
     }
 
-	/**
-	 * @function requestInterval
-	 * @param {function} fn
-	 * @param {number} step
-	 * @param {number} timeOut
-	 */
-    Donald.requestInterval = function (fn, step, timeOut) {
+    /**
+     * @function requestInterval
+     * @param {function} fn
+     * @param {number} step
+     * @param {number} timeOut
+     */
+    Donald.requestInterval = function(fn, step, timeOut) {
         var handler = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
         if (!handler) {
             if (!timeOut)
@@ -1205,6 +1202,7 @@ window.Donald = {};
                 return setInterval(fn, step);
         }
         var start, last, rt = new Object();
+
         function loop(timestamp) {
             if (!start) {
                 start = last = timestamp;
@@ -1227,11 +1225,11 @@ window.Donald = {};
         return rt;
     }
 
-	/**
-	 * @function deleteTimeout
-	 * @param {number} timerID
-	 */
-    Donald.deleteTimeout = function (timerID) {
+    /**
+     * @function deleteTimeout
+     * @param {number} timerID
+     */
+    Donald.deleteTimeout = function(timerID) {
         if (!timerID) {
             return;
         }
@@ -1244,12 +1242,12 @@ window.Donald = {};
         }
     }
 
-	/**
-	 * @function sidebar
-	 */
-    Donald.sidebar = (function () {
+    /**
+     * @function sidebar
+     */
+    Donald.sidebar = (function() {
         var is_mobile = window.innerWidth < Donald.minDesktopWidth;
-        var onResizeNavigationStyle = function () {
+        var onResizeNavigationStyle = function() {
             if (window.innerWidth < Donald.minDesktopWidth && !is_mobile) {
                 this.$sidebar.find('.sidebar-content, .filter-clean').removeAttr('style');
                 this.$sidebar.find('.sidebar-content').attr('style', '');
@@ -1263,15 +1261,15 @@ window.Donald = {};
             is_mobile = window.innerWidth < Donald.minDesktopWidth;
         }
 
-		/**
-		 * @class Sidebar
-		 * Sidebar active class will be added to body tag : "sidebar class" + "-active"
-		 */
+        /**
+         * @class Sidebar
+         * Sidebar active class will be added to body tag : "sidebar class" + "-active"
+         */
         function Sidebar(name) {
             return this.init(name);
         }
 
-        Sidebar.prototype.init = function (name) {
+        Sidebar.prototype.init = function(name) {
             var self = this;
 
             self.name = name;
@@ -1290,14 +1288,14 @@ window.Donald = {};
                     Donald.$window.on('resize', onResizeNavigationStyle);
                 }
 
-                Donald.$window.on('resize', function () {
+                Donald.$window.on('resize', function() {
                     Donald.$body.removeClass(name + '-active');
                 });
 
                 // Register toggle event
                 self.$sidebar.find('.sidebar-toggle, .sidebar-toggle-btn')
                     .add(name === 'sidebar' ? '.left-sidebar-toggle' : ('.' + name + '-toggle'))
-                    .on('click', function (e) {
+                    .on('click', function(e) {
                         self.toggle();
                         $(this).blur();
                         $('.sticky-sidebar').trigger('recalc.pin.left', [400]);
@@ -1306,7 +1304,7 @@ window.Donald = {};
 
                 // Register close event
                 self.$sidebar.find('.sidebar-overlay, .sidebar-close')
-                    .on('click', function (e) {
+                    .on('click', function(e) {
                         Donald.$body.removeClass(name + '-active');
                         $('.sticky-sidebar').trigger('recalc.pin.left', [400]);
                         e.preventDefault();
@@ -1315,7 +1313,7 @@ window.Donald = {};
             return false;
         }
 
-        Sidebar.prototype.toggle = function () {
+        Sidebar.prototype.toggle = function() {
             var self = this;
 
             // if fixed sidebar
@@ -1334,15 +1332,13 @@ window.Donald = {};
                     self.$sidebar
                         .find('.sidebar-content')
                         .stop()
-                        .animate(
-                            {
-                                'height': 'toggle',
-                                'margin-bottom': isClosed ? 'toggle' : -6
-                            }, function () {
-                                $(this).css('margin-bottom', '');
-                                isClosed && self.$sidebar.find('.filter-clean').fadeIn('fast');
-                            }
-                        );
+                        .animate({
+                            'height': 'toggle',
+                            'margin-bottom': isClosed ? 'toggle' : -6
+                        }, function() {
+                            $(this).css('margin-bottom', '');
+                            isClosed && self.$sidebar.find('.filter-clean').fadeIn('fast');
+                        });
                 }
 
                 // if shop sidebar
@@ -1363,10 +1359,10 @@ window.Donald = {};
                                 colsClasses = $wrapper.attr('class').match(/cols-\w*-*\d/g),
                                 // get max cols count
                                 maxColsCount = colsClasses ?
-                                    Math.max.apply(null, colsClasses.map(function (cls) {
-                                        return cls.match(/\d/)[0];
-                                    })) :
-                                    0;
+                                Math.max.apply(null, colsClasses.map(function(cls) {
+                                    return cls.match(/\d/)[0];
+                                })) :
+                                0;
 
                             if (isClosed) { // when open
                                 4 === maxColsCount &&
@@ -1391,7 +1387,7 @@ window.Donald = {};
 
             } else {
 
-                self.$sidebar.find('.sidebar-overlay .sidebar-close').css('margin-left', - (window.innerWidth - document.body.clientWidth));
+                self.$sidebar.find('.sidebar-overlay .sidebar-close').css('margin-left', -(window.innerWidth - document.body.clientWidth));
 
                 // activate sidebar
                 Donald.$body
@@ -1405,32 +1401,32 @@ window.Donald = {};
             }
         }
 
-        return function (name) {
+        return function(name) {
             return new Sidebar(name);
         }
     })();
 
-	/**
-	 * @function initProductSingle
-	 *
-	 * @param {jQuery} $el
-	 * @param {object} options
-	 *
-	 * @requires OwlCarousel
-	 * @requires ImagesLoaded (only quickview needs)
-	 * @requires elevateZoom
-	 * @instance multiple
-	 */
+    /**
+     * @function initProductSingle
+     *
+     * @param {jQuery} $el
+     * @param {object} options
+     *
+     * @requires OwlCarousel
+     * @requires ImagesLoaded (only quickview needs)
+     * @requires elevateZoom
+     * @instance multiple
+     */
 
-    Donald.initProductSingle = (function () {
-		/**
-		 * @class ProductSingle
-		 */
+    Donald.initProductSingle = (function() {
+        /**
+         * @class ProductSingle
+         */
         function ProductSingle($el) {
             return this.init($el);
         }
 
-        var thumbsInit = function (self) {
+        var thumbsInit = function(self) {
             // members for thumbnails
             self.$thumbs = self.$wrapper.find('.product-thumbs');
             self.$thumbsWrap = self.$thumbs.parent();
@@ -1443,15 +1439,15 @@ window.Donald = {};
             self.thumbsIsVertical = self._isPgvertical && window.innerWidth >= Donald.minDesktopWidth;
 
             // register events
-            self.$thumbDown.on('click', function (e) {
+            self.$thumbDown.on('click', function(e) {
                 self.thumbsIsVertical && thumbsDown(self);
             });
 
-            self.$thumbUp.on('click', function (e) {
+            self.$thumbUp.on('click', function(e) {
                 self.thumbsIsVertical && thumbsUp(self);
             });
 
-            self.$thumbsDots.on('click', function () {
+            self.$thumbsDots.on('click', function() {
                 var $this = $(this),
                     index = ($this.parent().filter(self.$thumbs).length ? $this : $this.parent()).index();
                 self.$wrapper.find('.product-single-carousel').trigger('to.owl.carousel', index);
@@ -1459,12 +1455,12 @@ window.Donald = {};
 
             // refresh thumbs
             thumbsRefresh(self);
-            Donald.$window.on('resize', function () {
+            Donald.$window.on('resize', function() {
                 thumbsRefresh(self);
             });
         }
 
-        var thumbsDown = function (self) {
+        var thumbsDown = function(self) {
             var maxBottom = self.$thumbsWrap.offset().top + self.$thumbsWrap[0].offsetHeight,
                 curBottom = self.$thumbs.offset().top + self.thumbsHeight;
 
@@ -1480,7 +1476,7 @@ window.Donald = {};
             }
         }
 
-        var thumbsUp = function (self) {
+        var thumbsUp = function(self) {
             var maxTop = self.$thumbsWrap.offset().top,
                 curTop = self.$thumbs.offset().top;
 
@@ -1496,7 +1492,7 @@ window.Donald = {};
             }
         }
 
-        var thumbsRefresh = function (self) {
+        var thumbsRefresh = function(self) {
             if (typeof self.$thumbs == 'undefined') {
                 return;
             }
@@ -1508,8 +1504,8 @@ window.Donald = {};
                 // disable thumbs carousel
                 self.$thumbs.hasClass('owl-carousel') &&
                     self.$thumbs
-                        .trigger('destroy.owl.carousel')
-                        .removeClass('owl-carousel');
+                    .trigger('destroy.owl.carousel')
+                    .removeClass('owl-carousel');
 
                 // enable thumbs vertical nav
                 self.thumbsHeight = self.$productThumb[0].offsetHeight * self.thumbsCount + parseInt(self.$productThumb.css('margin-bottom')) * (self.thumbsCount - 1);
@@ -1533,7 +1529,7 @@ window.Donald = {};
             }
         }
 
-        var initVariation = function (self) {
+        var initVariation = function(self) {
             self.$selects = self.$wrapper.find('.product-variations select');
             self.$items = self.$wrapper.find('.product-variations');
             self.$priceWrap = self.$wrapper.find('.product-variation-price');
@@ -1542,26 +1538,26 @@ window.Donald = {};
 
             // check
             self.variationCheck();
-            self.$selects.on('change', function (e) {
+            self.$selects.on('change', function(e) {
                 self.variationCheck();
             });
-            self.$items.children('a').on('click', function (e) {
+            self.$items.children('a').on('click', function(e) {
                 $(this).toggleClass('active').siblings().removeClass('active');
                 e.preventDefault();
                 self.variationCheck();
             });
 
             // clean
-            self.$clean.on('click', function (e) {
+            self.$clean.on('click', function(e) {
                 e.preventDefault();
                 self.variationClean(true);
             });
         }
 
-        var initCartAction = function (self) {
+        var initCartAction = function(self) {
 
             // Product Single's Add To Cart Button
-            self.$wrapper.on('click', '.btn-cart', function (e) {
+            self.$wrapper.on('click', '.btn-cart', function(e) {
                 e.preventDefault();
 
                 var $product = self.$wrapper,
@@ -1587,7 +1583,7 @@ window.Donald = {};
         }
 
         // For only Quickview
-        var recalcDetailsHeight = function () {
+        var recalcDetailsHeight = function() {
             var self = this;
             self.$wrapper.find('.product-details').css(
                 'height',
@@ -1597,7 +1593,7 @@ window.Donald = {};
 
         // Public Properties
 
-        ProductSingle.prototype.init = function ($el) {
+        ProductSingle.prototype.init = function($el) {
             var self = this,
                 $slider = $el.find('.product-single-carousel');
 
@@ -1613,7 +1609,7 @@ window.Donald = {};
             }
 
             // init thumbs
-            $slider.on('initialized.owl.carousel', function (e) {
+            $slider.on('initialized.owl.carousel', function(e) {
 
                 // if not quickview, make full image toggle
                 self.isQuickview || $slider.append('<a href="#" class="product-image-full"><i class="d-icon-zoom"></i></a>');
@@ -1621,7 +1617,7 @@ window.Donald = {};
                 // init thumbnails
                 thumbsInit(self);
 
-            }).on('translate.owl.carousel', function (e) {
+            }).on('translate.owl.carousel', function(e) {
                 var currentIndex = (e.item.index - $(e.currentTarget).find('.cloned').length / 2 + e.item.count) % e.item.count;
                 self.thumbsSetActive(currentIndex);
             });
@@ -1636,7 +1632,7 @@ window.Donald = {};
             initCartAction(this);
         }
 
-        ProductSingle.prototype.thumbsSetActive = function (index) {
+        ProductSingle.prototype.thumbsSetActive = function(index) {
             var self = this,
                 $curThumb = self.$thumbsDots.eq(index);
 
@@ -1663,17 +1659,17 @@ window.Donald = {};
             }
         }
 
-        ProductSingle.prototype.variationCheck = function () {
+        ProductSingle.prototype.variationCheck = function() {
             var self = this,
                 isAllSelected = true;
 
             // check all select variations are selected
-            self.$selects.each(function () {
+            self.$selects.each(function() {
                 return this.value || (isAllSelected = false);
             });
 
             // check all item variations are selected
-            self.$items.each(function () {
+            self.$items.each(function() {
                 var $this = $(this);
                 if ($this.children('a:not(.size-guide)').length) {
                     return $this.children('.active').length || (isAllSelected = false);
@@ -1685,7 +1681,7 @@ window.Donald = {};
                 self.variationClean();
         }
 
-        ProductSingle.prototype.variationMatch = function () {
+        ProductSingle.prototype.variationMatch = function() {
             var self = this;
             self.$priceWrap.find('span').text('$' + (Math.round(Math.random() * 50) + 200) + '.00');
             self.$priceWrap.slideDown();
@@ -1693,7 +1689,7 @@ window.Donald = {};
             self.$btnCart.removeAttr('disabled');
         }
 
-        ProductSingle.prototype.variationClean = function (reset) {
+        ProductSingle.prototype.variationClean = function(reset) {
             reset && this.$selects.val('');
             reset && this.$items.children('.active').removeClass('active');
             this.$priceWrap.slideUp();
@@ -1702,7 +1698,7 @@ window.Donald = {};
 
         }
 
-        return function ($el, options) {
+        return function($el, options) {
             if ($el) {
                 return new ProductSingle($el.eq(0), options);
             }
@@ -1710,23 +1706,25 @@ window.Donald = {};
         }
     })();
 
-	/**
-	 * @function initProductSinglePage
-	 *
-	 * @requires Slider
-	 * @requires ProductSingle
-	 * @requires PhotoSwipe
-	 * @instance single
-	 */
-    Donald.initProductSinglePage = (function () {
+    /**
+     * @function initProductSinglePage
+     *
+     * @requires Slider
+     * @requires ProductSingle
+     * @requires PhotoSwipe
+     * @instance single
+     */
+    Donald.initProductSinglePage = (function() {
         var $product;
+
         function alertCartAdded() {
             $(Donald.parseTemplate(Donald.defaults.templateCartAddedAlert, {
-                name: $product.find('h1.product-name').text()
-            }))
+                    name: $product.find('h1.product-name').text()
+                }))
                 .insertBefore($product).fadeIn();
             $('.sticky-sidebar').trigger('recalc.pin');
         }
+
         function openFullImage(e) {
             e.preventDefault();
 
@@ -1750,24 +1748,24 @@ window.Donald = {};
 
             // if images exist
             if ($images.length) {
-                var images = $images.map(function () {
-                    var $this = $(this);
+                var images = $images.map(function() {
+                        var $this = $(this);
 
-                    return {
-                        src: $this.attr('data-zoom-image'),
-                        w: 800,
-                        h: 899,
-                        title: $this.attr('alt')
-                    };
-                }).get(),
+                        return {
+                            src: $this.attr('data-zoom-image'),
+                            w: 800,
+                            h: 899,
+                            title: $this.attr('alt')
+                        };
+                    }).get(),
 
                     carousel = $product.find('.product-single-carousel, .product-gallery-carousel').data('owl.carousel'),
                     currentIndex = carousel ?
-                        // Carousel Type
-                        ((carousel.current() - carousel.clones().length / 2 + images.length) % images.length) :
+                    // Carousel Type
+                    ((carousel.current() - carousel.clones().length / 2 + images.length) % images.length) :
 
-                        // Gallery Type
-                        ($product.find('.product-gallery > *').index());
+                    // Gallery Type
+                    ($product.find('.product-gallery > *').index());
 
                 if (typeof PhotoSwipe !== 'undefined') {
                     var pswpElement = $('.pswp')[0];
@@ -1781,8 +1779,9 @@ window.Donald = {};
                 }
             }
         }
+
         function ratingForm() {
-            $('body').on('click', '.rating-form .rating-stars > a', function (e) {
+            $('body').on('click', '.rating-form .rating-stars > a', function(e) {
                 var $star = $(this);
                 $star.addClass('active').siblings().removeClass('active');
                 $star.parent().addClass('selected');
@@ -1792,12 +1791,12 @@ window.Donald = {};
         }
 
         // Public Properties
-        return function () {
+        return function() {
             $product = $('.product-single');
             if ($product.length) {
                 // if home page, init single products
                 if (document.body.classList.contains('home')) {
-                    $product.each(function () {
+                    $product.each(function() {
                         Donald.initProductSingle($(this));
                     });
 
@@ -1828,20 +1827,20 @@ window.Donald = {};
         }
     })();
 
-	/**
-	 * @function slider
-	 *
-	 * @requires OwlCarousel
-	 */
-    Donald.slider = (function () {
-		/**
-		 * @class Slider
-		 */
+    /**
+     * @function slider
+     *
+     * @requires OwlCarousel
+     */
+    Donald.slider = (function() {
+        /**
+         * @class Slider
+         */
         function Slider($el, options) {
             return this.init($el, options);
         }
 
-        var onInitialize = function (e) {
+        var onInitialize = function(e) {
             var i, j, breaks = ['', '-xs', '-sm', '-md', '-lg', '-xl'];
             this.classList.remove('row');
             for (i = 0; i < 6; ++i) {
@@ -1860,7 +1859,7 @@ window.Donald = {};
                 }
             }
         }
-        var onInitialized = function (e) {
+        var onInitialized = function(e) {
             var els = this.firstElementChild.firstElementChild.children,
                 i,
                 len = els.length;
@@ -1876,7 +1875,7 @@ window.Donald = {};
 
             // Video
             var $el = $(e.currentTarget);
-            $el.find('video').on('ended', function () {
+            $el.find('video').on('ended', function() {
                 var $this = $(this);
                 if ($this.closest('.owl-item').hasClass('active')) {
                     if (true === $el.data('owl.carousel').options.autoplay) {
@@ -1893,14 +1892,14 @@ window.Donald = {};
                 }
             });
         }
-        var onTranslated = function (e) {
+        var onTranslated = function(e) {
             $(window).trigger('appear.check');
 
             // Video Play	
             var $el = $(e.currentTarget),
                 $activeVideos = $el.find('.owl-item.active video');
 
-            $el.find('.owl-item:not(.active) video').each(function () {
+            $el.find('.owl-item:not(.active) video').each(function() {
                 if (!this.paused) {
                     $el.trigger('play.owl.autoplay');
                 }
@@ -1912,18 +1911,18 @@ window.Donald = {};
                 if (true === $el.data('owl.carousel').options.autoplay) {
                     $el.trigger('stop.owl.autoplay');
                 }
-                $activeVideos.each(function () {
+                $activeVideos.each(function() {
                     this.paused && this.play();
                 });
             }
         }
-        var onSliderInitialized = function (e) {
+        var onSliderInitialized = function(e) {
             var self = this,
                 $el = $(e.currentTarget);
 
             // carousel content animation
 
-            $el.find('.owl-item.active .slide-animate').each(function () {
+            $el.find('.owl-item.active .slide-animate').each(function() {
                 var $animation_item = $(this),
                     settings = $.extend(true, {},
                         Donald.defaults.animation,
@@ -1935,7 +1934,7 @@ window.Donald = {};
 
                 $animation_item.css('animation-duration', duration);
 
-                var temp = Donald.requestTimeout(function () {
+                var temp = Donald.requestTimeout(function() {
                     $animation_item.addClass(aniName);
                     $animation_item.addClass('show-content');
                 }, (delay ? Number((delay).slice(0, -1)) * 1000 : 0));
@@ -1944,27 +1943,27 @@ window.Donald = {};
             });
         }
 
-        var onSliderResized = function (e) {
-            $(e.currentTarget).find('.owl-item.active .slide-animate').each(function () {
+        var onSliderResized = function(e) {
+            $(e.currentTarget).find('.owl-item.active .slide-animate').each(function() {
                 var $animation_item = $(this);
                 $animation_item.addClass('show-content');
                 $animation_item.attr('style', '');
             });
         }
 
-        var onSliderTranslate = function (e) {
+        var onSliderTranslate = function(e) {
             var self = this,
                 $el = $(e.currentTarget);
             self.translateFlag = 1;
             self.prev = self.next;
-            $el.find('.owl-item .slide-animate').each(function () {
+            $el.find('.owl-item .slide-animate').each(function() {
                 var $animation_item = $(this),
                     settings = $.extend(true, {}, Donald.defaults.animation, Donald.parseOptions($animation_item.data('animation-options')));
                 $animation_item.removeClass(settings.name);
             });
         }
 
-        var onSliderTranslated = function (e) {
+        var onSliderTranslated = function(e) {
             var self = this,
                 $el = $(e.currentTarget);
             if (1 == self.translateFlag) {
@@ -1979,7 +1978,7 @@ window.Donald = {};
                         }
                         self.timers = [];
                     }
-                    $el.find('.owl-item.active .slide-animate').each(function () {
+                    $el.find('.owl-item.active .slide-animate').each(function() {
                         var $animation_item = $(this),
                             settings = $.extend(true, {}, Donald.defaults.animation, Donald.parseOptions($animation_item.data('animation-options'))),
                             duration = settings.duration,
@@ -1995,7 +1994,7 @@ window.Donald = {};
 
                         duration = duration ? duration : '0.75s';
                         $animation_item.addClass('show-content');
-                        var temp = Donald.requestTimeout(function () {
+                        var temp = Donald.requestTimeout(function() {
                             $animation_item.css('transition-property', '');
                             $animation_item.css('transition-delay', '');
                             $animation_item.css('transition-duration', '');
@@ -2012,12 +2011,12 @@ window.Donald = {};
 
         // Public Properties
 
-        Slider.zoomImage = function () {
+        Slider.zoomImage = function() {
             Donald.zoomImage(this.$element);
         }
 
-        Slider.zoomImageRefresh = function () {
-            this.$element.find('img').each(function () {
+        Slider.zoomImageRefresh = function() {
+            this.$element.find('img').each(function() {
                 var $this = $(this);
 
                 if ($.fn.elevateZoom) {
@@ -2035,7 +2034,7 @@ window.Donald = {};
         Donald.defaults.sliderPresets['product-single-carousel'].onInitialized = Donald.defaults.sliderPresets['product-gallery-carousel'].onInitialized = Slider.zoomImage;
         Donald.defaults.sliderPresets['product-single-carousel'].onRefreshed = Donald.defaults.sliderPresets['product-gallery-carousel'].onRefreshed = Slider.zoomImageRefresh;
 
-        Slider.prototype.init = function ($el, options) {
+        Slider.prototype.init = function($el, options) {
             this.timers = [];
             this.translateFlag = 0;
             this.prev = 1;
@@ -2047,13 +2046,13 @@ window.Donald = {};
                 settings = $.extend(true, {}, Donald.defaults.slider);
 
             // extend preset options
-            classes.forEach(function (className) {
+            classes.forEach(function(className) {
                 var preset = Donald.defaults.sliderPresets[className];
                 preset && $.extend(true, settings, preset);
             });
 
             var $videos = $el.find('video');
-            $videos.each(function () {
+            $videos.each(function() {
                 this.loop = false;
             });
 
@@ -2072,38 +2071,38 @@ window.Donald = {};
             // if animation slider
             $el.hasClass('animation-slider') &&
                 $el.on('initialized.owl.carousel', onSliderInitialized)
-                    .on('resized.owl.carousel', onSliderResized)
-                    .on('translate.owl.carousel', onSliderTranslate)
-                    .on('translated.owl.carousel', onSliderTranslated);
+                .on('resized.owl.carousel', onSliderResized)
+                .on('translate.owl.carousel', onSliderTranslate)
+                .on('translated.owl.carousel', onSliderTranslated);
 
             $el.owlCarousel(settings);
         }
 
-        return function (selector, options) {
-            Donald.$(selector).each(function () {
+        return function(selector, options) {
+            Donald.$(selector).each(function() {
                 var $this = $(this);
 
-                Donald.call(function () {
+                Donald.call(function() {
                     new Slider($this, options);
                 });
             });
         }
     })();
 
-	/**
-	 * @function quantityInput
-	 */
-    Donald.quantityInput = (function () {
-		/**
-		 * @class QuantityInput
-		 */
+    /**
+     * @function quantityInput
+     */
+    Donald.quantityInput = (function() {
+        /**
+         * @class QuantityInput
+         */
         function QuantityInput($el) {
             return this.init($el);
         }
         QuantityInput.min = 1;
         QuantityInput.max = 1000000;
         QuantityInput.value = 1;
-        QuantityInput.prototype.init = function ($el) {
+        QuantityInput.prototype.init = function($el) {
             var self = this;
 
             self.$minus = false;
@@ -2127,11 +2126,11 @@ window.Donald = {};
             self.$value = $el.val(self.value = QuantityInput.value);
 
             self.$minus = $el.prev()
-                .on('mousedown', function (e) {
+                .on('mousedown', function(e) {
                     e.preventDefault();
                     self.startDecrease();
                 })
-                .on('touchstart', function (e) {
+                .on('touchstart', function(e) {
                     if (e.cancelable) {
                         e.preventDefault();
                     }
@@ -2140,11 +2139,11 @@ window.Donald = {};
                 .on('mouseup', self.stop);
 
             self.$plus = $el.next()
-                .on('mousedown', function (e) {
+                .on('mousedown', function(e) {
                     e.preventDefault();
                     self.startIncrease();
                 })
-                .on('touchstart', function (e) {
+                .on('touchstart', function(e) {
                     if (e.cancelable) {
                         e.preventDefault();
                     }
@@ -2156,35 +2155,35 @@ window.Donald = {};
                 .on('touchend', self.stop)
                 .on('touchcancel', self.stop);
         }
-        QuantityInput.prototype.startIncrease = function (e) {
+        QuantityInput.prototype.startIncrease = function(e) {
             e && e.preventDefault();
             var self = this;
             self.value = self.$value.val();
             self.value < self.max && self.$value.val(++self.value);
-            self.increaseTimer = Donald.requestTimeout(function () {
+            self.increaseTimer = Donald.requestTimeout(function() {
                 self.speed = 1;
-                self.increaseTimer = Donald.requestInterval(function () {
+                self.increaseTimer = Donald.requestInterval(function() {
                     self.$value.val(self.value = Math.min(self.value + Math.floor(self.speed *= 1.05), self.max));
                 }, 50);
             }, 400);
         }
-        QuantityInput.prototype.stop = function (e) {
+        QuantityInput.prototype.stop = function(e) {
             Donald.deleteTimeout(this.increaseTimer);
             Donald.deleteTimeout(this.decreaseTimer);
         }
-        QuantityInput.prototype.startDecrease = function () {
+        QuantityInput.prototype.startDecrease = function() {
             var self = this;
             self.value = self.$value.val();
             self.value > self.min && self.$value.val(--self.value);
-            self.decreaseTimer = Donald.requestTimeout(function () {
+            self.decreaseTimer = Donald.requestTimeout(function() {
                 self.speed = 1;
-                self.decreaseTimer = Donald.requestInterval(function () {
+                self.decreaseTimer = Donald.requestInterval(function() {
                     self.$value.val(self.value = Math.max(self.value - Math.floor(self.speed *= 1.05), self.min));
                 }, 50);
             }, 400);
         }
-        return function (selector) {
-            Donald.$(selector).each(function () {
+        return function(selector) {
+            Donald.$(selector).each(function() {
                 var $this = $(this);
                 // if not initialized
                 $this.data('quantityInput') ||
@@ -2193,31 +2192,30 @@ window.Donald = {};
         }
     })();
 
-	/**
-	 * @class Menu
-	 */
+    /**
+     * @class Menu
+     */
     Donald.Menu = {
-        init: function () {
+        init: function() {
             this.initMenu();
             this.initMobileMenu();
             this.initFilterMenu();
             this.initCategoryMenu();
             this.initCollapsibleWidget();
         },
-        initMenu: function () {
+        initMenu: function() {
             // setup menu
-            $('.menu li').each(function () {
+            $('.menu li').each(function() {
                 if (this.lastElementChild && (
-                    this.lastElementChild.tagName === 'UL' ||
-                    this.lastElementChild.classList.contains('megamenu'))
-                ) {
+                        this.lastElementChild.tagName === 'UL' ||
+                        this.lastElementChild.classList.contains('megamenu'))) {
                     this.classList.add('submenu');
                 }
             });
 
             // calc megamenu position
-            Donald.$window.on('resize', function () {
-                $('.main-nav .megamenu').each(function () {
+            Donald.$window.on('resize', function() {
+                $('.main-nav .megamenu').each(function() {
                     var $this = $(this),
                         left = $this.offset().left,
                         outerWidth = $this.outerWidth(),
@@ -2228,19 +2226,19 @@ window.Donald = {};
                 });
             })
         },
-        initMobileMenu: function () {
+        initMobileMenu: function() {
             function showMobileMenu() {
                 Donald.$body.addClass('mmenu-active');
             };
+
             function hideMobileMenu() {
                 Donald.$body.removeClass('mmenu-active');
             };
 
-            $('.mobile-menu li, .toggle-menu li').each(function () {
+            $('.mobile-menu li, .toggle-menu li').each(function() {
                 if (this.lastElementChild && (
-                    this.lastElementChild.tagName === 'UL' ||
-                    this.lastElementChild.classList.contains('megamenu'))
-                ) {
+                        this.lastElementChild.tagName === 'UL' ||
+                        this.lastElementChild.classList.contains('megamenu'))) {
                     var span = document.createElement('span');
                     span.className = "toggle-btn";
                     this.firstElementChild.appendChild(span);
@@ -2251,8 +2249,8 @@ window.Donald = {};
             $('.mobile-menu-close').on('click', hideMobileMenu);
             Donald.$window.on('resize', hideMobileMenu);
         },
-        initFilterMenu: function () {
-            $('.search-ul li').each(function () {
+        initFilterMenu: function() {
+            $('.search-ul li').each(function() {
                 if (this.lastElementChild && this.lastElementChild.tagName === 'UL') {
                     var i = document.createElement('i');
                     i.className = "fas fa-chevron-down";
@@ -2260,15 +2258,15 @@ window.Donald = {};
                     this.firstElementChild.appendChild(i);
                 }
             });
-            $('.with-ul > a i, .toggle-btn').on('click', function (e) {
+            $('.with-ul > a i, .toggle-btn').on('click', function(e) {
                 $(this).parent().next().slideToggle(300).parent().toggleClass("show");
-                setTimeout(function () {
+                setTimeout(function() {
                     $('.sticky-sidebar').trigger('recalc.pin');
                 }, 320);
                 e.preventDefault();
             });
         },
-        initCategoryMenu: function () {
+        initCategoryMenu: function() {
             // cat dropdown
             var $menu = $('.category-dropdown');
             if ($menu.length) {
@@ -2278,20 +2276,20 @@ window.Donald = {};
                     if (window.pageYOffset > top || window.innerWidth < Donald.minDesktopWidth) {
                         $menu.removeClass('show');
                     }
-                    window.addEventListener('scroll', function () {
+                    window.addEventListener('scroll', function() {
                         if (window.pageYOffset <= top && window.innerWidth >= Donald.minDesktopWidth) {
                             $menu.removeClass('show');
                         }
                     }, { passive: true });
-                    $('.category-toggle').on("click", function (e) {
+                    $('.category-toggle').on("click", function(e) {
                         e.preventDefault();
                     })
-                    $menu.on("mouseover", function (e) {
+                    $menu.on("mouseover", function(e) {
                         if (window.pageYOffset > top && window.innerWidth >= Donald.minDesktopWidth) {
                             $menu.addClass('show');
                         }
                     })
-                    $menu.on("mouseleave", function (e) {
+                    $menu.on("mouseleave", function(e) {
                         if (window.pageYOffset > top && window.innerWidth >= Donald.minDesktopWidth) {
                             $menu.removeClass('show');
                         }
@@ -2303,22 +2301,22 @@ window.Donald = {};
                         $menu.find('.dropdown-box').css('width', sidebar[0].offsetWidth - 20);
 
                         // set category menu's width same as sidebar.
-                        Donald.$window.on('resize', function () {
+                        Donald.$window.on('resize', function() {
                             $menu.find('.dropdown-box').css('width', (sidebar[0].offsetWidth - 20));
                         });
                     }
                 }
             }
         },
-        initCollapsibleWidget: function () {
+        initCollapsibleWidget: function() {
             // generate toggle icon
-            $('.widget-collapsible .widget-title').each(function () {
+            $('.widget-collapsible .widget-title').each(function() {
                 var span = document.createElement('span');
                 span.className = 'toggle-btn';
                 this.appendChild(span);
             });
             // slideToggle
-            $('.widget-collapsible .widget-title').on('click', function (e) {
+            $('.widget-collapsible .widget-title').on('click', function(e) {
                 var $this = $(this);
                 if (!$this.hasClass('sliding')) {
                     var $body = $this.siblings('.widget-body');
@@ -2326,12 +2324,12 @@ window.Donald = {};
                     $this.hasClass("collapsed") || $body.css('display', 'block');
 
                     $this.addClass("sliding");
-                    $body.slideToggle(300, function () {
+                    $body.slideToggle(300, function() {
                         $this.removeClass("sliding");
                     });
 
                     $this.toggleClass("collapsed");
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('.sticky-sidebar').trigger('recalc.pin');
                     }, 320);
                 }
@@ -2339,10 +2337,10 @@ window.Donald = {};
         }
     };
 
-	/**
-	 * @class MiniPopup
-	 */
-    Donald.Minipopup = (function () {
+    /**
+     * @class MiniPopup
+     */
+    Donald.Minipopup = (function() {
         var $area,
             offset = 0,
             boxes = [],
@@ -2350,7 +2348,7 @@ window.Donald = {};
             timers = [],
             timerId = false,
             timerInterval = 200,
-            timerClock = function () {
+            timerClock = function() {
                 if (isPaused) {
                     return;
                 }
@@ -2360,14 +2358,14 @@ window.Donald = {};
             }
 
         return {
-            init: function () {
+            init: function() {
                 // init area
                 var area = document.createElement('div');
                 area.className = "minipopup-area";
                 Donald.byClass('page-wrapper')[0].appendChild(area);
 
                 $area = $(area);
-                $area.on('click', '.btn-close', function (e) {
+                $area.on('click', '.btn-close', function(e) {
                     self.close($(this).closest('.minipopup-box').index());
                 });
 
@@ -2376,7 +2374,7 @@ window.Donald = {};
                 timerClock = timerClock.bind(this);
             },
 
-            open: function (options, callback) {
+            open: function(options, callback) {
                 var self = this,
                     settings = $.extend(true, {}, Donald.defaults.minipopup, options),
                     $box;
@@ -2395,26 +2393,27 @@ window.Donald = {};
                 // open
                 $box
                     .appendTo($area)
-                    .css('top', - offset)
+                    .css('top', -offset)
                     .find("img")[0]
-                    .onload = function () {
+                    .onload = function() {
                         offset += $box[0].offsetHeight + self.space;
 
                         $box.addClass('show');
                         if ($box.offset().top - window.pageYOffset < 0) {
                             self.close();
-                            $box.css('top', - offset + $box[0].offsetHeight + self.space);
+                            $box.css('top', -offset + $box[0].offsetHeight + self.space);
                         }
-                        $box.on('mouseenter', function () { self.pause() })
-                            .on('mouseleave', function () { self.resume() })
-                            .on('touchstart', function (e) { self.pause(); e.stopPropagation(); })
-                            .on('mousedown', function () {
+                        $box.on('mouseenter', function() { self.pause() })
+                            .on('mouseleave', function() { self.resume() })
+                            .on('touchstart', function(e) { self.pause();
+                                e.stopPropagation(); })
+                            .on('mousedown', function() {
                                 $(this).addClass('focus');
                             })
-                            .on('mouseup', function () {
+                            .on('mouseup', function() {
                                 self.close($(this).index());
                             });
-                        Donald.$body.on('touchstart', function () {
+                        Donald.$body.on('touchstart', function() {
                             self.resume();
                         });
 
@@ -2429,7 +2428,7 @@ window.Donald = {};
                     };
             },
 
-            close: function (indexToClose) {
+            close: function(indexToClose) {
                 var self = this,
                     index = ('undefined' === typeof indexToClose) ? 0 : indexToClose,
                     $box = boxes.splice(index, 1)[0];
@@ -2440,12 +2439,12 @@ window.Donald = {};
                 // remove box
                 offset -= $box[0].offsetHeight + self.space;
                 $box.removeClass('show');
-                setTimeout(function () {
+                setTimeout(function() {
                     $box.remove();
                 }, 300);
 
                 // slide down other boxes
-                boxes.forEach(function ($box, i) {
+                boxes.forEach(function($box, i) {
                     if (i >= index && $box.hasClass('show')) {
                         $box.stop(true, true).animate({
                             top: parseInt($box.css('top')) + $box[0].offsetHeight + 20
@@ -2457,29 +2456,29 @@ window.Donald = {};
                 boxes.length || clearTimeout(timerId);
             },
 
-            pause: function () {
+            pause: function() {
                 isPaused = true;
             },
 
-            resume: function () {
+            resume: function() {
                 isPaused = false;
             }
         }
     })();
 
     /**
-	 * @function floatSVG
-	 * @param {string|jQuery} selector 
-	 * @param {object} options
-	 */
-    Donald.floatSVG = (function () {
+     * @function floatSVG
+     * @param {string|jQuery} selector 
+     * @param {object} options
+     */
+    Donald.floatSVG = (function() {
         function FloatSVG(svg, options) {
             this.$el = $(svg);
             this.set(options);
             this.start();
         }
 
-        FloatSVG.prototype.set = function (options) {
+        FloatSVG.prototype.set = function(options) {
             this.options = $.extend({
                 delta: 15,
                 speed: 10,
@@ -2487,14 +2486,14 @@ window.Donald = {};
             }, typeof options == 'string' ? Donald.parseOptions(options) : options);
         }
 
-        FloatSVG.prototype.getDeltaY = function (dx) {
+        FloatSVG.prototype.getDeltaY = function(dx) {
             return Math.sin(2 * Math.PI * dx / this.width * this.options.size) * this.options.delta;
         }
 
-        FloatSVG.prototype.start = function () {
+        FloatSVG.prototype.start = function() {
             this.update = this.update.bind(this);
             this.timeStart = Date.now() - parseInt(Math.random() * 100);
-            this.$el.find('path').each(function () {
+            this.$el.find('path').each(function() {
                 $(this).data('original', this.getAttribute('d').replace(/([\d])\s*\-/g, '$1,-'));
             });
 
@@ -2504,33 +2503,34 @@ window.Donald = {};
             this.update();
         }
 
-        FloatSVG.prototype.update = function () {
+        FloatSVG.prototype.update = function() {
             var self = this;
 
             if (this.$el.length && Donald.isOnScreen(this.$el[0])) { // && $.contains(this.$el, document.body)) {
-                Donald.requestTimeout(function () {
+                Donald.requestTimeout(function() {
                     self.draw();
                 }, 16);
             }
         }
 
-        FloatSVG.prototype.draw = function () {
+        FloatSVG.prototype.draw = function() {
             var self = this,
                 _dx = (Date.now() - this.timeStart) * this.options.speed / 200;
             this.width = this.$el.width();
             if (!this.width) {
                 return;
             }
-            this.$el.find('path').each(function () {
-                var dx = _dx, dy = 0;
+            this.$el.find('path').each(function() {
+                var dx = _dx,
+                    dy = 0;
                 this.setAttribute('d', $(this).data('original')
-                    .replace(/M([\d|\.]*),([\d|\.]*)/, function (match, p1, p2) {
+                    .replace(/M([\d|\.]*),([\d|\.]*)/, function(match, p1, p2) {
                         if (p1 && p2) {
                             return 'M' + p1 + ',' + (parseFloat(p2) + (dy = self.getDeltaY(dx += parseFloat(p1)))).toFixed(3);
                         }
                         return match;
                     })
-                    .replace(/([c|C])[^A-Za-z]*/g, function (match, p1) {
+                    .replace(/([c|C])[^A-Za-z]*/g, function(match, p1) {
                         if (p1) {
                             var v = match.slice(1).split(',').map(parseFloat);
                             if (v.length == 6) {
@@ -2545,7 +2545,7 @@ window.Donald = {};
                                 }
                                 dy = self.getDeltaY(dx);
 
-                                return p1 + v.map(function (v) {
+                                return p1 + v.map(function(v) {
                                     return v.toFixed(3);
                                 }).join(',');
                             }
@@ -2558,9 +2558,10 @@ window.Donald = {};
             this.update();
         }
 
-        return function (selector) {
-            Donald.$(selector).each(function () {
-                var $this = $(this), float;
+        return function(selector) {
+            Donald.$(selector).each(function() {
+                var $this = $(this),
+                    float;
                 if (this.tagName == 'svg') {
                     float = $this.data('float-svg');
                     if (float) {
@@ -2573,15 +2574,15 @@ window.Donald = {};
         };
     })();
 
-	/**
-	 * @class Shop
-	 *
-	 * @requires Minipopup
-	 * @requires noUiSlider
-	 * @instance single
-	 */
+    /**
+     * @class Shop
+     *
+     * @requires Minipopup
+     * @requires noUiSlider
+     * @instance single
+     */
     Donald.Shop = {
-        init: function () {
+        init: function() {
             // Functions for products
             this.initProductsQuickview();
             this.initProductsCartAction();
@@ -2597,8 +2598,8 @@ window.Donald = {};
             Donald.priceSlider('.filter-price-slider');
         },
 
-        initVariation: function (type) {
-            $('.product:not(.product-single) .product-variations > a').on('click', function (e) {
+        initVariation: function(type) {
+            $('.product:not(.product-single) .product-variations > a').on('click', function(e) {
                 var $this = $(this),
                     $image = $this.closest('.product').find('.product-media img');
 
@@ -2616,11 +2617,11 @@ window.Donald = {};
             })
         },
 
-        initProductType: function (type) {
+        initProductType: function(type) {
 
             // "slideup" type
             if (type === 'slideup') {
-                $('.product-slideup-content .product-details').each(function (e) {
+                $('.product-slideup-content .product-details').each(function(e) {
                     var $this = $(this),
                         hidden_height = $this.find('.product-hide-details').outerHeight(true);
 
@@ -2628,14 +2629,14 @@ window.Donald = {};
                 });
 
                 $(Donald.byClass('product-slideup-content'))
-                    .on('mouseenter touchstart', function (e) {
+                    .on('mouseenter touchstart', function(e) {
                         var $this = $(this),
                             hidden_height = $this.find('.product-hide-details').outerHeight(true);
 
                         $this.find('.product-details').css('transform', 'translateY(' + (-hidden_height) + 'px)');
                         $this.find('.product-hide-details').css('transform', 'translateY(' + (-hidden_height) + 'px)');
                     })
-                    .on('mouseleave touchleave', function (e) {
+                    .on('mouseleave touchleave', function(e) {
                         var $this = $(this),
                             hidden_height = $this.find('.product-hide-details').outerHeight(true);
 
@@ -2645,10 +2646,10 @@ window.Donald = {};
             }
         },
 
-        initSelectMenu: function () {
+        initSelectMenu: function() {
             Donald.$body
                 // open select menu
-                .on('mousedown', '.select-menu', function (e) {
+                .on('mousedown', '.select-menu', function(e) {
                     var $selectMenu = $(e.currentTarget),
                         $target = $(e.target),
                         isOpened = $selectMenu.hasClass('opened');
@@ -2670,9 +2671,9 @@ window.Donald = {};
                                 .hide().fadeIn()
                                 .data('link', $target.parent()); // link to anchor's parent - li tag
                         } else { // remove select-item
-                            $('.select-items > .select-item').filter(function (i, el) {
+                            $('.select-items > .select-item').filter(function(i, el) {
                                 return el.innerText == $target.text();
-                            }).fadeOut(function () {
+                            }).fadeOut(function() {
                                 $(this).remove();
                                 // if only clean all button remains, // then hide select-items
                                 if ($('.select-items').children().length < 2) {
@@ -2683,28 +2684,28 @@ window.Donald = {};
                     }
                 })
                 // Close select menu
-                .on('mousedown', function (e) {
+                .on('mousedown', function(e) {
                     $('.select-menu').removeClass('opened');
                 })
-                .on('click', '.select-menu a', function (e) {
+                .on('click', '.select-menu a', function(e) {
                     e.preventDefault();
                 })
 
-                // Remove all filters in navigation
-                .on('click', '.select-items .filter-clean', function (e) {
+            // Remove all filters in navigation
+            .on('click', '.select-items .filter-clean', function(e) {
                     var $clean = $(this);
-                    $clean.siblings().each(function () {
+                    $clean.siblings().each(function() {
                         var $link = $(this).data('link');
                         $link && $link.removeClass('active');
                     });
-                    $clean.parent().fadeOut(function () {
+                    $clean.parent().fadeOut(function() {
                         $clean.siblings().remove();
                     });
                     e.preventDefault();
                 })
                 // Remove one filter in navigation
-                .on('click', '.select-item i', function (e) {
-                    $(e.currentTarget).parent().fadeOut(function () {
+                .on('click', '.select-item i', function(e) {
+                    $(e.currentTarget).parent().fadeOut(function() {
                         var $this = $(this),
                             $link = $this.data('link');
                         $link && $link.toggleClass('active');
@@ -2718,12 +2719,12 @@ window.Donald = {};
                     e.preventDefault();
                 })
                 // Remove all filters
-                .on('click', '.filter-clean', function (e) {
+                .on('click', '.filter-clean', function(e) {
                     $('.shop-sidebar .filter-items .active').removeClass('active');
                     e.preventDefault();
                 })
                 // Toggle filter
-                .on('click', '.filter-items a', function (e) {
+                .on('click', '.filter-items a', function(e) {
                     var $ul = $(this).closest('.filter-items');
                     if (!$ul.hasClass('search-ul') && !$ul.parent().hasClass('select-menu')) {
                         $(this).parent().toggleClass('active');
@@ -2731,16 +2732,16 @@ window.Donald = {};
                     }
                 })
         },
-        initProductsQuickview: function () {
-            Donald.$body.on('click', '.btn-quickview', function (e) {
+        initProductsQuickview: function() {
+            Donald.$body.on('click', '.btn-quickview', function(e) {
                 e.preventDefault();
                 Donald.popup({
                     items: {
                         src: "ajax/quickview.html"
                     },
                     callbacks: {
-                        ajaxContentAdded: function () {
-                            this.wrap.imagesLoaded(function () {
+                        ajaxContentAdded: function() {
+                            this.wrap.imagesLoaded(function() {
                                 Donald.initProductSingle($('.mfp-product .product-single'));
                             });
                         }
@@ -2748,9 +2749,9 @@ window.Donald = {};
                 }, 'quickview');
             });
         },
-        initProductsCartAction: function () {
+        initProductsCartAction: function() {
             // Add to cart in products
-            Donald.$body.on('click', '.btn-product-icon.btn-cart, .btn-product.btn-cart', function (e) {
+            Donald.$body.on('click', '.btn-product-icon.btn-cart, .btn-product.btn-cart', function(e) {
                 e.preventDefault();
 
                 var $product = $(this).closest('.product');
@@ -2770,8 +2771,8 @@ window.Donald = {};
             });
 
         },
-        initProductsLoad: function () {
-            $('.btn-load').on('click', function (e) {
+        initProductsLoad: function() {
+            $('.btn-load').on('click', function(e) {
                 var $this = $(this),
                     $wrapper = $($this.data('load-to')),
                     loadText = $this.html();
@@ -2781,10 +2782,10 @@ window.Donald = {};
 
                 $.ajax({
                     url: $this.attr('href'),
-                    success: function (result) {
+                    success: function(result) {
                         var $newItems = $(result);
 
-                        setTimeout(function () {
+                        setTimeout(function() {
                             $wrapper.isotope('insert', $newItems);
                             $this.html(loadText);
 
@@ -2797,20 +2798,20 @@ window.Donald = {};
                             Donald.Shop.initWishlistButton($newItems.find('.btn-wishlist'));
                         }, 350);
                     },
-                    failure: function () {
+                    failure: function() {
                         $this.text("Sorry something went wrong.");
                     }
                 });
             });
         },
-        initProductsScrollLoad: function ($obj) {
-            var $wrapper = Donald.$($obj)
-                , top;
-            var loadProducts = function (e) {
+        initProductsScrollLoad: function($obj) {
+            var $wrapper = Donald.$($obj),
+                top;
+            var loadProducts = function(e) {
                 if (window.pageYOffset > top + $wrapper.outerHeight() - window.innerHeight - 150 && 'loading' != $wrapper.data('load-state')) {
                     $.ajax({
                         url: 'ajax/ajax-products.html',
-                        success: function (result) {
+                        success: function(result) {
                             var $newItems = $(result);
                             $wrapper.data('load-state', 'loading');
                             if (!$wrapper.next().hasClass('load-more-overlay')) {
@@ -2818,10 +2819,10 @@ window.Donald = {};
                             } else {
                                 $wrapper.next().addClass('loading');
                             }
-                            setTimeout(function () {
+                            setTimeout(function() {
                                 $wrapper.next().removeClass('loading');
                                 $wrapper.append($newItems);
-                                setTimeout(function () {
+                                setTimeout(function() {
                                     $wrapper.find('.product-wrap.fade:not(.in)').addClass('in');
                                 }, 200);
                                 $wrapper.data('load-state', 'loaded');
@@ -2830,7 +2831,7 @@ window.Donald = {};
                             $wrapper.data('load-count', ++loadCount);
                             loadCount > 2 && window.removeEventListener('scroll', loadProducts, { passive: true });
                         },
-                        failure: function () {
+                        failure: function() {
                             $this.text("Sorry something went wrong.");
                         }
                     });
@@ -2841,12 +2842,12 @@ window.Donald = {};
                 window.addEventListener('scroll', loadProducts, { passive: true });
             }
         },
-        initWishlistButton: function (selector) {
-            Donald.$(selector).on('click', function (e) {
+        initWishlistButton: function(selector) {
+            Donald.$(selector).on('click', function(e) {
                 var $this = $(this);
                 $this.toggleClass('added').addClass('load-more-overlay loading');
 
-                setTimeout(function () {
+                setTimeout(function() {
                     $this.removeClass('load-more-overlay loading').find('i').toggleClass('d-icon-heart')
                         .toggleClass('d-icon-heart-full');
 
@@ -2867,46 +2868,46 @@ window.Donald = {};
      */
 
     // Initialize Method while document is being loaded.
-    Donald.prepare = function () {
+    Donald.prepare = function() {
         if (Donald.$body.hasClass('with-flex-container') && window.innerWidth >= 1200) {
             Donald.$body.addClass('sidebar-active');
         }
     };
 
     // Initialize Method while document is interactive
-    Donald.initLayout = function () {
+    Donald.initLayout = function() {
         Donald.isotopes('.grid:not(.grid-float)');
         Donald.stickySidebar('.sticky-sidebar');
     }
 
     // Initialize Method after document has been loaded
-    Donald.init = function () {
-        Donald.appearAnimate('.appear-animate');            // Runs appear animations
+    Donald.init = function() {
+        Donald.appearAnimate('.appear-animate'); // Runs appear animations
         // Donald.Minipopup.init();                            // Initialize minipopup
-        Donald.Shop.init();                                 // Initialize shop
-        Donald.initProductSinglePage();                     // Initialize single product page
-        Donald.slider('.owl-carousel');                     // Initialize slider
-        Donald.headerToggleSearch('.hs-toggle');            // Initialize header toggle search
-        Donald.stickyContent('.product-sticky-content, .sticky-header');      // Initialize sticky content
+        Donald.Shop.init(); // Initialize shop
+        Donald.initProductSinglePage(); // Initialize single product page
+        Donald.slider('.owl-carousel'); // Initialize slider
+        Donald.headerToggleSearch('.hs-toggle'); // Initialize header toggle search
+        Donald.stickyContent('.product-sticky-content, .sticky-header'); // Initialize sticky content
         Donald.stickyContent('.sticky-footer', Donald.defaults.stickyFooter); // Initialize sticky footer
         Donald.stickyContent('.sticky-toolbox', Donald.defaults.stickyToolbox); // Initialize sticky toolbox
-        Donald.sidebar('sidebar');                          // Initialize left sidebar
-        Donald.sidebar('right-sidebar');                    // Initialize right sidebar
-        Donald.quantityInput('.quantity');                  // Initialize quantity input
-        Donald.playableVideo('.post-video');                // Initialize playable video
-        Donald.initAccordion('.card-header > a');           // Initialize accordion
-        Donald.initTab('.nav-tabs');                        // Initialize tab
-        Donald.initAlert('.alert');                         // Initialize alert
-        Donald.parallax('.parallax');                       // Initialize parallax
-        Donald.countTo('.count-to');                        // Initialize countTo
+        Donald.sidebar('sidebar'); // Initialize left sidebar
+        Donald.sidebar('right-sidebar'); // Initialize right sidebar
+        Donald.quantityInput('.quantity'); // Initialize quantity input
+        Donald.playableVideo('.post-video'); // Initialize playable video
+        Donald.initAccordion('.card-header > a'); // Initialize accordion
+        Donald.initTab('.nav-tabs'); // Initialize tab
+        Donald.initAlert('.alert'); // Initialize alert
+        Donald.parallax('.parallax'); // Initialize parallax
+        Donald.countTo('.count-to'); // Initialize countTo
         Donald.countdown('.product-countdown, .countdown'); // Initialize countdown
-        Donald.Menu.init();                                 // Initialize menus
-        Donald.initZoom();                                  // Initialize zoom
-        Donald.initNavFilter('.nav-filters .nav-filter');   // Initialize navigation filters for blog, products
-        Donald.initPopups();                                // Initialize popups: login, register, play video, newsletter popup
-        Donald.initPurchasedMinipopup();                    // Initialize minipopup for purchased event
-        Donald.initScrollTopButton();                       // Initialize scroll top button.
-        Donald.floatSVG('.float-svg');						// Floating SVG
+        Donald.Menu.init(); // Initialize menus
+        Donald.initZoom(); // Initialize zoom
+        Donald.initNavFilter('.nav-filters .nav-filter'); // Initialize navigation filters for blog, products
+        Donald.initPopups(); // Initialize popups: login, register, play video, newsletter popup
+        Donald.initPurchasedMinipopup(); // Initialize minipopup for purchased event
+        Donald.initScrollTopButton(); // Initialize scroll top button.
+        Donald.floatSVG('.float-svg'); // Floating SVG
 
         Donald.status = 'complete';
     }
@@ -2919,7 +2920,7 @@ window.Donald = {};
     Donald.prepare();
 
     // Initialize Donald Theme
-    window.onload = function () {
+    window.onload = function() {
         Donald.status = 'loaded';
         Donald.$body.addClass('loaded');
         Donald.$window.trigger('donald_load');
