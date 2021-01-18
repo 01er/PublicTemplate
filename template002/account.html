@@ -37,6 +37,8 @@
   <!-- Plugins CSS File -->
   <link rel="stylesheet" type="text/css" href="vendor/magnific-popup/magnific-popup.min.css">
   <link rel="stylesheet" type="text/css" href="vendor/luluui/index.css">
+  <link rel="stylesheet" type="text/css" href="vendor/message/index.css">
+  <link rel="stylesheet" type="text/css" href="vendor/elementui/index.css">
 
   <!-- Main CSS File -->
   <link rel="stylesheet" type="text/css" href="css/style.min.css">
@@ -458,480 +460,579 @@
                   <a href="#" class="btn btn-primary">Go Shop</a>
                 </div>
                 <div class="tab-pane" id="address">
-                  <p class="mb-2">
-                    <!-- The following addresses will be used on the checkout page by default. -->
-                    <button class="ui-button add-shipping-address">Add Shipping Address</button>
+                  <!-- <p v-if="type === 'A'">
+                    <button class="ui-button add-shipping-address" @click="handleAddShippingAddress">
+                      Add Shipping Address
+                    </button>
                   </p>
+                  <p v-else-if="type === 'B'">
+                    <h2>新增</h2>
+                  </p>
+                  <p v-else-if="type === 'C'">
+                    C
+                  </p>
+                  <p v-else>
+                    Not A/B/C
+                  </p> -->
+                  <div class="mb-2" v-if="shippingAddressFormType==='show'">
+                    <button class="ui-button add-shipping-address" @click="handleAddShippingAddress">
+                      Add Shipping Address
+                    </button>
+                  </div>
+                  <div class="mb-2" v-else-if="shippingAddressFormType==='add'" style="text-align: left;">
+                    <h5>Add</h5>
+                  </div>
+                  <div class="mb-2" v-else style="text-align: left;">
+                    <h5>Edit</h5>
+                  </div>
+                  <div v-show="shippingAddressFormType==='add'||shippingAddressFormType==='edit'">
+                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
+                      label-position='top'>
+                      <el-row :gutter="20">
+                        <el-col :span="12">
+                          <el-form-item prop="id" style="display: none;"></el-form-item>
+                          <el-form-item label="First Name" prop="firstName">
+                            <el-input v-model="ruleForm.firstName"></el-input>
+                          </el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                          <el-form-item label="Last Name" prop="lastName">
+                            <el-input v-model="ruleForm.lastName"></el-input>
+                          </el-form-item>
+                        </el-col>
+                      </el-row>
+                      <el-row :gutter="20">
+                        <el-col :span="12">
+                          <el-form-item label="Phone Number" prop="phoneNumberSub">
+                            <el-input v-model="ruleForm.phoneNumberSub" style="width: 19%;padding-right: 16px;">
+                            </el-input>
+                            <el-input v-model="ruleForm.phoneNumberSup" style="width: 80%;"></el-input>
+                          </el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                          <el-form-item label="Email" prop="emailAddress">
+                            <el-input v-model="ruleForm.emailAddress"></el-input>
+                          </el-form-item>
+                        </el-col>
+                      </el-row>
+                      <el-row :gutter="20">
+                        <el-col :span="12">
+                          <el-form-item label="Country Or Area" prop="country">
+                            <el-select v-model="ruleForm.country" placeholder="please select" style="width: 100%;">
+                              <el-option v-for="item in countryList" :key="item.value" :label="item.label"
+                                :value="item.value">
+                                <span style="float: left"><img :src="item.image" /></span>
+                                <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+                              </el-option>
+                            </el-select>
+                          </el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                          <el-form-item label="Postcode" prop="postCode">
+                            <el-input v-model="ruleForm.postCode"></el-input>
+                          </el-form-item>
+                        </el-col>
+                      </el-row>
+                      <el-row :gutter="20">
+                        <el-col :span="24">
+                          <el-form-item label="Detailed Address" prop="detailAddress">
+                            <el-input v-model="ruleForm.detailAddress"></el-input>
+                          </el-form-item>
+                        </el-col>
+                      </el-row>
+                      <el-row :gutter="20">
+                        <el-col :span="12">
+                          <el-form-item label="City" prop="city">
+                            <el-input v-model="ruleForm.city"></el-input>
+                          </el-form-item>
+                        </el-col>
+                        <el-col :span="12">
+                          <el-form-item label="State" prop="region">
+                            <el-input v-model="ruleForm.region"></el-input>
+                          </el-form-item>
+                        </el-col>
+                      </el-row>
+                      <el-row style="text-align: right;">
+                        <el-button type="danger" plain style="width: 120px;" @click="handleDeleteAddress">删除</el-button>
+                        <el-button plain style="width: 120px;" @click="handleCancel">取消</el-button>
+                        <el-button type="success" plain style="width: 120px;" @click="handleSaveAddress">保存</el-button>
+                      </el-row>
+                    </el-form>
+                  </div>
+                  <div class="row" v-show="shippingAddressFormType==='show'">
+                    <el-row :gutter="20">
+                      <el-radio-group v-model="defaultStatus" style="width: 100%;">
+                        <div v-for="(address ,index) of addressList">
+                          <el-col :span="12">
+                            <div class="card card-address card-address-shipping">
+                              <div class="card-body">
+                                <h5 class="card-title">{{address.firstName+' '+address.lastName}}</h5>
+                                <p>
+                                  {{`${address.detailAddress},${address.province},${address.city},${address.postCode},${address.country}`}}
+                                </p>
+                                <p>{{address.phoneNumber}}</p>
+                                <el-row :gutter="20">
+                                  <el-col :span="12">
+                                    <el-button type="text" @click="handleEditShippingAddress(address.id)"
+                                      style="color:#67C23A">
+                                      Edit
+                                    </el-button>
+                                  </el-col>
+                                  <el-col :span="12" class="default-status-col">
+                                    <el-radio :label="`${index}`">
+                                      Set as default
+                                    </el-radio>
+                                  </el-col>
+                                </el-row>
+                              </div>
+                            </div>
+                          </el-col>
+                      </el-radio-group>
+                    </el-row>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="account">
+                <form action="#" class="form">
                   <div class="row">
-                    <div class="col-lg-6 mb-4">
-                      <div class="card card-address">
-                        <div class="card-body">
-                          <h5 class="card-title">Billing Address</h5>
-                          <p>User Name<br>
-                            User Company<br>
-                            John str<br>
-                            New York, NY 10001<br>
-                            1-234-987-6543<br>
-                            yourmail@mail.com<br>
-                          </p>
-                          <a href="#" class="btn btn-link btn-secondary btn-underline">Edit <i
-                              class="far fa-edit"></i></a>
-                        </div>
-                      </div>
+                    <div class="col-sm-6">
+                      <label>First Name *</label>
+                      <!-- <input type="text" class="form-control" name="first_name" required=""> -->
                     </div>
-                    <div class="col-lg-6 mb-4">
-                      <div class="card card-address">
-                        <div class="card-body">
-                          <h5 class="card-title">Shipping Address</h5>
-                          <p>You have not set up this type of address yet.</p>
-                          <a href="#" class="btn btn-link btn-secondary btn-underline">Edit <i
-                              class="far fa-edit"></i></a>
-                        </div>
-                      </div>
+                    <div class="col-sm-6">
+                      <label>Last Name *</label>
+                      <input type="text" class="form-control" name="last_name" required="">
                     </div>
                   </div>
-                </div>
-                <div class="tab-pane" id="account">
-                  <form action="#" class="form">
-                    <div class="row">
-                      <div class="col-sm-6">
-                        <label>First Name *</label>
-                        <input type="text" class="form-control" name="first_name" required="">
-                      </div>
-                      <div class="col-sm-6">
-                        <label>Last Name *</label>
-                        <input type="text" class="form-control" name="last_name" required="">
-                      </div>
-                    </div>
 
-                    <label>Display Name *</label>
-                    <input type="text" class="form-control mb-0" name="display_name" required="">
-                    <small class="d-block form-text mb-4">This will be how your name will be displayed
-                      in the account section and in reviews</small>
+                  <label>Display Name *</label>
+                  <input type="text" class="form-control mb-0" name="display_name" required="">
+                  <small class="d-block form-text mb-4">This will be how your name will be displayed
+                    in the account section and in reviews</small>
 
-                    <label>Email address *</label>
-                    <input type="email" class="form-control" name="email" required="">
+                  <label>Email address *</label>
+                  <input type="email" class="form-control" name="email" required="">
 
-                    <label>Current password (leave blank to leave unchanged)</label>
-                    <input type="password" class="form-control" name="current_password">
+                  <label>Current password (leave blank to leave unchanged)</label>
+                  <input type="password" class="form-control" name="current_password">
 
-                    <label>New password (leave blank to leave unchanged)</label>
-                    <input type="password" class="form-control" name="new_password">
+                  <label>New password (leave blank to leave unchanged)</label>
+                  <input type="password" class="form-control" name="new_password">
 
-                    <label>Confirm new password</label>
-                    <input type="password" class="form-control" name="confirm_password">
+                  <label>Confirm new password</label>
+                  <input type="password" class="form-control" name="confirm_password">
 
-                    <button type="submit" class="btn btn-primary btn-reveal-right">SAVE CHANGES <i
-                        class="d-icon-arrow-right"></i></button>
-                  </form>
-                </div>
+                  <button type="submit" class="btn btn-primary btn-reveal-right">SAVE CHANGES <i
+                      class="d-icon-arrow-right"></i></button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </main>
-      <!-- End Main -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-top">
-            <div class="row">
-              <div class="col-lg-3">
-                <a href="demo1.html" class="logo-footer">
-                  <img src="images/logo-footer.png" alt="logo-footer" width="163" height="39" />
-                </a>
-                <!-- End FooterLogo -->
+    </div>
+    </main>
+    <!-- End Main -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="row">
+            <div class="col-lg-3">
+              <a href="demo1.html" class="logo-footer">
+                <img src="images/logo-footer.png" alt="logo-footer" width="163" height="39" />
+              </a>
+              <!-- End FooterLogo -->
+            </div>
+            <div class="col-lg-9">
+              <div class="widget widget-newsletter form-wrapper form-wrapper-inline">
+                <div class="newsletter-info mx-auto mr-lg-2 ml-lg-4">
+                  <h4 class="widget-title">Subscribe to our Newsletter</h4>
+                  <p>Get all the latest information on Events, Sales and Offers.</p>
+                </div>
+                <form action="#" class="input-wrapper input-wrapper-inline">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email address here..."
+                    required />
+                  <button class="btn btn-primary btn-md ml-2" type="submit">subscribe<i
+                      class="d-icon-arrow-right"></i></button>
+                </form>
               </div>
-              <div class="col-lg-9">
-                <div class="widget widget-newsletter form-wrapper form-wrapper-inline">
-                  <div class="newsletter-info mx-auto mr-lg-2 ml-lg-4">
-                    <h4 class="widget-title">Subscribe to our Newsletter</h4>
-                    <p>Get all the latest information on Events, Sales and Offers.</p>
+              <!-- End Newsletter -->
+            </div>
+          </div>
+        </div>
+        <!-- End FooterTop -->
+        <div class="footer-middle">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="widget">
+                <h4 class="widget-title">Contact Info</h4>
+                <ul class="widget-body">
+                  <li>
+                    <label>Phone:</label>
+                    <a href="#">Toll Free (123) 456-7890</a>
+                  </li>
+                  <li>
+                    <label>Email:</label>
+                    <a href="#">mail@donald.com</a>
+                  </li>
+                  <li>
+                    <label>Address:</label>
+                    <a href="#">123 Street Name, City, England</a>
+                  </li>
+                  <li>
+                    <label>WORKING DAYS/HOURS</label>
+                  </li>
+                  <li>
+                    <a href="#">Mon - Sun / 9:00 AM - 8:00 PM</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Widget -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="widget ml-lg-4">
+                <h4 class="widget-title">My Account</h4>
+                <ul class="widget-body">
+                  <li>
+                    <a href="#">About Us</a>
+                  </li>
+                  <li>
+                    <a href="#">Order History</a>
+                  </li>
+                  <li>
+                    <a href="#">Returns</a>
+                  </li>
+                  <li>
+                    <a href="#">Custom Service</a>
+                  </li>
+                  <li>
+                    <a href="#">Terms &amp; Condition</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Widget -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="widget ml-lg-4">
+                <h4 class="widget-title">Contact Info</h4>
+                <ul class="widget-body">
+                  <li>
+                    <a href="#">About Us</a>
+                  </li>
+                  <li>
+                    <a href="#">Order History</a>
+                  </li>
+                  <li>
+                    <a href="#">Returns</a>
+                  </li>
+                  <li>
+                    <a href="#">Custom Service</a>
+                  </li>
+                  <li>
+                    <a href="#">Terms &amp; Condition</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Widget -->
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="widget widget-instagram">
+                <h4 class="widget-title">Instagram</h4>
+                <figure class="widget-body row">
+                  <div class="col-3">
+                    <img src="images/instagram/01.jpg" alt="instagram 1" width="64" height="64" />
                   </div>
-                  <form action="#" class="input-wrapper input-wrapper-inline">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email address here..."
-                      required />
-                    <button class="btn btn-primary btn-md ml-2" type="submit">subscribe<i
-                        class="d-icon-arrow-right"></i></button>
-                  </form>
-                </div>
-                <!-- End Newsletter -->
+                  <div class="col-3">
+                    <img src="images/instagram/02.jpg" alt="instagram 2" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/03.jpg" alt="instagram 3" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/04.jpg" alt="instagram 4" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/05.jpg" alt="instagram 5" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/06.jpg" alt="instagram 6" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/07.jpg" alt="instagram 7" width="64" height="64" />
+                  </div>
+                  <div class="col-3">
+                    <img src="images/instagram/08.jpg" alt="instagram 8" width="64" height="64" />
+                  </div>
+                </figure>
               </div>
+              <!-- End Instagram -->
             </div>
           </div>
-          <!-- End FooterTop -->
-          <div class="footer-middle">
-            <div class="row">
-              <div class="col-lg-3 col-md-6">
-                <div class="widget">
-                  <h4 class="widget-title">Contact Info</h4>
-                  <ul class="widget-body">
-                    <li>
-                      <label>Phone:</label>
-                      <a href="#">Toll Free (123) 456-7890</a>
-                    </li>
-                    <li>
-                      <label>Email:</label>
-                      <a href="#">mail@donald.com</a>
-                    </li>
-                    <li>
-                      <label>Address:</label>
-                      <a href="#">123 Street Name, City, England</a>
-                    </li>
-                    <li>
-                      <label>WORKING DAYS/HOURS</label>
-                    </li>
-                    <li>
-                      <a href="#">Mon - Sun / 9:00 AM - 8:00 PM</a>
-                    </li>
-                  </ul>
-                </div>
-                <!-- End Widget -->
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="widget ml-lg-4">
-                  <h4 class="widget-title">My Account</h4>
-                  <ul class="widget-body">
-                    <li>
-                      <a href="#">About Us</a>
-                    </li>
-                    <li>
-                      <a href="#">Order History</a>
-                    </li>
-                    <li>
-                      <a href="#">Returns</a>
-                    </li>
-                    <li>
-                      <a href="#">Custom Service</a>
-                    </li>
-                    <li>
-                      <a href="#">Terms &amp; Condition</a>
-                    </li>
-                  </ul>
-                </div>
-                <!-- End Widget -->
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="widget ml-lg-4">
-                  <h4 class="widget-title">Contact Info</h4>
-                  <ul class="widget-body">
-                    <li>
-                      <a href="#">About Us</a>
-                    </li>
-                    <li>
-                      <a href="#">Order History</a>
-                    </li>
-                    <li>
-                      <a href="#">Returns</a>
-                    </li>
-                    <li>
-                      <a href="#">Custom Service</a>
-                    </li>
-                    <li>
-                      <a href="#">Terms &amp; Condition</a>
-                    </li>
-                  </ul>
-                </div>
-                <!-- End Widget -->
-              </div>
-              <div class="col-lg-3 col-md-6">
-                <div class="widget widget-instagram">
-                  <h4 class="widget-title">Instagram</h4>
-                  <figure class="widget-body row">
-                    <div class="col-3">
-                      <img src="images/instagram/01.jpg" alt="instagram 1" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/02.jpg" alt="instagram 2" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/03.jpg" alt="instagram 3" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/04.jpg" alt="instagram 4" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/05.jpg" alt="instagram 5" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/06.jpg" alt="instagram 6" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/07.jpg" alt="instagram 7" width="64" height="64" />
-                    </div>
-                    <div class="col-3">
-                      <img src="images/instagram/08.jpg" alt="instagram 8" width="64" height="64" />
-                    </div>
-                  </figure>
-                </div>
-                <!-- End Instagram -->
-              </div>
-            </div>
-          </div>
-          <!-- End FooterMiddle -->
-          <div class="footer-bottom">
-            <div class="footer-left">
-              <figure class="payment">
-                <img src="images/payment.png" alt="payment" width="159" height="29" />
-              </figure>
-            </div>
-            <div class="footer-center">
-              <p class="copyright">Donald eCommerce &copy; 2020. All Rights Reserved</p>
-            </div>
-            <div class="footer-right">
-              <div class="social-links">
-                <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
-                <a href="#" class="social-link social-twitter fab fa-twitter"></a>
-                <a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
-              </div>
-            </div>
-          </div>
-          <!-- End FooterBottom -->
         </div>
-      </footer>
-      <!-- End Footer -->
-    </div>
-    <!-- Sticky Footer -->
-    <div class="sticky-footer sticky-content fix-bottom">
-      <a href="demo1.html" class="sticky-link">
-        <i class="d-icon-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="shop.html" class="sticky-link">
-        <i class="d-icon-volume"></i>
-        <span>Categories</span>
-      </a>
-      <a href="wishlist.html" class="sticky-link">
-        <i class="d-icon-heart"></i>
-        <span>Wishlist</span>
-      </a>
-      <a href="account.html" class="sticky-link active">
-        <i class="d-icon-user"></i>
-        <span>Account</span>
-      </a>
-      <div class="dropdown cart-dropdown dir-up">
-        <a href="cart.html" class="sticky-link cart-toggle">
-          <i class="d-icon-bag"></i>
-          <span>Cart</span>
-        </a>
-        <!-- End of Cart Toggle -->
-        <div class="dropdown-box">
-          <div class="product product-cart-header">
-            <span class="product-cart-counts">2 items</span>
-            <span><a href="cart.html">View cart</a></span>
+        <!-- End FooterMiddle -->
+        <div class="footer-bottom">
+          <div class="footer-left">
+            <figure class="payment">
+              <img src="images/payment.png" alt="payment" width="159" height="29" />
+            </figure>
           </div>
-          <div class="products scrollable">
-            <div class="product product-cart">
-              <div class="product-detail">
-                <a href="product.html" class="product-name">Solid Pattern In Fashion Summer Dress</a>
-                <div class="price-box">
-                  <span class="product-quantity">1</span>
-                  <span class="product-price">$129.00</span>
-                </div>
-              </div>
-              <figure class="product-media">
-                <a href="#">
-                  <img src="images/cart/product-1.jpg" alt="product" width="90" height="90" />
-                </a>
-                <button class="btn btn-link btn-close">
-                  <i class="fas fa-times"></i>
-                </button>
-              </figure>
+          <div class="footer-center">
+            <p class="copyright">Donald eCommerce &copy; 2020. All Rights Reserved</p>
+          </div>
+          <div class="footer-right">
+            <div class="social-links">
+              <a href="#" class="social-link social-facebook fab fa-facebook-f"></a>
+              <a href="#" class="social-link social-twitter fab fa-twitter"></a>
+              <a href="#" class="social-link social-linkedin fab fa-linkedin-in"></a>
             </div>
-            <!-- End of Cart Product -->
-            <div class="product product-cart">
-              <div class="product-detail">
-                <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
-                <div class="price-box">
-                  <span class="product-quantity">1</span>
-                  <span class="product-price">$98.00</span>
-                </div>
-              </div>
-              <figure class="product-media">
-                <a href="#">
-                  <img src="images/cart/product-2.jpg" alt="product" width="90" height="90" />
-                </a>
-                <button class="btn btn-link btn-close">
-                  <i class="fas fa-times"></i>
-                </button>
-              </figure>
-            </div>
-            <!-- End of Cart Product -->
           </div>
-          <!-- End of Products  -->
-          <div class="cart-total">
-            <label>Subtotal:</label>
-            <span class="price">$42.00</span>
-          </div>
-          <!-- End of Cart Total -->
-          <div class="cart-action">
-            <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
-          </div>
-          <!-- End of Cart Action -->
         </div>
-        <!-- End of Dropdown Box -->
+        <!-- End FooterBottom -->
       </div>
+    </footer>
+    <!-- End Footer -->
+  </div>
+  <!-- Sticky Footer -->
+  <div class="sticky-footer sticky-content fix-bottom">
+    <a href="demo1.html" class="sticky-link">
+      <i class="d-icon-home"></i>
+      <span>Home</span>
+    </a>
+    <a href="shop.html" class="sticky-link">
+      <i class="d-icon-volume"></i>
+      <span>Categories</span>
+    </a>
+    <a href="wishlist.html" class="sticky-link">
+      <i class="d-icon-heart"></i>
+      <span>Wishlist</span>
+    </a>
+    <a href="account.html" class="sticky-link active">
+      <i class="d-icon-user"></i>
+      <span>Account</span>
+    </a>
+    <div class="dropdown cart-dropdown dir-up">
+      <a href="cart.html" class="sticky-link cart-toggle">
+        <i class="d-icon-bag"></i>
+        <span>Cart</span>
+      </a>
+      <!-- End of Cart Toggle -->
+      <div class="dropdown-box">
+        <div class="product product-cart-header">
+          <span class="product-cart-counts">2 items</span>
+          <span><a href="cart.html">View cart</a></span>
+        </div>
+        <div class="products scrollable">
+          <div class="product product-cart">
+            <div class="product-detail">
+              <a href="product.html" class="product-name">Solid Pattern In Fashion Summer Dress</a>
+              <div class="price-box">
+                <span class="product-quantity">1</span>
+                <span class="product-price">$129.00</span>
+              </div>
+            </div>
+            <figure class="product-media">
+              <a href="#">
+                <img src="images/cart/product-1.jpg" alt="product" width="90" height="90" />
+              </a>
+              <button class="btn btn-link btn-close">
+                <i class="fas fa-times"></i>
+              </button>
+            </figure>
+          </div>
+          <!-- End of Cart Product -->
+          <div class="product product-cart">
+            <div class="product-detail">
+              <a href="product.html" class="product-name">Mackintosh Poket Backpack</a>
+              <div class="price-box">
+                <span class="product-quantity">1</span>
+                <span class="product-price">$98.00</span>
+              </div>
+            </div>
+            <figure class="product-media">
+              <a href="#">
+                <img src="images/cart/product-2.jpg" alt="product" width="90" height="90" />
+              </a>
+              <button class="btn btn-link btn-close">
+                <i class="fas fa-times"></i>
+              </button>
+            </figure>
+          </div>
+          <!-- End of Cart Product -->
+        </div>
+        <!-- End of Products  -->
+        <div class="cart-total">
+          <label>Subtotal:</label>
+          <span class="price">$42.00</span>
+        </div>
+        <!-- End of Cart Total -->
+        <div class="cart-action">
+          <a href="checkout.html" class="btn btn-dark"><span>Checkout</span></a>
+        </div>
+        <!-- End of Cart Action -->
+      </div>
+      <!-- End of Dropdown Box -->
     </div>
-    <!-- Scroll Top -->
-    <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-angle-up"></i></a>
+  </div>
+  <!-- Scroll Top -->
+  <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"><i class="d-icon-angle-up"></i></a>
 
-    <!-- MobileMenu -->
-    <div class="mobile-menu-wrapper">
-      <div class="mobile-menu-overlay">
-      </div>
-      <!-- End Overlay -->
-      <a class="mobile-menu-close" href="#"><i class="d-icon-times"></i></a>
-      <!-- End CloseButton -->
-      <div class="mobile-menu-container scrollable">
-        <form action="#" class="input-wrapper">
-          <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search your keyword..."
-            required />
-          <button class="btn btn-search" type="submit">
-            <i class="d-icon-search"></i>
-          </button>
-        </form>
-        <!-- End Search Form -->
-        <ul class="mobile-menu mmenu-anim">
-          <li>
-            <a href="demo1.html">Home</a>
-          </li>
-          <li>
-            <a href="#" class="active">Categories</a>
-            <ul>
-              <li>
-                <a href="#">
-                  Variations 1
-                </a>
-                <ul>
-                  <li><a href="shop-banner-sidebar.html">Banner With Sidebar</a></li>
-                  <li><a href="shop-boxed-banner.html">Boxed Banner</a></li>
-                  <li><a href="shop-infinite-scroll.html">Infinite Ajaxscroll</a></li>
-                  <li><a href="shop-horizontal-filter.html">Horizontal Filter</a></li>
-                  <li><a href="#">Navigation Filter<span class="tip tip-hot">Hot</span></a></li>
-
-                  <li><a href="shop-off-canvas.html">Off-Canvas Filter</a></li>
-                  <li><a href="shop-right-sidebar.html">Right Toggle Sidebar</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">
-                  Variations 2
-                </a>
-                <ul>
-
-                  <li><a href="shop-grid-3cols.html">3 Columns Mode<span class="tip tip-new">New</span></a></li>
-                  <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
-                  <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
-                  <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
-                  <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
-                  <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
-                  <li><a href="shop-list.html">List Mode</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="product.html">Products</a>
-            <ul>
-              <li>
-                <a href="#">Product Pages</a>
-                <ul>
-                  <li><a href="product-simple.html">Simple Product</a></li>
-                  <li><a href="product.html">Variable Product</a></li>
-                  <li><a href="product-sale.html">Sale Product</a></li>
-                  <li><a href="product-featured.html">Featured &amp; On Sale</a></li>
-
-                  <li><a href="shop-off-canvas.html">Off-Canvas Filter</a></li>
-                  <li><a href="shop-right-sidebar.html">Right Toggle Sidebar</a></li>
-                  <li><a href="product-sticky-cart.html">Add Cart Sticky<span class="tip tip-hot">Hot</span></a></li>
-                  <li><a href="product-tabinside.html">Tab Inside</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Product Layouts</a>
-                <ul>
-                  <li><a href="product-grid.html">Grid Images<span class="tip tip-new">New</span></a></li>
-                  <li><a href="product-sticky-both.html">Left &amp; Right Sticky</a></li>
-                  <li><a href="product-gallery.html">Gallery Type</a></li>
-                  <li><a href="product-full.html">Full Width Layout</a></li>
-                  <li><a href="product-sticky.html">Sticky Info</a></li>
-                  <li><a href="product-sticky-both.html">Left &amp; Right Sticky</a></li>
-                  <li><a href="product-horizontal.html">Horizontal Thumb</a></li>
-                  <li><a href="product-left-sidebar">Left Sidebar</a></li>
-                  <li><a href="#">Build Your Own</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Pages</a>
-            <ul>
-              <li><a href="about-us.html">About</a></li>
-              <li><a href="contact-us.html">Contact Us</a></li>
-              <li><a href="account.html">Login</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="error-404.html">Error 404</a></li>
-              <li><a href="coming-soon.html">Coming Soon</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Blog</a>
-            <ul>
-              <li><a href="blog-classic.html">Classic</a></li>
-              <li><a href="blog-listing.html">Listing</a></li>
-              <li>
-                <a href="#">Grid</a>
-                <ul>
-                  <li><a href="blog-grid-2col.html">Grid 2 columns</a></li>
-                  <li><a href="blog-grid-3col.html">Grid 3 columns</a></li>
-                  <li><a href="blog-grid-4col.html">Grid 4 columns</a></li>
-                  <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Masonry</a>
-                <ul>
-                  <li><a href="blog-masonry-2col.html">Masonry 2 columns</a></li>
-                  <li><a href="blog-masonry-3col.html">Masonry 3 columns</a></li>
-                  <li><a href="blog-masonry-4col.html">Masonry 4 columns</a></li>
-                  <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">Mask</a>
-                <ul>
-                  <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
-                  <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="post-single.html">Single Post</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">ELements</a>
-            <ul>
-              <li><a href="element-products.html">Products</a></li>
-              <li><a href="element-typography.html">Typography</a></li>
-              <li><a href="element-titles.html">Titles</a></li>
-              <li><a href="element-categories.html">Product Category</a></li>
-              <li><a href="element-buttons.html">Buttons</a></li>
-              <li><a href="element-accordions.html">Accordions</a></li>
-              <li><a href="element-alerts.html">Alert &amp; Notification</a></li>
-              <li><a href="element-tabs.html">Tabs</a></li>
-              <li><a href="element-testimonials.html">Testimonials</a></li>
-              <li><a href="element-blog-posts.html">Blog Posts</a></li>
-              <li><a href="element-instagrams.html">Instagrams</a></li>
-              <li><a href="element-cta.html">Call to Action</a></li>
-              <li><a href="element-icon-boxes.html">Icon Boxes</a></li>
-              <li><a href="element-icons.html">Icons</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Buy Donald!</a></li>
-        </ul>
-        <!-- End MobileMenu -->
-      </div>
+  <!-- MobileMenu -->
+  <div class="mobile-menu-wrapper">
+    <div class="mobile-menu-overlay">
     </div>
+    <!-- End Overlay -->
+    <a class="mobile-menu-close" href="#"><i class="d-icon-times"></i></a>
+    <!-- End CloseButton -->
+    <div class="mobile-menu-container scrollable">
+      <form action="#" class="input-wrapper">
+        <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search your keyword..."
+          required />
+        <button class="btn btn-search" type="submit">
+          <i class="d-icon-search"></i>
+        </button>
+      </form>
+      <!-- End Search Form -->
+      <ul class="mobile-menu mmenu-anim">
+        <li>
+          <a href="demo1.html">Home</a>
+        </li>
+        <li>
+          <a href="#" class="active">Categories</a>
+          <ul>
+            <li>
+              <a href="#">
+                Variations 1
+              </a>
+              <ul>
+                <li><a href="shop-banner-sidebar.html">Banner With Sidebar</a></li>
+                <li><a href="shop-boxed-banner.html">Boxed Banner</a></li>
+                <li><a href="shop-infinite-scroll.html">Infinite Ajaxscroll</a></li>
+                <li><a href="shop-horizontal-filter.html">Horizontal Filter</a></li>
+                <li><a href="#">Navigation Filter<span class="tip tip-hot">Hot</span></a></li>
+
+                <li><a href="shop-off-canvas.html">Off-Canvas Filter</a></li>
+                <li><a href="shop-right-sidebar.html">Right Toggle Sidebar</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">
+                Variations 2
+              </a>
+              <ul>
+
+                <li><a href="shop-grid-3cols.html">3 Columns Mode<span class="tip tip-new">New</span></a></li>
+                <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
+                <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
+                <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
+                <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
+                <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
+                <li><a href="shop-list.html">List Mode</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="product.html">Products</a>
+          <ul>
+            <li>
+              <a href="#">Product Pages</a>
+              <ul>
+                <li><a href="product-simple.html">Simple Product</a></li>
+                <li><a href="product.html">Variable Product</a></li>
+                <li><a href="product-sale.html">Sale Product</a></li>
+                <li><a href="product-featured.html">Featured &amp; On Sale</a></li>
+
+                <li><a href="shop-off-canvas.html">Off-Canvas Filter</a></li>
+                <li><a href="shop-right-sidebar.html">Right Toggle Sidebar</a></li>
+                <li><a href="product-sticky-cart.html">Add Cart Sticky<span class="tip tip-hot">Hot</span></a></li>
+                <li><a href="product-tabinside.html">Tab Inside</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Product Layouts</a>
+              <ul>
+                <li><a href="product-grid.html">Grid Images<span class="tip tip-new">New</span></a></li>
+                <li><a href="product-sticky-both.html">Left &amp; Right Sticky</a></li>
+                <li><a href="product-gallery.html">Gallery Type</a></li>
+                <li><a href="product-full.html">Full Width Layout</a></li>
+                <li><a href="product-sticky.html">Sticky Info</a></li>
+                <li><a href="product-sticky-both.html">Left &amp; Right Sticky</a></li>
+                <li><a href="product-horizontal.html">Horizontal Thumb</a></li>
+                <li><a href="product-left-sidebar">Left Sidebar</a></li>
+                <li><a href="#">Build Your Own</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Pages</a>
+          <ul>
+            <li><a href="about-us.html">About</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="account.html">Login</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="error-404.html">Error 404</a></li>
+            <li><a href="coming-soon.html">Coming Soon</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Blog</a>
+          <ul>
+            <li><a href="blog-classic.html">Classic</a></li>
+            <li><a href="blog-listing.html">Listing</a></li>
+            <li>
+              <a href="#">Grid</a>
+              <ul>
+                <li><a href="blog-grid-2col.html">Grid 2 columns</a></li>
+                <li><a href="blog-grid-3col.html">Grid 3 columns</a></li>
+                <li><a href="blog-grid-4col.html">Grid 4 columns</a></li>
+                <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Masonry</a>
+              <ul>
+                <li><a href="blog-masonry-2col.html">Masonry 2 columns</a></li>
+                <li><a href="blog-masonry-3col.html">Masonry 3 columns</a></li>
+                <li><a href="blog-masonry-4col.html">Masonry 4 columns</a></li>
+                <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Mask</a>
+              <ul>
+                <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
+                <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="post-single.html">Single Post</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">ELements</a>
+          <ul>
+            <li><a href="element-products.html">Products</a></li>
+            <li><a href="element-typography.html">Typography</a></li>
+            <li><a href="element-titles.html">Titles</a></li>
+            <li><a href="element-categories.html">Product Category</a></li>
+            <li><a href="element-buttons.html">Buttons</a></li>
+            <li><a href="element-accordions.html">Accordions</a></li>
+            <li><a href="element-alerts.html">Alert &amp; Notification</a></li>
+            <li><a href="element-tabs.html">Tabs</a></li>
+            <li><a href="element-testimonials.html">Testimonials</a></li>
+            <li><a href="element-blog-posts.html">Blog Posts</a></li>
+            <li><a href="element-instagrams.html">Instagrams</a></li>
+            <li><a href="element-cta.html">Call to Action</a></li>
+            <li><a href="element-icon-boxes.html">Icon Boxes</a></li>
+            <li><a href="element-icons.html">Icons</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Buy Donald!</a></li>
+      </ul>
+      <!-- End MobileMenu -->
+    </div>
+  </div>
   </div>
   <!-- Plugins JS File -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -941,10 +1042,13 @@
   <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
   <script src="vendor/vue/index.js"></script>
   <script src="vendor/axios/index.js"></script>
+  <script src="vendor/message/index.js"></script>
+  <script src="vendor/elementui/index.js"></script>
   <script src="vendor/qs/index.js"></script>
   <!-- Main JS File -->
   <script src="js/main.js"></script>
   <script src="js/main/account.js"></script>
+  <script src="js/index.js"></script>
 </body>
 <script>
   new Vue({
@@ -952,22 +1056,298 @@
     data: function () {
       return {
         visible: false,
-        signinemail: '测试我是张志阵'
+        signinemail: '测试我是张志阵',
+        shippingAddressFormType: 'show',
+        addressList: [],
+        defaultStatus: false,
+        type: 'DD',
+        countryList: [],
+        ruleForm: {
+          id: '',
+          firstName: '',
+          lastName: '',
+          phoneNumberSub: '',
+          phoneNumberSup: '',
+          emailAddress: '',
+          country: '',
+          postCode: '',
+          detailAddress: '',
+          city: '',
+          region: '',
+        },
+        rules: {
+          firstName: [{
+            required: true,
+            message: 'Please input your first name',
+            trigger: 'change'
+          }, ],
+          lastName: [{
+            required: true,
+            message: 'Please input your last name',
+            trigger: 'change'
+          }, ],
+          phoneNumberSub: [{
+            validator: (rule, value, callback) => {
+              if (!this.ruleForm.phoneNumberSup || !value) {
+                callback(new Error('Please input your phone number'))
+              } else {
+                callback();
+              }
+            },
+            trigger: 'change',
+          }],
+          email: [{
+            required: true,
+            message: 'Please input your email',
+            trigger: 'change'
+          }],
+          country: [{
+            required: true,
+            message: 'Please input your country',
+            trigger: 'change'
+          }],
+          postCode: [{
+            required: true,
+            message: 'Please input your postCode',
+            trigger: 'change'
+          }],
+          detailAddress: [{
+            required: true,
+            message: 'Please input your detailAddress',
+            trigger: 'change'
+          }],
+          city: [{
+            required: true,
+            message: 'Please input your city',
+            trigger: 'change'
+          }],
+          region: [{
+            required: true,
+            message: 'Please input your region',
+            trigger: 'change'
+          }],
+          // type: [{
+          //   type: 'array',
+          //   required: true,
+          //   message: '请至少选择一个活动性质',
+          //   trigger: 'change'
+          // }],
+          // resource: [{
+          //   required: true,
+          //   message: '请选择活动资源',
+          //   trigger: 'change'
+          // }],
+          // desc: [{
+          //   required: true,
+          //   message: '请填写活动形式',
+          //   trigger: 'blur'
+          // }]
+        }
       }
     },
+    updated() {
+      console.log('updated', this.defaultStatus);
+    },
     created() {
-      console.log('created', this.signinemail)
+      console.log('created', this.signinemail, document.querySelector('#address'))
+      // Loading.service({
+      //   target: '#address'
+      // });
+      this.$loading({
+        // target: $('#address').get(0),
+        target: document.querySelector('#address'),
+
+        // target: '#address',
+        // lock: true,
+        text: 'Loading',
+        // spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
+      //get address list
+
+      // get country list
+      this.getCountryList();
+      // get address list
+      this.getAddressList();
+    },
+    methods: {
+      getAddressList() {
+        request({
+          method: 'post',
+          url: airClickHost + '/member/address/list',
+          data: {
+            adderss: 'singin_email',
+            pwd: 'singin_pwd',
+          },
+          success: (res) => {
+            Qmsg.success('获取收获地址列表成功');
+            this.shippingAddressFormType = 'show';
+            this.addressList = res.data;
+          }
+        })
+      },
+      getCountryList() {
+        request({
+          method: 'post',
+          url: airClickHost + '/member/address/getCountryList',
+          data: {
+            keyword: this.ruleForm.country,
+          },
+          success: (res) => {
+            this.countryList = (res.data || []).map(item => item && ({
+              label: item.name,
+              value: item.name,
+              image: item.image,
+            })) || [];
+            console.log('我是 countryList  res', this.countryList)
+            Qmsg.success('获取城市列表成功');
+          }
+        })
+      },
+      deleteAddress(addressId) {
+        request({
+          method: 'post',
+          url: airClickHost + `/member/address/delete/${this.ruleForm.id}`,
+          params: {
+            id: addressId,
+          },
+          success: (res) => {
+            this.getAddressList();
+            Qmsg.success('删除地址成功');
+          }
+        })
+      },
+      addAddress(finalData) {
+        request({
+          method: 'post',
+          url: airClickHost + '/member/address/add',
+          data: {
+            address: JSON.stringify(finalData),
+          },
+          success: (res) => {
+            console.log('我是  新增收货地址成功 res', res)
+            Qmsg.success('新增收货地址成功');
+            this.shippingAddressFormType = 'show';
+            this.getAddressList();
+          }
+        })
+      },
+      updateAddress(finalData) {
+        request({
+          method: 'post',
+          url: airClickHost + `/member/address/update/${finalData.id}`,
+          // params: {
+          //   id: addressId,
+          // },
+          data: {
+            address: JSON.stringify(finalData),
+          },
+          success: (res) => {
+            console.log('我是 countryList  res', res)
+            Qmsg.success('更新地址成功');
+            this.shippingAddressFormType = 'show';
+            this.getAddressList();
+          }
+        })
+      },
+      handleAddShippingAddress() {
+        this.shippingAddressFormType = 'add';
+        // this.ruleForm = {}
+        // clear form props
+        console.log('sfdsf---我是addship', this.ruleForm, this.$refs)
+        this.$refs['ruleForm'].resetFields();
+      },
+      handleEditShippingAddress(addressId) {
+        this.shippingAddressFormType = 'edit';
+        const addressDetail = this.addressList.find(address => address.id == addressId) || {};
+        this.ruleForm = {
+          ...this.ruleForm,
+          ...addressDetail,
+          region: addressDetail.province,
+          phoneNumberSub: addressDetail.phoneNumber.split(' ')[0],
+          phoneNumberSup: addressDetail.phoneNumber.split(' ')[1],
+        }
+        console.log('addressDetail', addressDetail, this.ruleForm, addressDetail.phoneNumber.split(' ')[1])
+      },
+      handleDeleteAddress() {
+        console.log('handledeleteAddress');
+        this.shippingAddressFormType = 'add';
+        this.deleteAddress()
+      },
+      handleCancel() {
+        this.shippingAddressFormType = 'show';
+      },
+      handleSaveAddress() {
+        console.log("我是this.ruleForm", this.ruleForm)
+        this.submitForm('ruleForm');
+      },
+      handleChangeDefaultAddress(finalData) {
+        this.updateAddress(finalData);
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            const finalData = {
+              city: this.ruleForm.city,
+              country: this.ruleForm.country,
+              firstName: this.ruleForm.firstName,
+              lastName: this.ruleForm.lastName,
+              phoneNumber: `${this.ruleForm.phoneNumberSub}`,
+              detailAddress: this.ruleForm.detailAddress,
+              postCode: this.ruleForm.postCode,
+              province: this.ruleForm.region,
+              emailAddress: this.ruleForm.emailAddress,
+            };
+            console.log('valud', valid, 'finalData', finalData)
+            if (this.shippingAddressFormType === 'add') {
+              if (!this.addressList.length) {
+                // first address as default address
+                finalData.defaultStatus = true;
+              }
+              // add address
+              this.addAddress(finalData);
+            } else {
+              //update address
+              this.updateAddress({
+                ...finalData,
+                id: this.ruleForm.id
+              })
+            }
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      },
     },
   })
 </script>
 <style>
   .add-shipping-address {
-    color: green;
-    border-color: green;
+    color: #67C23A;
+    border-color: #67C23A;
   }
 
   #address .mb-2 {
     text-align: right;
+  }
+
+  .card-address-shipping p {
+    word-break: break-wrod;
+  }
+
+  .default-status-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 40px;
+  }
+
+  .default-status-col label {
+    margin: 0;
   }
 </style>
 

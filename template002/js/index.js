@@ -1,7 +1,31 @@
 
 const airClickHost = 'https://open.airclick.com';
-const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODA5NjQyMzU1QHFxLmNvbSIsImNyZWF0ZWQiOjE2MTA1MTI1OTUyMTUsImV4cCI6MTYxMTExNzM5NX0.zJ3Ed5Q2GV6MV1twhJgguA0Anb5kHB8baU6v1f1jGJKFOlbUxYuIG6vmuJPiU7mKzNzkQyjLXL4QIwh4r5Jm-w';
-const AUTH_TOKEN = 'Bearer' + token;
+const token = ' eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aGFuZ3poaXpoZW43QGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE2MTA5NDAxNzIxOTIsImV4cCI6MTYxMTU0NDk3Mn0.ipb_c9MLFEDGR6pPdJSh1xqjvgaW7jrVEOpSFEHsCgYPuZTE7DZJLB7mDwJz8ikwuPOqHO1PtV1Ec6F7-XUC2A';
+// const AUTH_TOKEN = 'Newhaha';
+let AUTH_TOKEN = 'Bearer' + token;
+// const AUTH_TOKEN = token;
+
+// for debug
+const uesrInfo = {
+  "status": 200,
+  "msg": "registration success",
+  "data": {
+    "memberLevelId": 4,
+    "gender": 0,
+    "city": "USA",
+    "isNewUser": true,
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ6aGFuZ3poaXpoZW43QGdtYWlsLmNvbSIsImNyZWF0ZWQiOjE2MTA5NDAxNzIxOTIsImV4cCI6MTYxMTU0NDk3Mn0.ipb_c9MLFEDGR6pPdJSh1xqjvgaW7jrVEOpSFEHsCgYPuZTE7DZJLB7mDwJz8ikwuPOqHO1PtV1Ec6F7-XUC2A",
+    "password": "$2a$10$oOCyX2iyvxu/LvA63D.9m.bVqbuhJdpd4p5C5mb3BbkPMr/bz4OBW",
+    "createTime": "2021-01-18T03:22:52.090+00:00",
+    "adminId": 23213,
+    "nickname": "hahaha",
+    "currency": "USD",
+    "id": 56,
+    "class": "com.macro.mall.model.UmsMember",
+    "username": "zhangzhizhen7@gmail.com",
+    "status": 1
+  }
+};
 
 const qs = Qs;
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -19,9 +43,16 @@ const resetParams = () => ({
   reg_agree: getChecked('#register-agree'),
 })
 
-console.log(Element);
+// axios 
 const request = (config) => {
   const { method, data, success = () => { }, error = () => { }, removeLoading = () => { } } = config;
+  // update token
+
+  if (window.localStorage.getItem('airClickToken')) {
+    AUTH_TOKEN = window.localStorage.getItem('airClickToken')
+  }
+  console.log('AUTH_TOKEN', AUTH_TOKEN)
+
   // const _data = method.toUpperCase() === 'POST' ? data : qs.stringify(data);
   axios({
     method: 'get',
@@ -34,14 +65,13 @@ const request = (config) => {
   }).then(res => {
     removeLoading();
     const { data = {}, status } = res;
-    console.log('我是ress', res, data, data.status, data.status === 200, data.status == 200);
     if (data.status === 500) {
       Qmsg.error(data.msg);
       error();
       console.log('500');
     } else if (data.status === 200) {
       console.log('200', data.data);
-      success(data.data)
+      success(data)
     } else if (data.status === 404) {
       Qmsg.error(data.msg);
       console.log('404', data.msg);

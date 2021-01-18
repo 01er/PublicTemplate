@@ -108,11 +108,17 @@ $(document).ready(function () {
         email: singin_email,
         pwd: singin_pwd,
       },
-      success: () => {
+      success: (res) => {
         // console.log('login',$('.login >span').text('张志阵'));
         $('.login >span').text('')
-        sessionStorage.setItem('username', 'test-zzz');
-        window.location.href = window.location.origin + '/account.html';
+        console.log('进入success', res.data);
+        const { data } = res;
+
+        localStorage.setItem('username', 'test-zzz');
+        // localStorage.setItem('airClickToken', 'test-zzz');
+        localStorage.setItem('airClickToken', data.tokenHead + data.token);
+        localStorage.setItem('airClickUserId', data.userId);
+        // window.location.href = window.location.origin + '/account.html';
       }
     })
   });
