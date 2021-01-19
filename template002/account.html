@@ -431,9 +431,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#payment">Payment Account</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#account">Account details</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <a href="#">Logout</a>
                 </li>
@@ -460,32 +460,20 @@
                   <a href="#" class="btn btn-primary">Go Shop</a>
                 </div>
                 <div class="tab-pane" id="address">
-                  <!-- <p v-if="type === 'A'">
-                    <button class="ui-button add-shipping-address" @click="handleAddShippingAddress">
-                      Add Shipping Address
-                    </button>
-                  </p>
-                  <p v-else-if="type === 'B'">
-                    <h2>新增</h2>
-                  </p>
-                  <p v-else-if="type === 'C'">
-                    C
-                  </p>
-                  <p v-else>
-                    Not A/B/C
-                  </p> -->
-                  <div class="mb-2" v-if="shippingAddressFormType==='show'">
+                  <div class="mb-2" v-if="shippingAddressFormType==='show'" style="margin-right: 20px;">
                     <button class="ui-button add-shipping-address" @click="handleAddShippingAddress">
                       Add Shipping Address
                     </button>
                   </div>
-                  <div class="mb-2" v-else-if="shippingAddressFormType==='add'" style="text-align: left;">
+                  <div class="mb-2" v-else-if="shippingAddressFormType==='add'" style="text-align: left;"
+                    style="margin-right: 20px;">
                     <h5>Add</h5>
                   </div>
                   <div class="mb-2" v-else style="text-align: left;">
                     <h5>Edit</h5>
                   </div>
-                  <div v-show="shippingAddressFormType==='add'||shippingAddressFormType==='edit'">
+                  <div v-show="shippingAddressFormType==='add'||shippingAddressFormType==='edit'"
+                    style="margin-right: 20px;">
                     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm"
                       label-position='top'>
                       <el-row :gutter="20">
@@ -547,8 +535,8 @@
                           </el-form-item>
                         </el-col>
                         <el-col :span="12">
-                          <el-form-item label="State" prop="region">
-                            <el-input v-model="ruleForm.region"></el-input>
+                          <el-form-item label="State" prop="province">
+                            <el-input v-model="ruleForm.province"></el-input>
                           </el-form-item>
                         </el-col>
                       </el-row>
@@ -563,7 +551,7 @@
                     <el-row :gutter="20">
                       <el-radio-group v-model="defaultStatus" style="width: 100%;">
                         <div v-for="(address ,index) of addressList">
-                          <el-col :span="12">
+                          <el-col :span="12" style="margin-bottom: 20px;">
                             <div class="card card-address card-address-shipping">
                               <div class="card-body">
                                 <h5 class="card-title">{{address.firstName+' '+address.lastName}}</h5>
@@ -592,12 +580,163 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane" id="account">
+
+              <div class="tab-pane" id="payment">
+                <div class="mb-2" v-if="paymentFormType==='show'" style="margin-right: 20px;text-align: right;">
+                  <button class="ui-button add-shipping-address" @click="handleAddPaymentAccount">
+                    Add Payment Account
+                  </button>
+                </div>
+                <div class="mb-2" v-else-if="paymentFormType==='add'" style="text-align: left;"
+                  style="margin-right: 20px;">
+                  <h5>Add</h5>
+                </div>
+                <div class="mb-2" v-else style="text-align: left;">
+                  <h5>Edit</h5>
+                </div>
+                <div v-show="paymentFormType==='add'||paymentFormType==='edit'" style="margin-right: 20px;">
+                  <el-form :model="paymentForm" :rules="paymentRules" ref="paymentForm" label-width="100px"
+                    class="demo-ruleForm" label-position='top'>
+                    <el-row :gutter="20">
+                      <el-col :span="24">
+                        <el-form-item prop="bankName" style="display: none;"></el-form-item>
+                        <el-form-item prop="id" style="display: none;"></el-form-item>
+                        <el-form-item label="Bank Number" prop="bankNumber">
+                          <el-input v-model="paymentForm.bankNumber"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="12">
+                        <el-form-item label="Security Code" prop="securityCode">
+                          <el-input v-model="paymentForm.securityCode"></el-input>
+                        </el-form-item>
+                      </el-col>
+                      <el-col :span="12">
+                        <el-form-item label="Expiry Date" prop="expiryDate">
+                          <el-date-picker v-model="paymentForm.expiryDate" type="month" placeholder="select date">
+                          </el-date-picker>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                  </el-form>
+                  <!-- paymentAddressRules -->
+                  <el-form :model="paymentAddressForm" :rules="paymentAddressRules" ref="paymentAddressForm"
+                    label-width="100px" class="demo-ruleForm" label-position='top'>
+                    <el-row :gutter="20" style="margin-bottom: 22px;">
+                      <el-col :span="24">
+                        <span>The billing address is the same as the harvesting address</span>
+                        <el-switch v-model="isSyncAddress">
+                        </el-switch>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="12">
+                        <el-form-item label="First Name" prop="firstname">
+                          <el-input v-model="paymentAddressForm.firstname"></el-input>
+                        </el-form-item>
+                      </el-col>
+                      <el-col :span="12">
+                        <el-form-item label="Last Name" prop="lastname">
+                          <el-input v-model="paymentAddressForm.lastname"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="12">
+                        <el-form-item label="Phone Number" prop="phoneNumberSub">
+                          <el-input v-model="paymentAddressForm.phoneNumberSub" style="width: 19%;padding-right: 16px;">
+                          </el-input>
+                          <el-input v-model="paymentAddressForm.phoneNumberSup" style="width: 80%;"></el-input>
+                        </el-form-item>
+                      </el-col>
+                      <el-col :span="12">
+                        <el-form-item label="Email" prop="email">
+                          <el-input v-model="paymentAddressForm.email"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="12">
+                        <el-form-item label="Country Or Area" prop="country">
+                          <el-select v-model="paymentAddressForm.country" placeholder="please select"
+                            style="width: 100%;">
+                            <el-option v-for="item in countryList" :key="item.value" :label="item.label"
+                              :value="item.value">
+                              <span style="float: left"><img :src="item.image" /></span>
+                              <span style="float: right; color: #8492a6; font-size: 13px">{{ item.value }}</span>
+                            </el-option>
+                          </el-select>
+                        </el-form-item>
+                      </el-col>
+                      <el-col :span="12">
+                        <el-form-item label="Postcode" prop="postcode">
+                          <el-input v-model="paymentAddressForm.postcode"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="24">
+                        <el-form-item label="Detailed Address" prop="address">
+                          <el-input v-model="paymentAddressForm.address"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                    <el-row :gutter="20">
+                      <el-col :span="12">
+                        <el-form-item label="City" prop="city">
+                          <el-input v-model="paymentAddressForm.city"></el-input>
+                        </el-form-item>
+                      </el-col>
+                      <el-col :span="12">
+                        <el-form-item label="State" prop="state">
+                          <el-input v-model="paymentAddressForm.state"></el-input>
+                        </el-form-item>
+                      </el-col>
+                    </el-row>
+                  </el-form>
+
+                  <el-row style="text-align: right;">
+                    <el-button type="danger" plain style="width: 120px;" @click="handleDeletePaymentAccount">删除
+                    </el-button>
+                    <el-button plain style="width: 120px;" @click="handleCancel">取消</el-button>
+                    <el-button type="success" plain style="width: 120px;" @click="handleSavePaymentAccount">保存
+                    </el-button>
+                  </el-row>
+
+                </div>
+                <div class="row" v-show="paymentFormType==='show'">
+                  <el-row :gutter="20">
+                    <el-radio-group v-model="defaultStatus" style="width: 100%;">
+                      <div v-for="(paymentAccount ,index) of paymentAccountList">
+                        <el-col :span="12" style="margin-bottom: 20px;">
+                          <div class="card card-address card-address-shipping">
+                            <div class="card-body">
+                              <h5 class="card-title">{{paymentAccount.bankName}}</h5>
+                              <p>
+                                {{paymentAccount.bankNumberPSW}}
+                              </p>
+                              <el-row :gutter="20">
+                                <el-col :span="24">
+                                  <el-button type="text" @click="handleEditPaymentAccount(paymentAccount.id)"
+                                    style="color:#67C23A">
+                                    Edit
+                                  </el-button>
+                                </el-col>
+                              </el-row>
+                            </div>
+                          </div>
+                        </el-col>
+                    </el-radio-group>
+                  </el-row>
+                </div>
+              </div>
+              <!-- <div class="tab-pane" id="account">
                 <form action="#" class="form">
                   <div class="row">
                     <div class="col-sm-6">
                       <label>First Name *</label>
-                      <!-- <input type="text" class="form-control" name="first_name" required=""> -->
+                      <input type="text" class="form-control" name="first_name" required="">
                     </div>
                     <div class="col-sm-6">
                       <label>Last Name *</label>
@@ -625,7 +764,7 @@
                   <button type="submit" class="btn btn-primary btn-reveal-right">SAVE CHANGES <i
                       class="d-icon-arrow-right"></i></button>
                 </form>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -1045,6 +1184,7 @@
   <script src="vendor/message/index.js"></script>
   <script src="vendor/elementui/index.js"></script>
   <script src="vendor/qs/index.js"></script>
+  <script src="vendor/moment/index.js"></script>
   <!-- Main JS File -->
   <script src="js/main.js"></script>
   <script src="js/main/account.js"></script>
@@ -1058,10 +1198,15 @@
         visible: false,
         signinemail: '测试我是张志阵',
         shippingAddressFormType: 'show',
+        paymentFormType: 'show',
         addressList: [],
+        paymentAccountList: [],
         defaultStatus: false,
+        defaultPaymentAccountDetail: {},
+        defaultAddressDetail: {},
         type: 'DD',
         countryList: [],
+        isSyncAddress: false,
         ruleForm: {
           id: '',
           firstName: '',
@@ -1073,7 +1218,93 @@
           postCode: '',
           detailAddress: '',
           city: '',
-          region: '',
+          province: '',
+        },
+        paymentForm: {
+          bankNumber: '',
+          securityCode: '',
+          expiryDate: '',
+        },
+        paymentAddressForm: {
+          firstname: '',
+          lastname: '',
+          postcode: '',
+          email: '',
+          country: '',
+          city: '',
+          state: '',
+          address: '',
+          phoneNumberSub: '',
+          phoneNumberSup: '',
+        },
+        paymentAddressRules: {
+          firstname: [{
+            required: true,
+            message: 'Please input your first name',
+            trigger: 'change'
+          }, ],
+          lastname: [{
+            required: true,
+            message: 'Please input your last name',
+            trigger: 'change'
+          }, ],
+          phoneNumberSub: [{
+            validator: (rule, value, callback) => {
+              if (!this.paymentAddressForm.phoneNumberSup || !value) {
+                callback(new Error('Please input your phone number'))
+              } else {
+                callback();
+              }
+            },
+            trigger: 'change',
+          }],
+          email: [{
+            required: true,
+            message: 'Please input your email',
+            trigger: 'change'
+          }],
+          country: [{
+            required: true,
+            message: 'Please input your country',
+            trigger: 'change'
+          }],
+          postcode: [{
+            required: true,
+            message: 'Please input your postCode',
+            trigger: 'change'
+          }],
+          address: [{
+            required: true,
+            message: 'Please input your address',
+            trigger: 'change'
+          }],
+          city: [{
+            required: true,
+            message: 'Please input your city',
+            trigger: 'change'
+          }],
+          state: [{
+            required: true,
+            message: 'Please input your state',
+            trigger: 'change'
+          }],
+        },
+        paymentRules: {
+          bankNumber: [{
+            required: true,
+            message: 'Please input your bank number',
+            trigger: 'change'
+          }],
+          securityCode: [{
+            required: true,
+            message: 'Please input your security code',
+            trigger: 'change'
+          }],
+          expiryDate: [{
+            required: true,
+            message: 'Please input your expiry date',
+            trigger: 'change'
+          }],
         },
         rules: {
           firstName: [{
@@ -1121,38 +1352,49 @@
             message: 'Please input your city',
             trigger: 'change'
           }],
-          region: [{
+          province: [{
             required: true,
-            message: 'Please input your region',
+            message: 'Please input your province',
             trigger: 'change'
           }],
-          // type: [{
-          //   type: 'array',
-          //   required: true,
-          //   message: '请至少选择一个活动性质',
-          //   trigger: 'change'
-          // }],
-          // resource: [{
-          //   required: true,
-          //   message: '请选择活动资源',
-          //   trigger: 'change'
-          // }],
-          // desc: [{
-          //   required: true,
-          //   message: '请填写活动形式',
-          //   trigger: 'blur'
-          // }]
         }
       }
     },
     updated() {
       console.log('updated', this.defaultStatus);
     },
+    watch: {
+      defaultStatus() {
+        const adderssDeail = this.addressList[this.defaultStatus];
+        this.updateAddress({
+          ...adderssDeail,
+          defaultStatus: true,
+        })
+      },
+      isSyncAddress() {
+        if (this.isSyncAddress) {
+          // sync shipping address
+          this.paymentAddressForm = {
+            id: this.defaultPaymentAccountDetail.id,
+            ...this.defaultAddressDetail,
+            firstname: this.defaultAddressDetail.firstName,
+            lastname: this.defaultAddressDetail.lastName,
+            postcode: this.defaultAddressDetail.postCode,
+            email: this.defaultAddressDetail.emailAddress,
+            address: this.defaultAddressDetail.detailAddress,
+            state: this.defaultAddressDetail.province,
+            phoneNumberSub: this.defaultAddressDetail.phoneNumber.split(' ')[0],
+            phoneNumberSup: this.defaultAddressDetail.phoneNumber.split(' ')[1],
+            // address:this.defaultAddressDetail.detailAddress,
+          }
+        } else {
+          this.$refs.paymentAddressForm.resetFields();
+          this.paymentAddressForm.phoneNumberSup = undefined;
+        }
+      },
+    },
     created() {
-      console.log('created', this.signinemail, document.querySelector('#address'))
-      // Loading.service({
-      //   target: '#address'
-      // });
+      console.log('created', this.signinemail, document.querySelector('#address'), moment)
       this.$loading({
         // target: $('#address').get(0),
         target: document.querySelector('#address'),
@@ -1163,12 +1405,12 @@
         // spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)'
       })
-      //get address list
-
       // get country list
       this.getCountryList();
       // get address list
       this.getAddressList();
+      // get payment account list
+      this.getPaymentMethodList();
     },
     methods: {
       getAddressList() {
@@ -1180,9 +1422,31 @@
             pwd: 'singin_pwd',
           },
           success: (res) => {
-            Qmsg.success('获取收获地址列表成功');
+            // Qmsg.success('获取收获地址列表成功');
             this.shippingAddressFormType = 'show';
             this.addressList = res.data;
+            this.defaultStatus = (res.data || []).findIndex(item => item.defaultStatus) + '';
+            this.defaultAddressDetail = (res.data || []).find(item => item.defaultStatus);
+          }
+        })
+      },
+      getPaymentMethodList() {
+        request({
+          method: 'post',
+          url: airClickHost + '/api/user/getPaymentMethodList',
+          data: {
+            name: '',
+          },
+          success: (res) => {
+            // Qmsg.success('获取收获地址列表成功');
+            this.paymentFormType = 'show';
+            console.log('this.paymnetAccountList', res.data)
+            this.paymentAccountList = (res.data || []).map(item => ({
+              ...item,
+              bankName: item.bankName,
+              // bankName: this.getCardName(item.bankNumber),
+              bankNumberPSW: `${item.bankNumber.slice(0,4)} **** **** **** ${item.bankNumber.slice(-4)}`,
+            }));
           }
         })
       },
@@ -1204,19 +1468,6 @@
           }
         })
       },
-      deleteAddress(addressId) {
-        request({
-          method: 'post',
-          url: airClickHost + `/member/address/delete/${this.ruleForm.id}`,
-          params: {
-            id: addressId,
-          },
-          success: (res) => {
-            this.getAddressList();
-            Qmsg.success('删除地址成功');
-          }
-        })
-      },
       addAddress(finalData) {
         request({
           method: 'post',
@@ -1229,6 +1480,18 @@
             Qmsg.success('新增收货地址成功');
             this.shippingAddressFormType = 'show';
             this.getAddressList();
+          }
+        })
+      },
+      addPaymentMethod(finalData) {
+        request({
+          method: 'post',
+          url: airClickHost + '/api/user/addPaymentMethod',
+          data: finalData,
+          success: (res) => {
+            Qmsg.success('新增支付账户成功');
+            this.paymentFormType = 'show';
+            this.getPaymentMethodList();
           }
         })
       },
@@ -1250,36 +1513,106 @@
           }
         })
       },
+      updatePaymentMethod(finalData) {
+        request({
+          method: 'post',
+          url: airClickHost + `/api/user/updatePaymentMethod`,
+          // params: {
+          //   id: addressId,
+          // },
+          data: finalData,
+          success: (res) => {
+            Qmsg.success('更新账户成功');
+            this.getPaymentMethodList();
+            this.paymentFormType = 'show';
+          }
+        })
+      },
+      deleteAddress() {
+        request({
+          method: 'post',
+          url: airClickHost + `/member/address/delete/${this.ruleForm.id}`,
+          // params: {
+          //   id: addressId,
+          // },
+          success: (res) => {
+            this.getAddressList();
+            Qmsg.success('删除地址成功');
+          }
+        })
+      },
+      deleteBank(paymentId) {
+        request({
+          method: 'post',
+          url: airClickHost + `/api/user/deleteBank`,
+          params: {
+            id: this.paymentForm.id,
+          },
+          success: (res) => {
+            this.getPaymentMethodList();
+            this.paymentFormType = 'show';
+            Qmsg.success('删除地址成功');
+          }
+        })
+      },
       handleAddShippingAddress() {
         this.shippingAddressFormType = 'add';
         // this.ruleForm = {}
         // clear form props
-        console.log('sfdsf---我是addship', this.ruleForm, this.$refs)
+        this.ruleForm.phoneNumberSup = '';
         this.$refs['ruleForm'].resetFields();
+      },
+      handleAddPaymentAccount() {
+        this.paymentFormType = 'add';
+        this.paymentForm.phoneNumberSup = '';
+        this.$refs['paymentForm'].resetFields();
+        this.$refs['paymentAddressForm'].resetFields();
       },
       handleEditShippingAddress(addressId) {
         this.shippingAddressFormType = 'edit';
-        const addressDetail = this.addressList.find(address => address.id == addressId) || {};
+        const addressDetail = this.addressList.find(address => address.id ==
+          addressId) || {};
         this.ruleForm = {
-          ...this.ruleForm,
           ...addressDetail,
-          region: addressDetail.province,
           phoneNumberSub: addressDetail.phoneNumber.split(' ')[0],
           phoneNumberSup: addressDetail.phoneNumber.split(' ')[1],
         }
-        console.log('addressDetail', addressDetail, this.ruleForm, addressDetail.phoneNumber.split(' ')[1])
+      },
+      handleEditPaymentAccount(paymentId) {
+        this.paymentFormType = 'edit';
+        const paymentAccountDetail = this.paymentAccountList.find(
+          paymentAccount => paymentAccount.id == paymentId) || {};
+        this.defaultPaymentAccountDetail = paymentAccountDetail;
+        this.paymentForm = {
+          // ...this.ruleForm,
+          ...paymentAccountDetail,
+          expiryDate: moment().year(paymentAccountDetail.expiryDate.split('/')[1])
+            .month(paymentAccountDetail.expiryDate.split('/')[0] - 1),
+        }
+        this.paymentAddressForm = {
+          ...paymentAccountDetail,
+          phoneNumberSub: paymentAccountDetail.cellphone.split(' ')[0],
+          phoneNumberSup: paymentAccountDetail.cellphone.split(' ')[1],
+        }
       },
       handleDeleteAddress() {
-        console.log('handledeleteAddress');
         this.shippingAddressFormType = 'add';
         this.deleteAddress()
       },
+      handleDeletePaymentAccount() {
+        this.paymentFormType = 'add';
+        this.deleteBank()
+      },
       handleCancel() {
         this.shippingAddressFormType = 'show';
+        this.paymentFormType = 'show';
       },
       handleSaveAddress() {
-        console.log("我是this.ruleForm", this.ruleForm)
         this.submitForm('ruleForm');
+      },
+      handleSavePaymentAccount() {
+        console.log("我是this.ruleForm", this.paymentForm)
+        this.submitForm('paymentForm');
       },
       handleChangeDefaultAddress(finalData) {
         this.updateAddress(finalData);
@@ -1292,26 +1625,47 @@
               country: this.ruleForm.country,
               firstName: this.ruleForm.firstName,
               lastName: this.ruleForm.lastName,
-              phoneNumber: `${this.ruleForm.phoneNumberSub}`,
+              phoneNumber: `${this.ruleForm.phoneNumberSub} ${this.ruleForm.phoneNumberSup}`,
               detailAddress: this.ruleForm.detailAddress,
               postCode: this.ruleForm.postCode,
-              province: this.ruleForm.region,
+              province: this.ruleForm.province,
               emailAddress: this.ruleForm.emailAddress,
             };
-            console.log('valud', valid, 'finalData', finalData)
-            if (this.shippingAddressFormType === 'add') {
-              if (!this.addressList.length) {
-                // first address as default address
-                finalData.defaultStatus = true;
+            if (formName === 'ruleForm') {
+              if (this.shippingAddressFormType === 'add') {
+                if (!this.addressList.length) {
+                  // first address as default address
+                  finalData.defaultStatus = true;
+                }
+                // add address
+                this.addAddress(finalData);
+              } else {
+                //update address
+                this.updateAddress({
+                  ...finalData,
+                  id: this.ruleForm.id
+                })
               }
-              // add address
-              this.addAddress(finalData);
-            } else {
-              //update address
-              this.updateAddress({
-                ...finalData,
-                id: this.ruleForm.id
-              })
+            } else if (formName === 'paymentForm') {
+              this.paymentFormType === 'add' ?
+                this.addPaymentMethod({
+                  ...this.paymentForm,
+                  ...this.paymentAddressForm,
+                  cellphone: `${this.paymentAddressForm.phoneNumberSub} ${this.paymentAddressForm.phoneNumberSup}`,
+                  bankName: this.getCardName(this.paymentForm.bankNumber),
+                  bankNumber: this.paymentForm.bankNumber,
+                  expiryDate: moment(this.paymentForm.expiryDate).format('MM/yyyy'),
+                  securityCode: this.paymentForm.securityCode,
+                }) :
+                this.updatePaymentMethod({
+                  ...this.paymentForm,
+                  ...this.paymentAddressForm,
+                  cellphone: `${this.paymentAddressForm.phoneNumberSub} ${this.paymentAddressForm.phoneNumberSup}`,
+                  bankName: this.getCardName(this.paymentForm.bankNumber),
+                  bankNumber: this.paymentForm.bankNumber,
+                  expiryDate: moment(this.paymentForm.expiryDate).format('MM/yyyy'),
+                  securityCode: this.paymentForm.securityCode,
+                });
             }
           } else {
             console.log('error submit!!');
@@ -1319,8 +1673,22 @@
           }
         });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      getCardName(value = '') {
+        const visa = ['4'];
+        const masterCard = ['5', '22', '23', '24', '25', '26', '27'];
+        const jcb = ['35', '2131', '1800'];
+        const getStrartSliceStr = (str, num) => str.slice(0, num);
+        if (visa.includes(getStrartSliceStr(value, 1))) {
+          return 'VISA';
+        } else if (masterCard.includes(getStrartSliceStr(value, 1) || masterCard.includes(
+            getStrartSliceStr(value, 2)))) {
+          return 'MasterCard';
+        } else if (jcb.includes(getStrartSliceStr(value, 2) || jcb.includes(getStrartSliceStr(value,
+            4)))) {
+          return 'JCB';
+        } else {
+          return 'Unrecognized Card';
+        }
       },
     },
   })
