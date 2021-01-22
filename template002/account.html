@@ -60,8 +60,6 @@
 
   <div class="page-wrapper">
     <div id='account_vue'>
-      {{signinemail}}
-      <input type='text' v-model="signinemail" />
       <header class="header">
         <div class="header-top">
           <div class="container">
@@ -1196,7 +1194,7 @@
     data: function () {
       return {
         visible: false,
-        signinemail: '测试我是张志阵',
+        // signinemail: '测试我是张志阵',
         shippingAddressFormType: 'show',
         paymentFormType: 'show',
         addressList: [],
@@ -1394,7 +1392,7 @@
       },
     },
     created() {
-      console.log('created', this.signinemail, document.querySelector('#address'), moment)
+      console.log('created', document.querySelector('#address'), moment)
       this.$loading({
         // target: $('#address').get(0),
         target: document.querySelector('#address'),
